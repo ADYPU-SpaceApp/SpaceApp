@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg">
+
+    <ImageView
+        android:id="@+id/astro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="61dp"
+        android:src="@drawable/astro"
+        app:layout_constraintBottom_toTopOf="@+id/loading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/welcomeBanner"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="Our Astro" />
+
+    <TextView
+        android:id="@+id/welcomeBanner"
+        android:layout_width="0dp"
+        android:layout_height="33dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="65dp"
+        android:gravity="top"
+        android:text="Welcome"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toStartOf="@+id/astro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/Email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="412dp"
+        android:importantForAutofill="no"
+        android:minHeight="48dp"
+        android:hint="Email"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="65dp"
+        android:minHeight="48dp"
+        android:hint="Password"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Email"
+        android:importantForAutofill="no"
+        android:inputType="textPassword" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/LoginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/login_btn_bg"
+        android:text="Login"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/Password"
+        app:layout_constraintTop_toBottomOf="@+id/Password" />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="130dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="61dp"
+        android:layout_marginBottom="340dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/Email"
+        app:layout_constraintTop_toBottomOf="@+id/astro" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent">-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/SpaceAppLogo"-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:layout_marginBottom="50dp"-->
+<!--        android:src="@mipmap/spaceapp_logo_round" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/Email"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/SpaceAppLogo"-->
+<!--        android:layout_marginLeft="50dp"-->
+<!--        android:layout_marginRight="50dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:hint="Email"-->
+<!--        android:inputType="textEmailAddress" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/Password"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/Email"-->
+<!--        android:layout_marginLeft="50dp"-->
+<!--        android:layout_marginRight="50dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:hint="Password"-->
+<!--        android:inputType="textPassword" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/LoginButton"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/Password"-->
+<!--        android:layout_marginLeft="50dp"-->
+<!--        android:layout_marginRight="50dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:text="Login" />-->
+
+<!--    <ProgressBar-->
+<!--        android:id="@+id/loading"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/SpaceAppLogo"-->
+<!--        android:layout_centerHorizontal="true" />-->
+
+<!--</RelativeLayout>-->
