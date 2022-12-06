@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.ktx.auth
@@ -15,6 +16,7 @@ class LoginActivity: AppCompatActivity() {
 
     private lateinit var edtEmail: EditText
     private lateinit var edtPassword: EditText
+    private lateinit var txtForgotPasswd: TextView
     private lateinit var btnLogin: Button
     private lateinit var loading: ProgressBar
 
@@ -26,12 +28,17 @@ class LoginActivity: AppCompatActivity() {
         setContentView(R.layout.activity_login)
         edtEmail = findViewById(R.id.Email)
         edtPassword = findViewById(R.id.Password)
+        txtForgotPasswd = findViewById(R.id.ForgotPassword)
         btnLogin = findViewById(R.id.LoginButton)
         loading = findViewById(R.id.loading)
         loading.visibility = ProgressBar.INVISIBLE
 
         if (mAuth.currentUser != null) {
             loginAndGotoActivity()
+        }
+
+        txtForgotPasswd.setOnClickListener {
+            startActivity(Intent(this, ForgotPasswordActivity::class.java))
         }
 
         btnLogin.setOnClickListener {
@@ -79,7 +86,7 @@ class LoginActivity: AppCompatActivity() {
                     startActivity(Intent(this, UserMainActivity::class.java))
                 }
             }
-        finish()
+//        finish()
     }
 
 }

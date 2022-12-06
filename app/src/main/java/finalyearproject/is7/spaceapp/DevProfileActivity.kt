@@ -4,11 +4,17 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.google.android.gms.auth.api.identity.BeginSignInRequest
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 
 class DevProfileActivity: AppCompatActivity() {
@@ -16,6 +22,7 @@ class DevProfileActivity: AppCompatActivity() {
     private lateinit var devDP: ImageView
     private lateinit var devName: TextView
     private lateinit var devEmail: TextView
+    private lateinit var linkWithGoogleButton: Button
 
     private val mAuth = FirebaseAuth.getInstance()
     private val mDb = FirebaseFirestore.getInstance()
@@ -27,6 +34,7 @@ class DevProfileActivity: AppCompatActivity() {
         devDP = findViewById(R.id.devDP)
         devName = findViewById(R.id.devName)
         devEmail = findViewById(R.id.devEmail)
+        linkWithGoogleButton = findViewById(R.id.LinkWithGoogleButton)
 
         mDb.collection("Dev").document(mAuth.currentUser!!.uid).get()
             .addOnSuccessListener { dev ->
@@ -41,6 +49,31 @@ class DevProfileActivity: AppCompatActivity() {
             val displayPicActivityIntent = Intent(this, DisplayPicActivity::class.java)
             displayPicActivityIntent.putExtra("is", "Dev")
             startActivity(displayPicActivityIntent)
+        }
+
+        linkWithGoogleButton.setOnClickListener {
+
+            // TODO: Link with Google
+
+//            val googleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build())
+//            val signInIntent = googleSignInClient.signInIntent
+            val task = GoogleSignIn.getSignedInAccountFromIntent(intent)
+            try {
+                val account = task.getResult(Exception::class.java)
+                val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
+                mAuth.currentUser?.linkWithCredential(credential)?.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d("DevProfileActivity", "Link with Google Successful")
+                        Toast.makeText(this, "Link with Google Successful", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Log.d("DevProfileActivity", "Link with Google Failed")
+                        Toast.makeText(this, "Link with Google Failed", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: Exception) {
+                Log.d("DevProfileActivity", "Link with Google Failed -> ${e}")
+                Toast.makeText(this, "Link with Google Failed", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
@@ -67,5 +100,4 @@ class DevProfileActivity: AppCompatActivity() {
                 Log.d("Jaineel", "get failed with ", exception)
             }
     }
-
 }

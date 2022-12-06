@@ -43,4 +43,12 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="astro_description">Our Astro</string>
+    <string name="welcome_txt">Welcome</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login_btn_txt">Login</string>
+    <string name="forgot_password_btn_text">Forgot Password?</string>
+    <string name="submit_btn_txt">Submit</string>
+    <string name="forgot_password_txt">Forgot Password</string>
 </resources>
