@@ -40,31 +40,7 @@ class UserMainActivity : AppCompatActivity() {
         openChatRoomButton = findViewById(R.id.openChatRoomButton)
         logoutButton = findViewById(R.id.logoutButton)
 
-        if (mAuth.currentUser != null) {
-            mDb.collection("User").document(mAuth.currentUser!!.uid).get()
-                .addOnSuccessListener { user ->
-                    val org = user.data?.get("org") as DocumentReference
-                    org.get()
-                        .addOnSuccessListener { o ->
-                            if (o.exists()) {
-                                orgId = o.id
-                                if (o.data?.get("displaypic") != null) {
-                                    Glide.with(this).load(o.data?.get("displaypic")).circleCrop().into(orgLogo)
-                                }
-                                val organisationName = "Welcome " + user.data!!["name"] + " to " + o.data?.get("orgName")
-                                orgName.text = organisationName
-                            }
-                        }
-                    val role = user.data?.get("role") as DocumentReference
-                    role.get()
-                        .addOnSuccessListener { r ->
-                            if (r.data?.get("is_Staff") == false) {
-                                createUserBtn.visibility = Button.GONE
-                                createNoticeBtn.visibility = Button.GONE
-                            }
-                        }
-                }
-        }
+        setup()
 
         profileButton.setOnClickListener {
             startActivity(Intent(this, UserProfileActivity::class.java))
@@ -101,4 +77,36 @@ class UserMainActivity : AppCompatActivity() {
         }
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        setup()
+    }
+
+    private fun setup() {
+        mDb.collection("User").document(mAuth.currentUser!!.uid).get()
+            .addOnSuccessListener { user ->
+                val org = user.data?.get("org") as DocumentReference
+                org.get()
+                    .addOnSuccessListener { o ->
+                        if (o.exists()) {
+                            orgId = o.id
+                            if (o.data?.get("displaypic") != "") {
+                                Glide.with(this).load(o.data?.get("displaypic")).circleCrop().into(orgLogo)
+                            }
+                            val organisationName = "Welcome " + user.data!!["name"] + " to " + o.data?.get("orgName")
+                            orgName.text = organisationName
+                        }
+                    }
+                val role = user.data?.get("role") as DocumentReference
+                role.get()
+                    .addOnSuccessListener { r ->
+                        if (r.data?.get("is_Staff") == false) {
+                            createUserBtn.visibility = Button.GONE
+                            createNoticeBtn.visibility = Button.GONE
+                        }
+                    }
+            }
+    }
+
 }

@@ -66,6 +66,7 @@ class DevCreateOrgActivity: AppCompatActivity() {
             val email = orgEmail.text.toString()
             val password = orgPassword.text.toString()
             val confirmPassword = orgConfirmPassword.text.toString()
+
             if (name == "" || email == "" || password == "" || confirmPassword == "") {
                 AlertDialog.Builder(this)
                     .setTitle("Error")
@@ -78,59 +79,64 @@ class DevCreateOrgActivity: AppCompatActivity() {
                     .setMessage("Passwords do not match")
                     .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
                     .show()
-            } else {
-                Log.d("Jaineel","$name, $email, $logoUri")
-                mAuth2.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener {
-                        if (logoUri != null) {
-                            // upload logoUri to firebase storage
-                            val logoRef = mStorage.reference.child("OrganisationDisplayPic/${mAuth2.currentUser?.uid}")
-                            logoRef.putFile(logoUri!!)
-                                .addOnSuccessListener {
-                                    logoRef.downloadUrl
-                                        .addOnSuccessListener { logoUrl ->
-                                            val org = hashMapOf(
-                                                "orgName" to name,
-                                                "email" to email,
-                                                "displaypic" to logoUrl.toString(),
-                                                "is_Active" to true,
-                                            )
-                                            mDb.collection("Organisation").document(mAuth2.currentUser?.uid!!)
-                                                .set(org)
-                                                .addOnSuccessListener {
-                                                    Toast.makeText(this, "Organization created", Toast.LENGTH_SHORT).show()
-                                                    startActivity(Intent(this, DevMainActivity::class.java))
-                                                    finish()
-                                                }
-                                                .addOnFailureListener {
-                                                    Toast.makeText(this, "Failed to create organization", Toast.LENGTH_SHORT).show()
-                                                }
-                                        }
-                                }
-                        }
-                        else {
-                            val org = hashMapOf(
-                                "orgName" to name,
-                                "email" to email,
-                                "displaypic" to "",
-                                "is_Active" to true,
-                            )
-                            mDb.collection("Organisation").document(mAuth2.currentUser?.uid!!)
-                                .set(org)
-                                .addOnSuccessListener {
-                                    Toast.makeText(this, "Organization created", Toast.LENGTH_SHORT).show()
-                                    startActivity(Intent(this, DevMainActivity::class.java))
-                                    finish()
-                                }
-                                .addOnFailureListener {
-                                    Toast.makeText(this, "Failed to create organization", Toast.LENGTH_SHORT).show()
-                                }
-                        }
-                    }
-                mAuth2.signOut()
+            }
+            else {
+                createOrg(name, email, password)
             }
         }
 
+    }
+
+    private fun createOrg(name: String, email: String, password: String) {
+        Log.d("Jaineel","$name, $email, $logoUri")
+        mAuth2.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener {
+                if (logoUri != null) {
+                    // upload logoUri to firebase storage
+                    val logoRef = mStorage.reference.child("OrganisationDisplayPic/${mAuth2.currentUser?.uid}")
+                    logoRef.putFile(logoUri!!)
+                        .addOnSuccessListener {
+                            logoRef.downloadUrl
+                                .addOnSuccessListener { logoUrl ->
+                                    val org = hashMapOf(
+                                        "orgName" to name,
+                                        "email" to email,
+                                        "displaypic" to logoUrl.toString(),
+                                        "is_Active" to true,
+                                    )
+                                    mDb.collection("Organisation").document(mAuth2.currentUser?.uid!!)
+                                        .set(org)
+                                        .addOnSuccessListener {
+                                            Toast.makeText(this, "Organization created", Toast.LENGTH_SHORT).show()
+                                            startActivity(Intent(this, DevMainActivity::class.java))
+                                            finish()
+                                        }
+                                        .addOnFailureListener {
+                                            Toast.makeText(this, "Failed to create organization", Toast.LENGTH_SHORT).show()
+                                        }
+                                }
+                        }
+                }
+                else {
+                    val org = hashMapOf(
+                        "orgName" to name,
+                        "email" to email,
+                        "displaypic" to "",
+                        "is_Active" to true,
+                    )
+                    mDb.collection("Organisation").document(mAuth2.currentUser?.uid!!)
+                        .set(org)
+                        .addOnSuccessListener {
+                            Toast.makeText(this, "Organization created", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this, DevMainActivity::class.java))
+                            finish()
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(this, "Failed to create organization", Toast.LENGTH_SHORT).show()
+                        }
+                }
+            }
+        mAuth2.signOut()
     }
 
 }

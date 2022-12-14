@@ -33,18 +33,7 @@ class OrgMainActivity:AppCompatActivity() {
         createNoticeBtn = findViewById(R.id.createNoticeButton)
         logoutButton = findViewById(R.id.logoutButton)
 
-        if (mAuth.currentUser != null) {
-            mDb.collection("Organisation").document(mAuth.currentUser!!.uid).get()
-                .addOnSuccessListener { org ->
-                    if (org.exists()) {
-                        if (org.data?.get("displaypic") != null) {
-                            Glide.with(this).load(org.data?.get("displaypic")).circleCrop().into(orgLogo)
-                        }
-                        val organisationName = "Welcome " + org.data?.get("orgName")
-                        orgName.text = organisationName
-                    }
-                }
-        }
+        setup()
 
         profileButton.setOnClickListener {
             startActivity(Intent(this, OrgProfileActivity::class.java))
@@ -69,6 +58,24 @@ class OrgMainActivity:AppCompatActivity() {
             finish()
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setup()
+    }
+
+    private fun setup() {
+        mDb.collection("Organisation").document(mAuth.currentUser!!.uid).get()
+            .addOnSuccessListener { org ->
+                if (org.exists()) {
+                    if (org.data?.get("displaypic") != "") {
+                        Glide.with(this).load(org.data?.get("displaypic")).circleCrop().into(orgLogo)
+                    }
+                    val organisationName = "Welcome " + org.data?.get("orgName")
+                    orgName.text = organisationName
+                }
+            }
     }
 
 }

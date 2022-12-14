@@ -71,13 +71,4 @@ class ChangeDisplayPicActivity : AppCompatActivity() {
         }
     }
 
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        loading.visibility = ProgressBar.INVISIBLE
-//        // Go back to DisplayPicActivity
-//        val displaypicintent = Intent(this, DisplayPicActivity::class.java)
-//        displaypicintent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-//        startActivity(displaypicintent)
-//    }
-
 }

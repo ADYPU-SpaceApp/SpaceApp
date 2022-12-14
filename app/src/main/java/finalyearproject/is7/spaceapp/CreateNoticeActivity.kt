@@ -37,7 +37,7 @@ class CreateNoticeActivity:AppCompatActivity() {
             val noticeBody = edtNoticeBody.text.toString()
 
             if (noticeTitle.isNotEmpty() && noticeBody.isNotEmpty()) {
-                database.getReference("Organisation").child(orgId).child("Notice")
+                database.getReference(orgId).child("Notice")
                     .push().setValue(
                     hashMapOf(
                         "title" to noticeTitle,
@@ -50,6 +50,11 @@ class CreateNoticeActivity:AppCompatActivity() {
                     )
                 ).addOnSuccessListener {
                     Toast.makeText(this, "Notice Created", Toast.LENGTH_SHORT).show()
+//                    TriggerNotification().sendNotification(
+//                        "New Notice",
+//                        noticeTitle,
+//                        orgId
+//                    )
                     finish()
                 }
             }

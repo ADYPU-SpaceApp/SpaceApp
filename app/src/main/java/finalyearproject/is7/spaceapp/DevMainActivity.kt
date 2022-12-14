@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 class DevMainActivity: AppCompatActivity() {
 
     private lateinit var profileButton: Button
+    private lateinit var createDevActivity: Button
     private lateinit var createOrgButton: Button
     private lateinit var createUserButton: Button
     private lateinit var logoutButton: Button
@@ -20,12 +21,17 @@ class DevMainActivity: AppCompatActivity() {
         setContentView(R.layout.activity_dev_main)
 
         profileButton = findViewById(R.id.profileButton)
+        createDevActivity = findViewById(R.id.createDevButton)
         createOrgButton = findViewById(R.id.createOrgButton)
         createUserButton = findViewById(R.id.createUserButton)
         logoutButton = findViewById(R.id.logoutButton)
 
         profileButton.setOnClickListener {
             startActivity(Intent(this, DevProfileActivity::class.java))
+        }
+
+        createDevActivity.setOnClickListener {
+            startActivity(Intent(this, CreateDevActivity::class.java))
         }
 
         createOrgButton.setOnClickListener {

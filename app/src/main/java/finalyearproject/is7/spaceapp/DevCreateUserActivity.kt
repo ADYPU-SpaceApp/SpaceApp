@@ -10,7 +10,6 @@ import com.google.firebase.ktx.Firebase
 
 class DevCreateUserActivity: AppCompatActivity() {
 
-    @Suppress("unused")
     private var mAuth = FirebaseAuth.getInstance()
     private var mAuth2 = Firebase.auth
     private var mDb = FirebaseFirestore.getInstance()

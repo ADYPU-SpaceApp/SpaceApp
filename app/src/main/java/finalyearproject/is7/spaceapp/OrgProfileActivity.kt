@@ -48,11 +48,10 @@ class OrgProfileActivity:AppCompatActivity() {
 
     }
 
-    override fun onRestart() {
-        super.onRestart()
+    override fun onResume() {
+        super.onResume()
         val uid = mAuth.currentUser?.uid!!
-        val u = mDb.collection("Org").document(uid)
-        u.get()
+        mDb.collection("Organisation").document(uid).get()
             .addOnSuccessListener { documents ->
                 if (documents != null) {
                     if (documents.data?.get("displaypic") != "") {
