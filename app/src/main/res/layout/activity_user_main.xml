@@ -1,90 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/space_bg">
 
-    <ImageView
-        android:id="@+id/orgLogo"
-        android:src="@mipmap/spaceapp_logo_round"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp" />
-
-    <TextView
-        android:id="@+id/orgName"
-        android:text="Welcome, orgName !"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/orgLogo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp" />
-
-    <Button
-        android:id="@+id/profileButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/orgName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="Profile" />
-    
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/createUserButton"
-        android:text="Create User"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/profileButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="97dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/space_title"
+        app:layout_constraintBottom_toTopOf="@+id/profileButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/createNoticeButton"
-        android:text="Create Notice"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/profileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/createUserButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginStart="91dp"
+        android:background="@drawable/astro"
+        app:layout_constraintBottom_toTopOf="@+id/openChatRoomButton"
+        app:layout_constraintEnd_toStartOf="@+id/createNoticeButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createUserButton" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/createNoticeButton"
+        android:layout_width="42.54dp"
+        android:layout_height="42.54dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="107dp"
+        android:background="@drawable/multimedia_space"
+        app:layout_constraintBottom_toTopOf="@+id/viewNoticeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profileButton"
+        app:layout_constraintTop_toBottomOf="@+id/createUserButton" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/viewNoticeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/createNoticeButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="View Notice" />
+        android:layout_width="42.54dp"
+        android:layout_height="42.54dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="329dp"
+        android:background="@drawable/community_space"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/openChatRoomButton"
+        app:layout_constraintTop_toBottomOf="@+id/createNoticeButton" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/openChatRoomButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/viewNoticeButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="Open Chat Room" />
-
-<!--    <Button-->
-<!--        android:id="@+id/openGrpChatRoomButton"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/openChatRoomButton"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:text="Open Group Chat Room" />-->
-
-    <Button
-        android:id="@+id/logoutButton"
-        android:text="Logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/openChatRoomButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:layout_width="42.54dp"
+        android:layout_height="42.54dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="229dp"
+        android:layout_marginBottom="306dp"
+        android:background="@drawable/chat_n_service_space"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/viewNoticeButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileButton" />
 
 
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

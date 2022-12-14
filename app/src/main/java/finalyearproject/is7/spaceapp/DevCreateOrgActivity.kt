@@ -102,7 +102,7 @@ class DevCreateOrgActivity: AppCompatActivity() {
                                         "orgName" to name,
                                         "email" to email,
                                         "displaypic" to logoUrl.toString(),
-                                        "is_Active" to true,
+                                        "is_Active" to true
                                     )
                                     mDb.collection("Organisation").document(mAuth2.currentUser?.uid!!)
                                         .set(org)

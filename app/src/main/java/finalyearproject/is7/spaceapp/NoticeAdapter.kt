@@ -28,7 +28,7 @@ class NoticeAdapter(val context: Context, private val noticeList: ArrayList<Noti
             intent.putExtra("id", currentNotice.id)
             intent.putExtra("title",currentNotice.title)
             intent.putExtra("body",currentNotice.body)
-            intent.putExtra("author",currentNotice.author)
+            intent.putExtra("author",currentNotice.createdBy)
             intent.putExtra("createdAt",currentNotice.createdAt)
             intent.putExtra("updatedAt",currentNotice.updatedAt)
 

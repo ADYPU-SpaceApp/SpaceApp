@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_bg">
+    android:background="@drawable/space_bg">
 
     <TextView
         android:id="@+id/welcomeBanner"
@@ -24,7 +24,7 @@
         android:id="@+id/astro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/astro"
+        android:src="@drawable/astro_somewht"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"/>
 
@@ -70,7 +70,7 @@
         android:id="@+id/LoginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/login_btn_bg"
+        android:background="@drawable/btn_bg"
         android:text="@string/login_btn_txt"
         android:textColor="@color/black"
         android:layout_below="@id/ForgotPassword"

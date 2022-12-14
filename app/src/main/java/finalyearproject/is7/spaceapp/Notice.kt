@@ -4,7 +4,8 @@ class Notice(
     var id: String?,
     var title: String?,
     var body: String?,
-    var author: String?,
+    var createdBy: String,
     var createdAt: String?,
+    var updatedBy: String?,
     var updatedAt: String?
 )

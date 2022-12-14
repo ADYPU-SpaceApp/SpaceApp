@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -18,10 +19,10 @@ class UserProfileActivity:AppCompatActivity() {
     private lateinit var emailtext: TextView
     private lateinit var nametext: TextView
     private lateinit var roletext: TextView
+    private lateinit var logoutBtn: Button
 
     private var mAuth = FirebaseAuth.getInstance()
     private var db = FirebaseFirestore.getInstance()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +32,7 @@ class UserProfileActivity:AppCompatActivity() {
         emailtext = findViewById(R.id.ProfileEmailText)
         nametext = findViewById(R.id.ProfileNameText)
         roletext = findViewById(R.id.ProfileRoleText)
+        logoutBtn = findViewById(R.id.logoutButton)
 
         // Get the current user detail
         val uid = mAuth.currentUser?.uid!!
@@ -43,9 +45,9 @@ class UserProfileActivity:AppCompatActivity() {
                         val imageUri = Uri.parse(documents.data?.get("displaypic").toString())
                         Log.d("CheckMe", "Image URI: $imageUri")
                         if (imageUri != null) {
-                            Glide.with(this).load(imageUri).into(displaypic)
+                            Glide.with(this).load(imageUri).circleCrop().into(displaypic)
                         } else {
-                            Glide.with(this).load(R.mipmap.ic_launcher_round).into(displaypic)
+                            Glide.with(this).load(R.mipmap.ic_launcher_round).circleCrop().into(displaypic)
                         }
                     }
 
@@ -62,7 +64,8 @@ class UserProfileActivity:AppCompatActivity() {
                     role.get()
                         .addOnSuccessListener { document ->
                             if (document != null) {
-                                roletext.text = document.id
+                                val r = "I'm " + document.id
+                                roletext.text = r
                             } else {
                                 Log.d("Jaineel", "No such document")
                             }
@@ -75,6 +78,12 @@ class UserProfileActivity:AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.d("Jaineel", "get failed with ", exception)
             }
+
+        logoutBtn.setOnClickListener{
+            mAuth.signOut()
+            startActivity(Intent(this,LoginActivity::class.java))
+            finish()
+        }
 
     }
 

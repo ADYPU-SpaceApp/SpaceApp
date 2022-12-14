@@ -2,6 +2,7 @@ package finalyearproject.is7.spaceapp
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 class NoticeBoardActivity : AppCompatActivity() {
 
     private lateinit var noNotice: TextView
+    private lateinit var loading: ProgressBar
     private lateinit var noticeRecyclerView: RecyclerView
     private lateinit var noticeList: ArrayList<Notice>
 //    private lateinit var adapter: NoticeAdapter
@@ -31,6 +33,8 @@ class NoticeBoardActivity : AppCompatActivity() {
 
         noNotice = findViewById(R.id.NoNoticeText)
         noticeRecyclerView = findViewById(R.id.noticeRecyclerView)
+        loading = findViewById(R.id.loading)
+        loading.visibility = ProgressBar.VISIBLE
         noNotice.visibility = TextView.INVISIBLE
         noticeList = ArrayList()
 
@@ -45,12 +49,22 @@ class NoticeBoardActivity : AppCompatActivity() {
                     val id = n.key
                     val title = n.child("title").value.toString()
                     val body = n.child("body").value.toString()
-                    val author = n.child("author").value.toString()
+                    val createdById = n.child("created_By").value.toString()
+//                    val createdBy = ""
+//                    mDb.collection("User").document(createdById).get()
+//                        .addOnSuccessListener {
+//                            createdBy = it.data!!["name"] as String
+//                        }
                     val createdAt = n.child("created_At").value.toString()
+                    val updatedBy = n.child("updated_By").value.toString()
                     val updatedAt = n.child("updated_At").value.toString()
-                    noticeList.add(Notice(id, title, body, author, createdAt, updatedAt))
+                    noticeList.add(
+                        Notice(id, title, body,
+                            createdById, createdAt, updatedBy, updatedAt)
+                    )
                 }
             }
+            loading.visibility = ProgressBar.GONE
             noticeRecyclerView.adapter = NoticeAdapter(this,noticeList,orgId)
             if (noticeList.isEmpty()){
                 noNotice.visibility = TextView.VISIBLE

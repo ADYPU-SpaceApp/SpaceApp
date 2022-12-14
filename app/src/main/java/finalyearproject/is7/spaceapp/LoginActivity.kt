@@ -46,7 +46,6 @@ class LoginActivity: AppCompatActivity() {
                     if (it.isSuccessful) {
                         loading.visibility = ProgressBar.GONE
                         Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-
                         loginAndGotoActivity()
                     }
                     else {
@@ -82,7 +81,7 @@ class LoginActivity: AppCompatActivity() {
                     startActivity(Intent(this, UserMainActivity::class.java))
                 }
             }
-//        finish()
+        finish()
     }
 
 }

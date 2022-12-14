@@ -3,10 +3,8 @@ package finalyearproject.is7.spaceapp
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -15,14 +13,11 @@ class UserMainActivity : AppCompatActivity() {
 
     private lateinit var orgId: String
 
-    private lateinit var orgLogo: ImageView
-    private lateinit var orgName: TextView
     private lateinit var profileButton: Button
     private lateinit var createUserBtn: Button
     private lateinit var createNoticeBtn: Button
     private lateinit var viewNoticeButton: Button
     private lateinit var openChatRoomButton: Button
-    private lateinit var logoutButton: Button
 
     private val mAuth = FirebaseAuth.getInstance()
     private val mDb = FirebaseFirestore.getInstance()
@@ -31,31 +26,52 @@ class UserMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_main)
 
-        orgLogo = findViewById(R.id.orgLogo)
-        orgName = findViewById(R.id.orgName)
         profileButton = findViewById(R.id.profileButton)
         createUserBtn = findViewById(R.id.createUserButton)
         createNoticeBtn = findViewById(R.id.createNoticeButton)
         viewNoticeButton = findViewById(R.id.viewNoticeButton)
         openChatRoomButton = findViewById(R.id.openChatRoomButton)
-        logoutButton = findViewById(R.id.logoutButton)
 
-        setup()
+        mDb.collection("User").document(mAuth.currentUser!!.uid).get()
+            .addOnSuccessListener { user ->
+                val org = user.data?.get("org") as DocumentReference
+                org.get()
+                    .addOnSuccessListener { o ->
+                        if (o.exists()) {
+                            orgId = o.id
+                        }
+                    }
+                val role = user.data?.get("role") as DocumentReference
+                role.get()
+                    .addOnSuccessListener { r ->
+                        if (r.data?.get("is_Staff") == true) {
+                            createUserBtn.setOnClickListener {
+                                val goToCreateUserActivityIntent =
+                                    Intent(this, CreateUserActivity::class.java)
+                                goToCreateUserActivityIntent.putExtra("orgId", orgId)
+                                startActivity(goToCreateUserActivityIntent)
+                            }
+
+                            createNoticeBtn.setOnClickListener {
+                                val goToCreateNoticeActivityIntent =
+                                    Intent(this, CreateNoticeActivity::class.java)
+                                goToCreateNoticeActivityIntent.putExtra("orgId", orgId)
+                                startActivity(goToCreateNoticeActivityIntent)
+                            }
+                        }
+                        else {
+                            createUserBtn.setOnClickListener {
+                                Toast.makeText(this,"Sorry ur not a staff member",Toast.LENGTH_SHORT).show()
+                            }
+                            createNoticeBtn.setOnClickListener {
+                                Toast.makeText(this,"Sorry ur not a staff member",Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+            }
 
         profileButton.setOnClickListener {
             startActivity(Intent(this, UserProfileActivity::class.java))
-        }
-
-        createUserBtn.setOnClickListener {
-            val goToCreateUserActivityIntent = Intent(this, CreateUserActivity::class.java)
-            goToCreateUserActivityIntent.putExtra("orgId", orgId)
-            startActivity(goToCreateUserActivityIntent)
-        }
-
-        createNoticeBtn.setOnClickListener {
-            val goToCreateNoticeActivityIntent = Intent(this, CreateNoticeActivity::class.java)
-            goToCreateNoticeActivityIntent.putExtra("orgId", orgId)
-            startActivity(goToCreateNoticeActivityIntent)
         }
 
         viewNoticeButton.setOnClickListener {
@@ -70,43 +86,6 @@ class UserMainActivity : AppCompatActivity() {
             startActivity(goToChatRoomActivityIntent)
         }
 
-        logoutButton.setOnClickListener {
-            mAuth.signOut()
-            startActivity(Intent(this,LoginActivity::class.java))
-            finish()
-        }
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-        setup()
-    }
-
-    private fun setup() {
-        mDb.collection("User").document(mAuth.currentUser!!.uid).get()
-            .addOnSuccessListener { user ->
-                val org = user.data?.get("org") as DocumentReference
-                org.get()
-                    .addOnSuccessListener { o ->
-                        if (o.exists()) {
-                            orgId = o.id
-                            if (o.data?.get("displaypic") != "") {
-                                Glide.with(this).load(o.data?.get("displaypic")).circleCrop().into(orgLogo)
-                            }
-                            val organisationName = "Welcome " + user.data!!["name"] + " to " + o.data?.get("orgName")
-                            orgName.text = organisationName
-                        }
-                    }
-                val role = user.data?.get("role") as DocumentReference
-                role.get()
-                    .addOnSuccessListener { r ->
-                        if (r.data?.get("is_Staff") == false) {
-                            createUserBtn.visibility = Button.GONE
-                            createNoticeBtn.visibility = Button.GONE
-                        }
-                    }
-            }
     }
 
 }
