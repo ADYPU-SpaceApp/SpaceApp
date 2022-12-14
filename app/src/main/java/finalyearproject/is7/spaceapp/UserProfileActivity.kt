@@ -98,9 +98,9 @@ class UserProfileActivity:AppCompatActivity() {
                         val imageUri = Uri.parse(documents.data?.get("displaypic").toString())
                         Log.d("CheckMe", "Image URI: $imageUri")
                         if (imageUri != null) {
-                            Glide.with(this).load(imageUri).into(displaypic)
+                            Glide.with(this).load(imageUri).circleCrop().into(displaypic)
                         } else {
-                            Glide.with(this).load(R.mipmap.ic_launcher_round).into(displaypic)
+                            Glide.with(this).load(R.mipmap.ic_launcher_round).circleCrop().into(displaypic)
                         }
                     }
                 }
