@@ -11,6 +11,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import java.util.*
 
 class NoticeActivity : AppCompatActivity() {
 
@@ -41,9 +42,8 @@ class NoticeActivity : AppCompatActivity() {
         val updatedAt = intent.getStringExtra("updatedAt")
 
         mDbRef = Firebase.database.getReference(orgId!!)
-        // convert time to readable timestamp format
-        val createdAtTimestamp = createdAt?.toLong()
-        val updatedAtTimestamp = updatedAt?.toLong()
+        val createdAtTimestamp = Date(createdAt!!.toLong())
+        val updatedAtTimestamp = Date(updatedAt!!.toLong())
 
         displayid = findViewById(R.id.noticeId)
         displaytitle = findViewById(R.id.noticeTitle)
@@ -53,8 +53,8 @@ class NoticeActivity : AppCompatActivity() {
         displaycreatedAt = findViewById(R.id.noticeCreatedOn)
         removeBtn = findViewById(R.id.removeNotice)
 
-        val updated = "Last Updated On: $createdAtTimestamp"
-        val created = "Created On: $updatedAtTimestamp"
+        val created = "Created On: \n$createdAtTimestamp"
+        val updated = "Last Updated On: \n$updatedAtTimestamp"
 
         displayid.text = id
         displaytitle.text = title
@@ -91,5 +91,4 @@ class NoticeActivity : AppCompatActivity() {
             }
 
     }
-
 }

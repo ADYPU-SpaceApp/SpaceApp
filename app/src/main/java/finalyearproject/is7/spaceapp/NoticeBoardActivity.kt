@@ -49,18 +49,14 @@ class NoticeBoardActivity : AppCompatActivity() {
                     val id = n.key
                     val title = n.child("title").value.toString()
                     val body = n.child("body").value.toString()
-                    val createdById = n.child("created_By").value.toString()
-//                    val createdBy = ""
-//                    mDb.collection("User").document(createdById).get()
-//                        .addOnSuccessListener {
-//                            createdBy = it.data!!["name"] as String
-//                        }
+                    val createdBy = n.child("created_By").value.toString()
                     val createdAt = n.child("created_At").value.toString()
                     val updatedBy = n.child("updated_By").value.toString()
                     val updatedAt = n.child("updated_At").value.toString()
                     noticeList.add(
                         Notice(id, title, body,
-                            createdById, createdAt, updatedBy, updatedAt)
+                            createdBy, createdAt, updatedBy, updatedAt
+                        )
                     )
                 }
             }
