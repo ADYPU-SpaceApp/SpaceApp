@@ -5,8 +5,10 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class UserAdapter(val context: Context, private val userList: ArrayList<User>, private val orgId: String):
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
@@ -19,14 +21,21 @@ class UserAdapter(val context: Context, private val userList: ArrayList<User>, p
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val currentUser = userList[position]
 
+        if (currentUser.displaypic != "") {
+            Glide.with(context).load(currentUser.displaypic).circleCrop().into(holder.displayPic)
+        } else {
+            Glide.with(context).load(R.drawable.profile).circleCrop().into(holder.displayPic)
+        }
+
         holder.textName.text = currentUser.name
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context,PrivateChatActivity::class.java)
 
-            intent.putExtra("orgId",orgId)
             intent.putExtra("name",currentUser.name)
             intent.putExtra("uid",currentUser.uid)
+            intent.putExtra("displaypic",currentUser.displaypic)
+            intent.putExtra("orgId",orgId)
 
             context.startActivity(intent)
         }
@@ -37,6 +46,7 @@ class UserAdapter(val context: Context, private val userList: ArrayList<User>, p
     }
 
     class UserViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val textName: TextView = itemView.findViewById(R.id.txt_name)
+        val displayPic: ImageView = itemView.findViewById(R.id.txt_picture)
+        val textName = itemView.findViewById<TextView>(R.id.txt_name)!!
     }
 }

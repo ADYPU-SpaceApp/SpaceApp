@@ -42,7 +42,7 @@ class ChatRoomActivity:AppCompatActivity() {
             .addOnSuccessListener {
                 val imageUri = Uri.parse(it.data?.get("displaypic").toString())
                 Log.d("CheckMe", "Image URI: $imageUri")
-                if (imageUri != null) {
+                if (imageUri != Uri.EMPTY) {
                     Glide.with(this).load(imageUri).circleCrop().into(mainScreenUserImage)
                 } else {
                     Glide.with(this).load(R.drawable.profile).circleCrop().into(mainScreenUserImage)
@@ -53,6 +53,7 @@ class ChatRoomActivity:AppCompatActivity() {
             startActivity(Intent(this, UserProfileActivity::class.java))
         }
 
+        Log.d("CheckMe", "Org: $orgId")
         userAdapter = UserAdapter(this,userList, orgId)
 
         userRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -66,7 +67,8 @@ class ChatRoomActivity:AppCompatActivity() {
                             User(
                                 user.data["email"] as String,
                                 user.data["name"] as String,
-                                user.id
+                                user.id,
+                                user.data["displaypic"] as String
                             )
                         )
                     }

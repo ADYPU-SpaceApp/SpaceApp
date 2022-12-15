@@ -28,12 +28,12 @@
         android:layout_marginStart="91dp"
         android:background="@drawable/astro"
         app:layout_constraintBottom_toTopOf="@+id/openChatRoomButton"
-        app:layout_constraintEnd_toStartOf="@+id/createNoticeButton"
+        app:layout_constraintEnd_toStartOf="@+id/communityButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createUserButton" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/createNoticeButton"
+        android:id="@+id/communityButton"
         android:layout_width="42.54dp"
         android:layout_height="42.54dp"
         android:layout_marginEnd="48dp"
@@ -54,7 +54,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/openChatRoomButton"
-        app:layout_constraintTop_toBottomOf="@+id/createNoticeButton" />
+        app:layout_constraintTop_toBottomOf="@+id/communityButton" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/openChatRoomButton"

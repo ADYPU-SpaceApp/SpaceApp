@@ -30,7 +30,7 @@ class OrgMainActivity:AppCompatActivity() {
         orgName = findViewById(R.id.orgName)
         profileButton = findViewById(R.id.profileButton)
         createUserBtn = findViewById(R.id.createUserButton)
-        createNoticeBtn = findViewById(R.id.createNoticeButton)
+        createNoticeBtn = findViewById(R.id.communityButton)
         logoutButton = findViewById(R.id.logoutButton)
 
         setup()

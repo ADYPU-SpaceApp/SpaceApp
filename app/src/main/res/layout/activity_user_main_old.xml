@@ -40,7 +40,7 @@
         android:layout_marginTop="10dp" />
 
     <Button
-        android:id="@+id/createNoticeButton"
+        android:id="@+id/communityButton"
         android:text="Create Notice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
         android:id="@+id/viewNoticeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/createNoticeButton"
+        android:layout_below="@id/communityButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="View Notice" />

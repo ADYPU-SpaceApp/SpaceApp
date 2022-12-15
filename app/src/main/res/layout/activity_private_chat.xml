@@ -5,24 +5,56 @@
     android:layout_height="match_parent"
     tools:context=".ChatRoomActivity">
 
-    <TextView
-        android:layout_marginTop="5dp"
-        android:id="@+id/txt_name"
+    <LinearLayout
+        android:id="@+id/ReceiverDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="JP"
-        android:textAlignment="center"
-        android:background="@drawable/object_layout_bg"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:textSize="30sp"
-        android:textStyle="bold"/>
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ReceiverImage"
+            android:layout_width="71.45dp"
+            android:layout_height="71.45dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:shape="oval"/>
+
+        <TextView
+            android:id="@+id/ReceiverName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="TextView"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical" />
+
+    </LinearLayout>
+
+<!--    <TextView-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:id="@+id/txt_name"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="JP"-->
+<!--        android:textAlignment="center"-->
+<!--        android:background="@drawable/object_layout_bg"-->
+<!--        android:layout_marginStart="15dp"-->
+<!--        android:layout_marginEnd="15dp"-->
+<!--        android:textSize="30sp"-->
+<!--        android:textStyle="bold"/>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txt_name"
+        android:layout_below="@id/ReceiverDetail"
         android:layout_above="@id/linearLayout"
         android:layout_marginTop="20dp"/>
 
@@ -43,6 +75,8 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="3dp"
             android:hint="Type message"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:layout_weight="90"/>
 
         <ImageView

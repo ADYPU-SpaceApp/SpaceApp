@@ -2,6 +2,7 @@ package finalyearproject.is7.spaceapp
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
@@ -17,6 +19,7 @@ import com.google.firebase.ktx.Firebase
 
 class PrivateChatActivity:AppCompatActivity() {
 
+    private lateinit var userPic: ImageView
     private lateinit var userName: TextView
     private lateinit var chatRecyclerView: RecyclerView
     private lateinit var messageBox: EditText
@@ -37,16 +40,27 @@ class PrivateChatActivity:AppCompatActivity() {
         val receiverUid = intent.getStringExtra("uid")
         val senderUid = FirebaseAuth.getInstance().currentUser?.uid
         val orgId = intent.getStringExtra("orgId")
+        val displaypic = intent.getStringExtra("displaypic")
 
         senderRoom = receiverUid + senderUid
         receiverRoom = senderUid + receiverUid
 
+        Log.d("CheckMe", "Sender Room: $orgId")
+
         mDb = FirebaseFirestore.getInstance()
         mDbRef = Firebase.database.getReference(orgId!!)
 
-//        var orgId = ""
+        userPic = findViewById(R.id.ReceiverImage)
+        userName = findViewById(R.id.ReceiverName)
 
-        userName = findViewById(R.id.txt_name)
+        if (displaypic != "") {
+            Glide.with(this).load(displaypic).circleCrop().into(userPic)
+        }
+        else {
+            Glide.with(this).load(R.drawable.profile).circleCrop().into(userPic)
+        }
+
+
         userName.text = name
 
         chatRecyclerView = findViewById(R.id.chatRecyclerView)

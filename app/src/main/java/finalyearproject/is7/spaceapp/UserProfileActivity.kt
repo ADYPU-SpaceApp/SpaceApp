@@ -28,9 +28,6 @@ class UserProfileActivity:AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
 
-//        val answer = SpaceAppModule().getType(mAuth.currentUser?.uid.toString())
-//        Log.d("LoginActivity", "onCreate: $answer")
-
         displaypic = findViewById(R.id.ProfileDisplayPic)
         emailtext = findViewById(R.id.ProfileEmailText)
         nametext = findViewById(R.id.ProfileNameText)

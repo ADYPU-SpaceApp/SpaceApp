@@ -15,7 +15,7 @@ class UserMainActivity : AppCompatActivity() {
 
     private lateinit var profileButton: Button
     private lateinit var createUserBtn: Button
-    private lateinit var createNoticeBtn: Button
+    private lateinit var communityBtn: Button
     private lateinit var viewNoticeButton: Button
     private lateinit var openChatRoomButton: Button
 
@@ -28,7 +28,7 @@ class UserMainActivity : AppCompatActivity() {
 
         profileButton = findViewById(R.id.profileButton)
         createUserBtn = findViewById(R.id.createUserButton)
-        createNoticeBtn = findViewById(R.id.createNoticeButton)
+        communityBtn = findViewById(R.id.communityButton)
         viewNoticeButton = findViewById(R.id.viewNoticeButton)
         openChatRoomButton = findViewById(R.id.openChatRoomButton)
 
@@ -51,19 +51,9 @@ class UserMainActivity : AppCompatActivity() {
                                 goToCreateUserActivityIntent.putExtra("orgId", orgId)
                                 startActivity(goToCreateUserActivityIntent)
                             }
-
-                            createNoticeBtn.setOnClickListener {
-                                val goToCreateNoticeActivityIntent =
-                                    Intent(this, CreateNoticeActivity::class.java)
-                                goToCreateNoticeActivityIntent.putExtra("orgId", orgId)
-                                startActivity(goToCreateNoticeActivityIntent)
-                            }
                         }
                         else {
                             createUserBtn.setOnClickListener {
-                                Toast.makeText(this,"Sorry ur not a staff member",Toast.LENGTH_SHORT).show()
-                            }
-                            createNoticeBtn.setOnClickListener {
                                 Toast.makeText(this,"Sorry ur not a staff member",Toast.LENGTH_SHORT).show()
                             }
                         }
@@ -72,6 +62,10 @@ class UserMainActivity : AppCompatActivity() {
 
         profileButton.setOnClickListener {
             startActivity(Intent(this, UserProfileActivity::class.java))
+        }
+
+        communityBtn.setOnClickListener {
+            Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show()
         }
 
         viewNoticeButton.setOnClickListener {

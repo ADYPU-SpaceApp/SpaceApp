@@ -58,9 +58,7 @@ class LoginActivity: AppCompatActivity() {
                     loading.visibility = ProgressBar.INVISIBLE
                     Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
                 }
-
         }
-
     }
 
     private fun loginAndGotoActivity() {
