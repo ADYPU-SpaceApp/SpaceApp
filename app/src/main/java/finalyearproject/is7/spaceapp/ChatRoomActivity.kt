@@ -4,7 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class ChatRoomActivity:AppCompatActivity() {
 
-    private lateinit var MainScreenUserImage: ImageButton
+    private lateinit var mainScreenUserImage: ImageView
     private lateinit var userRecyclerView: RecyclerView
     private lateinit var userList: ArrayList<User>
     private lateinit var userAdapter: UserAdapter
@@ -36,20 +36,20 @@ class ChatRoomActivity:AppCompatActivity() {
         orgId = intent.getStringExtra("orgId").toString()
         org = mDb.collection("Organisation").document(orgId)
 
-        MainScreenUserImage = findViewById(R.id.MainScreenUserImage)
+        mainScreenUserImage = findViewById(R.id.MainScreenUserImage)
 
         mDb.collection("User").document(mAuth.currentUser?.uid!!).get()
             .addOnSuccessListener {
                 val imageUri = Uri.parse(it.data?.get("displaypic").toString())
                 Log.d("CheckMe", "Image URI: $imageUri")
                 if (imageUri != null) {
-                    Glide.with(this).load(imageUri).circleCrop().into(MainScreenUserImage)
+                    Glide.with(this).load(imageUri).circleCrop().into(mainScreenUserImage)
                 } else {
-                    Glide.with(this).load(R.drawable.profile).circleCrop().into(MainScreenUserImage)
+                    Glide.with(this).load(R.drawable.profile).circleCrop().into(mainScreenUserImage)
                 }
             }
 
-        MainScreenUserImage.setOnClickListener {
+        mainScreenUserImage.setOnClickListener {
             startActivity(Intent(this, UserProfileActivity::class.java))
         }
 

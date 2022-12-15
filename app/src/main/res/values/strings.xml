@@ -52,4 +52,9 @@
     <string name="submit_btn_txt">Submit</string>
     <string name="forgot_password_txt">Forgot Password</string>
     <string name="your_web_client_id">481589343664-90952dsvlo0fqd9umjh2oh4iltpn577s.apps.googleusercontent.com</string>
+    <string name="createUser_text">Create User</string>
+    <string name="name_hint">Name</string>
+    <string name="select_role_text">Select Role:</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="create_user_text">Create User</string>
 </resources>

@@ -3,7 +3,6 @@ package finalyearproject.is7.spaceapp
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -17,13 +16,13 @@ class CreateUserActivity:AppCompatActivity() {
 
     private lateinit var orgId: String
 
-    private lateinit var orgLogo: ImageView
     private lateinit var edtEmail: EditText
     private lateinit var edtName: EditText
     private lateinit var spnRole: Spinner
     private lateinit var edtPassword: EditText
     private lateinit var edtConfirmPassword: EditText
     private lateinit var btnCreateUser: Button
+    private lateinit var backBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +34,6 @@ class CreateUserActivity:AppCompatActivity() {
 
         orgId = intent.getStringExtra("orgId")!!
 
-        orgLogo = findViewById(R.id.orgLogo)
         edtEmail = findViewById(R.id.edtEmail)
         edtName = findViewById(R.id.edtName)
         spnRole = findViewById(R.id.spnRole)
@@ -43,14 +41,10 @@ class CreateUserActivity:AppCompatActivity() {
         edtConfirmPassword = findViewById(R.id.edtConfirmPassword)
         btnCreateUser = findViewById(R.id.btnCreateUser)
 
-        mDb.collection("Organisation").document(orgId).get()
-            .addOnSuccessListener { org ->
-                if (org.exists()) {
-                    if (org.data?.get("logo") != null) {
-                        Glide.with(this).load(org.data?.get("logo")).circleCrop().into(orgLogo)
-                    }
-                }
-            }
+        backBtn = findViewById(R.id.backButton)
+        backBtn.setOnClickListener {
+            finish()
+        }
 
         val roleList = ArrayList<String>()
         mDb.collection("Role").get().addOnSuccessListener { result ->
