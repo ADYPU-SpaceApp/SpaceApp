@@ -8,4 +8,11 @@ class Notice(
     var createdAt: String?,
     var updatedBy: String?,
     var updatedAt: String?
+
+//    var id: String?,
+//    var title: String?,
+//    var note: String?,
+//    var createdBy: String,
+//    var createdAt: String?
+
 )

@@ -18,12 +18,14 @@ class MessageAdapter(val context: Context, private val messageList: ArrayList<Me
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == 1){
             // inflate receive
-            val view: View = LayoutInflater.from(context).inflate(R.layout.receive, parent, false)
-            ReceiveViewHolder(view)
+            ReceiveViewHolder(
+                LayoutInflater.from(context).inflate(R.layout.receive, parent, false)
+            )
         } else {
             // inflate sent
-            val view: View = LayoutInflater.from(context).inflate(R.layout.sent, parent, false)
-            SentViewHolder(view)
+            SentViewHolder(
+                LayoutInflater.from(context).inflate(R.layout.sent, parent, false)
+            )
         }
     }
 
@@ -58,10 +60,10 @@ class MessageAdapter(val context: Context, private val messageList: ArrayList<Me
     }
 
     class SentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val sentMessage = itemView.findViewById<TextView>(R.id.txt_sent_message)
+        val sentMessage: TextView = itemView.findViewById(R.id.txt_sent_message)
     }
 
     class ReceiveViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val receiveMessage = itemView.findViewById<TextView>(R.id.txt_receive_message)
+        val receiveMessage: TextView = itemView.findViewById(R.id.txt_receive_message)
     }
 }

@@ -1,13 +1,7 @@
 package finalyearproject.is7.spaceapp
 
-class Message {
-    var message: String? = null
-    var senderId: String? = null
+class Message(var message: String?, var timestamp: Long, var senderId: String?) {
 
-    constructor () {}
+    constructor() : this("", 0, "")
 
-    constructor (message: String?, senderId: String?) {
-        this.message = message
-        this.senderId = senderId
-    }
 }

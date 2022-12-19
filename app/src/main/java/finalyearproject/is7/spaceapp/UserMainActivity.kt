@@ -32,6 +32,36 @@ class UserMainActivity : AppCompatActivity() {
         viewNoticeButton = findViewById(R.id.viewNoticeButton)
         openChatRoomButton = findViewById(R.id.openChatRoomButton)
 
+        roleRestrictedPart()
+
+        profileButton.setOnClickListener {
+            startActivity(Intent(this, UserProfileActivity::class.java))
+        }
+
+        communityBtn.setOnClickListener {
+            Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show()
+        }
+
+        viewNoticeButton.setOnClickListener {
+            val goToNoticeBoardActivityIntent = Intent(this, NoticeBoardActivity::class.java)
+            goToNoticeBoardActivityIntent.putExtra("orgId", orgId)
+            startActivity(goToNoticeBoardActivityIntent)
+        }
+
+        openChatRoomButton.setOnClickListener {
+            val goToChatRoomActivityIntent = Intent(this, ChatRoomActivity::class.java)
+            goToChatRoomActivityIntent.putExtra("orgId", orgId)
+            startActivity(goToChatRoomActivityIntent)
+        }
+
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        roleRestrictedPart()
+    }
+
+    private fun roleRestrictedPart() {
         mDb.collection("User").document(mAuth.currentUser!!.uid).get()
             .addOnSuccessListener { user ->
                 val org = user.data?.get("org") as DocumentReference
@@ -59,27 +89,6 @@ class UserMainActivity : AppCompatActivity() {
                         }
                     }
             }
-
-        profileButton.setOnClickListener {
-            startActivity(Intent(this, UserProfileActivity::class.java))
-        }
-
-        communityBtn.setOnClickListener {
-            Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show()
-        }
-
-        viewNoticeButton.setOnClickListener {
-            val goToNoticeBoardActivityIntent = Intent(this, NoticeBoardActivity::class.java)
-            goToNoticeBoardActivityIntent.putExtra("orgId", orgId)
-            startActivity(goToNoticeBoardActivityIntent)
-        }
-
-        openChatRoomButton.setOnClickListener {
-            val goToChatRoomActivityIntent = Intent(this, ChatRoomActivity::class.java)
-            goToChatRoomActivityIntent.putExtra("orgId", orgId)
-            startActivity(goToChatRoomActivityIntent)
-        }
-
     }
 
 }

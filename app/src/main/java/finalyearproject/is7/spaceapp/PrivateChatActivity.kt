@@ -2,7 +2,6 @@ package finalyearproject.is7.spaceapp
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -44,8 +43,6 @@ class PrivateChatActivity:AppCompatActivity() {
 
         senderRoom = receiverUid + senderUid
         receiverRoom = senderUid + receiverUid
-
-        Log.d("CheckMe", "Sender Room: $orgId")
 
         mDb = FirebaseFirestore.getInstance()
         mDbRef = Firebase.database.getReference(orgId!!)
@@ -90,17 +87,37 @@ class PrivateChatActivity:AppCompatActivity() {
         // adding the message to database
         sendButton.setOnClickListener {
             val message = messageBox.text.toString()
-            val messageObject = Message(message, senderUid)
+            val timestamp = System.currentTimeMillis()
+            val messageObject = Message(message, timestamp, senderUid)
 
             if (message==""){
                 Toast.makeText(this,"No message entered",Toast.LENGTH_SHORT).show()
                 messageBox.setText("")
             } else {
                 mDbRef.child("chats").child(senderRoom!!).child("message").push()
-                    .setValue(messageObject).addOnSuccessListener {
+                    .setValue(messageObject)
+                    .addOnSuccessListener {
                         mDbRef.child("chats").child(receiverRoom!!).child("message").push()
                             .setValue(messageObject)
+//                            .addOnSuccessListener {
+//                                mDbRef.child("chats").child(senderRoom!!).child("lastMessage")
+//                                    .setValue(messageObject)
+//                                    .addOnSuccessListener {
+//                                        mDbRef.child("chats").child(receiverRoom!!).child("lastMessage")
+//                                            .setValue(messageObject)
+//                                    }
+//                            }
+
+//                            mDb.collection("User").document(senderUid!!)
+//                                .collection("Chats").document(receiverUid!!)
+//                                .update("lastMessage", messageObject)
+//                                .addOnSuccessListener {
+//                                    mDb.collection("User").document(receiverUid)
+//                                        .collection("Chats").document(senderUid)
+//                                        .update("lastMessage", messageObject)
+//                        }
                     }
+
                 messageBox.setText("")
             }
         }
