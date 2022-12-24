@@ -67,11 +67,20 @@
         android:layout_marginTop="10dp" />
 
     <Button
+        android:id="@+id/listUserButton"
+        android:text="List Users"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/createUserButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+
+    <Button
         android:id="@+id/logoutButton"
         android:text="Logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/createUserButton"
+        android:layout_below="@id/listUserButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp" />
 

@@ -82,9 +82,10 @@ class DevCreateUserActivity: AppCompatActivity() {
                                         userMap["displaypic"] = ""
                                         userMap["name"] = name
                                         userMap["email"] = email
-                                        userMap["org"] = mDb.collection("Organisation").document(orgId)
-                                        userMap["role"] = mDb.collection("Role").document(role)
+                                        userMap["org"] = orgId // mDb.collection("Organisation").document(orgId)
+                                        userMap["role"] = role // mDb.collection("Role").document(role)
                                         userMap["is_Active"] = true
+                                        userMap["createdBy"] = mAuth.currentUser?.uid as String
                                         mDb.collection("User").document(userId!!).set(userMap)
                                             .addOnSuccessListener {
                                                 Toast.makeText(this, "User created", Toast.LENGTH_SHORT).show()

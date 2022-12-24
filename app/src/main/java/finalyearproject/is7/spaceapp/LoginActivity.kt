@@ -1,6 +1,7 @@
 package finalyearproject.is7.spaceapp
 
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,14 @@ class LoginActivity: AppCompatActivity() {
 
         if (mAuth.currentUser != null) {
             loginAndGotoActivity()
+        }
+
+        // Check internet connection if not connected then show toast
+        val cm = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = cm.activeNetworkInfo
+        val isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting
+        if (!isConnected) {
+            Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show()
         }
 
         txtForgotPasswd.setOnClickListener {
@@ -77,7 +86,12 @@ class LoginActivity: AppCompatActivity() {
         mDb.collection("User").document(mAuth.currentUser!!.uid).get()
             .addOnSuccessListener { user ->
                 if (user.exists()) {
+                    if (user["is_Active"] == true ) {
                     startActivity(Intent(this, UserMainActivity::class.java))
+                    }
+                    else {
+                        Toast.makeText(this, "Your account is not active", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         finish()

@@ -30,14 +30,31 @@ class UserAdapter(val context: Context, private val userList: ArrayList<User>, p
         holder.textName.text = currentUser.name
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(context,PrivateChatActivity::class.java)
+            if (orgId == "") {
+                val intent = Intent(context, UserDetailActivity::class.java)
 
-            intent.putExtra("name",currentUser.name)
-            intent.putExtra("uid",currentUser.uid)
-            intent.putExtra("displaypic",currentUser.displaypic)
-            intent.putExtra("orgId",orgId)
+                intent.putExtra("name", currentUser.name)
+                intent.putExtra("uid", currentUser.uid)
+                intent.putExtra("displaypic", currentUser.displaypic)
 
-            context.startActivity(intent)
+                context.startActivity(intent)
+            }
+            else {
+                val intent = Intent(context, PrivateChatActivity::class.java)
+
+                intent.putExtra("name", currentUser.name)
+                intent.putExtra("uid", currentUser.uid)
+                intent.putExtra("displaypic", currentUser.displaypic)
+
+                intent.putExtra("orgId", orgId)
+
+                context.startActivity(intent)
+
+                if (context is AddChatActivity) {
+                    context.finish()
+                }
+
+            }
         }
     }
 

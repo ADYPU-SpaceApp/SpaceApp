@@ -62,7 +62,7 @@
         <activity android:name=".DisplayPicActivity"
             android:exported="false"/>
 
-        <activity android:name=".ChatRoomActivity"
+        <activity android:name=".PrivateChatRoomActivity"
             android:exported="false"/>
         <activity android:name=".NoticeBoardActivity"
             android:exported="false"/>
@@ -70,6 +70,13 @@
         <activity android:name=".PrivateChatActivity"
             android:exported="false"/>
         <activity android:name=".NoticeActivity"
+            android:exported="false"/>
+
+        <activity android:name=".DevListUserActivity"
+            android:exported="false"/>
+        <activity android:name=".AddChatActivity"
+            android:exported="false"/>
+        <activity android:name=".UserDetailActivity"
             android:exported="false"/>
 
     </application>

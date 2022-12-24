@@ -23,15 +23,7 @@ class NoticeAdapter(val context: Context, private val noticeList: ArrayList<Noti
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context,NoticeActivity::class.java)
-
-            intent.putExtra("orgId",orgId)
-            intent.putExtra("id", currentNotice.id)
-            intent.putExtra("title",currentNotice.title)
-            intent.putExtra("body",currentNotice.body)
-            intent.putExtra("author",currentNotice.createdBy)
-            intent.putExtra("createdAt",currentNotice.createdAt)
-            intent.putExtra("updatedAt",currentNotice.updatedAt)
-
+            intent.putExtra("note",currentNotice.note)
             context.startActivity(intent)
         }
     }

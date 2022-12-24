@@ -12,6 +12,7 @@ class DevMainActivity: AppCompatActivity() {
     private lateinit var createDevActivity: Button
     private lateinit var createOrgButton: Button
     private lateinit var createUserButton: Button
+    private lateinit var listUserButton: Button
     private lateinit var logoutButton: Button
 
     private val mAuth = FirebaseAuth.getInstance()
@@ -24,6 +25,7 @@ class DevMainActivity: AppCompatActivity() {
         createDevActivity = findViewById(R.id.createDevButton)
         createOrgButton = findViewById(R.id.createOrgButton)
         createUserButton = findViewById(R.id.createUserButton)
+        listUserButton = findViewById(R.id.listUserButton)
         logoutButton = findViewById(R.id.logoutButton)
 
         profileButton.setOnClickListener {
@@ -40,6 +42,10 @@ class DevMainActivity: AppCompatActivity() {
 
         createUserButton.setOnClickListener {
             startActivity(Intent(this, DevCreateUserActivity::class.java))
+        }
+
+        listUserButton.setOnClickListener {
+            startActivity(Intent(this, DevListUserActivity::class.java))
         }
 
         logoutButton.setOnClickListener {

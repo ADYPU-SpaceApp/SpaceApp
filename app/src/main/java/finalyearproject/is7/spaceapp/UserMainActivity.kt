@@ -2,11 +2,11 @@ package finalyearproject.is7.spaceapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 
 class UserMainActivity : AppCompatActivity() {
@@ -49,9 +49,9 @@ class UserMainActivity : AppCompatActivity() {
         }
 
         openChatRoomButton.setOnClickListener {
-            val goToChatRoomActivityIntent = Intent(this, ChatRoomActivity::class.java)
-            goToChatRoomActivityIntent.putExtra("orgId", orgId)
-            startActivity(goToChatRoomActivityIntent)
+            val goToPrivateChatRoomActivityIntent = Intent(this, PrivateChatRoomActivity::class.java)
+            goToPrivateChatRoomActivityIntent.putExtra("orgId", orgId)
+            startActivity(goToPrivateChatRoomActivityIntent)
         }
 
     }
@@ -63,16 +63,11 @@ class UserMainActivity : AppCompatActivity() {
 
     private fun roleRestrictedPart() {
         mDb.collection("User").document(mAuth.currentUser!!.uid).get()
-            .addOnSuccessListener { user ->
-                val org = user.data?.get("org") as DocumentReference
-                org.get()
-                    .addOnSuccessListener { o ->
-                        if (o.exists()) {
-                            orgId = o.id
-                        }
-                    }
-                val role = user.data?.get("role") as DocumentReference
-                role.get()
+            .addOnSuccessListener {
+                Log.d("UserMainActivity", "User Document: ${it.data}")
+                orgId = it["org"] as String
+                val role = it["role"] as String
+                mDb.collection("Role").document(role).get()
                     .addOnSuccessListener { r ->
                         if (r.data?.get("is_Staff") == true) {
                             createUserBtn.setOnClickListener {
@@ -89,6 +84,37 @@ class UserMainActivity : AppCompatActivity() {
                         }
                     }
             }
+
     }
+
+//    private fun roleRestrictedPart_old() {
+//        mDb.collection("User").document(mAuth.currentUser!!.uid).get()
+//            .addOnSuccessListener { user ->
+//                val org = user.data?.get("org") as DocumentReference
+//                org.get()
+//                    .addOnSuccessListener { o ->
+//                        if (o.exists()) {
+//                            orgId = o.id
+//                        }
+//                    }
+//                val role = user.data?.get("role") as DocumentReference
+//                role.get()
+//                    .addOnSuccessListener { r ->
+//                        if (r.data?.get("is_Staff") == true) {
+//                            createUserBtn.setOnClickListener {
+//                                val goToCreateUserActivityIntent =
+//                                    Intent(this, CreateUserActivity::class.java)
+//                                goToCreateUserActivityIntent.putExtra("orgId", orgId)
+//                                startActivity(goToCreateUserActivityIntent)
+//                            }
+//                        }
+//                        else {
+//                            createUserBtn.setOnClickListener {
+//                                Toast.makeText(this,"Sorry ur not a staff member",Toast.LENGTH_SHORT).show()
+//                            }
+//                        }
+//                    }
+//            }
+//    }
 
 }

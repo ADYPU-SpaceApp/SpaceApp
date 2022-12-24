@@ -1,94 +1,83 @@
+@file:Suppress("DEPRECATION")
+
 package finalyearproject.is7.spaceapp
 
+import android.annotation.SuppressLint
+import android.os.AsyncTask
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
-import java.util.*
+import com.github.barteksc.pdfviewer.PDFView
+import java.io.BufferedInputStream
+import java.io.InputStream
+import java.net.HttpURLConnection
+import java.net.URL
+import javax.net.ssl.HttpsURLConnection
 
 class NoticeActivity : AppCompatActivity() {
 
-    private lateinit var displayid: TextView
-    private lateinit var displaytitle: TextView
-    private lateinit var displaybody: TextView
-    private lateinit var displayauthor: TextView
-    private lateinit var displayupdatedAt: TextView
-    private lateinit var displaycreatedAt: TextView
-    private lateinit var removeBtn: Button
-
-    private lateinit var mDbRef: DatabaseReference
-
-    var mAuth = FirebaseAuth.getInstance()
-    var db = FirebaseFirestore.getInstance()
-
+    private lateinit var pdfView: PDFView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice)
 
-        val orgId = intent.getStringExtra("orgId")
-        val id = intent.getStringExtra("id")
-        val title = intent.getStringExtra("title")
-        val body = intent.getStringExtra("body")
-        val author = intent.getStringExtra("author")
-        val createdAt = intent.getStringExtra("createdAt")
-        val updatedAt = intent.getStringExtra("updatedAt")
+        val note = intent.getStringExtra("note")!!
 
-        mDbRef = Firebase.database.getReference(orgId!!)
-        val createdAtTimestamp = Date(createdAt!!.toLong())
-        val updatedAtTimestamp = Date(updatedAt!!.toLong())
+        pdfView = findViewById(R.id.pdfView)
+        RetrievePDFFromURL(pdfView).execute(note)
+    }
 
-        displayid = findViewById(R.id.noticeId)
-        displaytitle = findViewById(R.id.noticeTitle)
-        displaybody = findViewById(R.id.noticeBody)
-        displayauthor = findViewById(R.id.noticeAuthor)
-        displayupdatedAt = findViewById(R.id.noticeUpdatedOn)
-        displaycreatedAt = findViewById(R.id.noticeCreatedOn)
-        removeBtn = findViewById(R.id.removeNotice)
+    override fun onStop() {
+        super.onStop()
+        finish()
+    }
 
-        val created = "Created On: \n$createdAtTimestamp"
-        val updated = "Last Updated On: \n$updatedAtTimestamp"
+    class RetrievePDFFromURL(pdfView: PDFView) : AsyncTask<String, Void, InputStream>() {
 
-        displayid.text = id
-        displaytitle.text = title
-        displaybody.text = body
-        displayauthor.text = author
-        displayupdatedAt.text = updated
-        displaycreatedAt.text = created
+        @SuppressLint("StaticFieldLeak")
+        private var myPdfView: PDFView = pdfView
 
-        db.collection("User").document(mAuth.currentUser?.uid!!).get()
-            .addOnSuccessListener { userDoc ->
-                val role: DocumentReference = userDoc.data?.get("role") as DocumentReference
-                role.get()
-                    .addOnSuccessListener { roleDoc ->
-                        if (roleDoc.data?.get("is_Staff") == true) {
-                            removeBtn.setOnClickListener {
-                                AlertDialog.Builder(this)
-                                    .setTitle("Delete Notice")
-                                    .setMessage("Are you sure you want to delete this notice?")
-                                    .setPositiveButton("Yes") { _, _ ->
-                                        // update is_Active to false
-                                        mDbRef.child("Notice").child(id!!).child("is_Active")
-                                            .setValue(false)
-                                        finish()
-                                    }
-                                    .setNegativeButton("No") { _, _ -> }
-                                    .show()
-                            }
-                        }
-                        else {
-                            removeBtn.isEnabled = false
-                            removeBtn.visibility = Button.GONE
-                        }
-                    }
+        // on below line we are calling our do in background method.
+        @Deprecated("Deprecated in Java")
+        override fun doInBackground(vararg params: String?): InputStream? {
+            // on below line we are creating a variable for our input stream.
+            var inputStream: InputStream? = null
+            try {
+                // on below line we are creating an url
+                // for our url which we are passing as a string.
+                val url = URL(params[0])
+
+                // on below line we are creating our http url connection.
+                val urlConnection: HttpURLConnection = url.openConnection() as HttpsURLConnection
+
+                // on below line we are checking if the response
+                // is successful with the help of response code
+                // 200 response code means response is successful
+                if (urlConnection.responseCode == 200) {
+                    // on below line we are initializing our input stream
+                    // if the response is successful.
+                    inputStream = BufferedInputStream(urlConnection.inputStream)
+                }
             }
+            // on below line we are adding catch block to handle exception
+            catch (e: Exception) {
+                // on below line we are simply printing
+                // our exception and returning null
+                e.printStackTrace()
+                return null
+            }
+            // on below line we are returning input stream.
+            return inputStream
+        }
 
+        // on below line we are calling on post execute
+        // method to load the url in our pdf view.
+        @Deprecated("Deprecated in Java")
+        override fun onPostExecute(result: InputStream?) {
+            // on below line we are loading url within our
+            // pdf view on below line using input stream.
+            myPdfView.fromStream(result).load()
+
+        }
     }
 }

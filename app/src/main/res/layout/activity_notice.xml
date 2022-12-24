@@ -5,81 +5,19 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/noticeId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Notice ID"
-        android:layout_centerHorizontal="true"
-        tools:layout_editor_absoluteX="178dp"
-        tools:layout_editor_absoluteY="268dp"
-        android:layout_marginTop="20dp"/>
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-    <TextView
-        android:id="@+id/noticeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Notice Title"
-        android:layout_centerHorizontal="true"
-        tools:layout_editor_absoluteX="178dp"
-        tools:layout_editor_absoluteY="268dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/noticeId"/>
-
-    <TextView
-        android:id="@+id/noticeBody"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Notice Body"
-        android:layout_centerHorizontal="true"
-        tools:layout_editor_absoluteX="178dp"
-        tools:layout_editor_absoluteY="268dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/noticeTitle"/>
-
-    <TextView
-        android:id="@+id/noticeAuthor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Notice Author"
-        android:layout_centerHorizontal="true"
-        tools:layout_editor_absoluteX="178dp"
-        tools:layout_editor_absoluteY="268dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/noticeBody"/>
-
-    <TextView
-        android:id="@+id/noticeUpdatedOn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Notice Updated On"
-        android:layout_centerHorizontal="true"
-        tools:layout_editor_absoluteX="178dp"
-        tools:layout_editor_absoluteY="268dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/noticeAuthor"/>
-
-    <TextView
-        android:id="@+id/noticeCreatedOn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Notice Created On"
-        android:layout_centerHorizontal="true"
-        tools:layout_editor_absoluteX="178dp"
-        tools:layout_editor_absoluteY="268dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/noticeUpdatedOn"/>
-
-
-    <Button
-        android:id="@+id/removeNotice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Remove Notice From View"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="30dp"/>
-
+<!--    <Button-->
+<!--        android:id="@+id/removeNotice"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Remove Notice From View"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:layout_marginEnd="30dp"/>-->
 
 </RelativeLayout>

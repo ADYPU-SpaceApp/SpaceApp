@@ -4,37 +4,45 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 
-class ChatRoomActivity:AppCompatActivity() {
+class PrivateChatRoomActivity:AppCompatActivity() {
 
     private lateinit var mainScreenUserImage: ImageView
+    private lateinit var addFriendBtn: Button
     private lateinit var userRecyclerView: RecyclerView
     private lateinit var userList: ArrayList<User>
     private lateinit var userAdapter: UserAdapter
 
     private var mAuth = FirebaseAuth.getInstance()
     private var mDb = FirebaseFirestore.getInstance()
+    private lateinit var mDbRef: DatabaseReference
 
     private lateinit var orgId: String
     private var org: DocumentReference? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chat_room)
+        setContentView(R.layout.activity_private_chat_room)
 
         userList = ArrayList()
         userRecyclerView = findViewById(R.id.userRecyclerView)
+        addFriendBtn = findViewById(R.id.addFriendButton)
 
         orgId = intent.getStringExtra("orgId").toString()
         org = mDb.collection("Organisation").document(orgId)
+        mDbRef = Firebase.database.getReference(orgId)
 
         mainScreenUserImage = findViewById(R.id.MainScreenUserImage)
 
@@ -49,6 +57,12 @@ class ChatRoomActivity:AppCompatActivity() {
                 }
             }
 
+        addFriendBtn.setOnClickListener{
+            val intent = Intent(this, AddChatActivity::class.java)
+            intent.putExtra("orgId", orgId)
+            startActivity(intent)
+        }
+
         mainScreenUserImage.setOnClickListener {
             startActivity(Intent(this, UserProfileActivity::class.java))
         }
@@ -58,19 +72,28 @@ class ChatRoomActivity:AppCompatActivity() {
 
         userRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        mDb.collection("User").whereEqualTo("org",org).get()
+        mDb.collection("User").whereEqualTo("org",orgId).get()
             .addOnSuccessListener { users ->
                 userList.clear()
                 for (user in users) {
                     if (user.id != mAuth.currentUser!!.uid) {
-                        userList.add(
-                            User(
-                                user.data["email"] as String,
-                                user.data["name"] as String,
-                                user.id,
-                                user.data["displaypic"] as String
-                            )
-                        )
+                        val chatRoomCode = mAuth.currentUser!!.uid + user.id
+                        Log.d("CheckMe", "ChatRoomCode: $chatRoomCode")
+                        mDbRef.child("chats").child(chatRoomCode).get()
+                            .addOnSuccessListener {
+                                if (it.exists()) {
+                                    Log.d("CheckMe", "ChatRoom Exists")
+                                    val u = User(
+                                        user.data["email"].toString(),
+                                        user.data["name"].toString(),
+                                        user.id,
+                                        user.data["displaypic"].toString()
+                                    )
+                                    userList.add(u)
+                                    userAdapter.notifyDataSetChanged()
+                                }
+                            }
+
                     }
                 }
                 userRecyclerView.adapter = userAdapter

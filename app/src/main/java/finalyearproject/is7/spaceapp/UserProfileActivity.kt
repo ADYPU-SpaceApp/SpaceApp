@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 
 class UserProfileActivity:AppCompatActivity() {
@@ -47,7 +46,8 @@ class UserProfileActivity:AppCompatActivity() {
                         if (imageUri != null) {
                             Glide.with(this).load(imageUri).circleCrop().into(displaypic)
                         } else {
-                            Glide.with(this).load(R.mipmap.ic_launcher_round).circleCrop().into(displaypic)
+                            Glide.with(this).load(R.mipmap.ic_launcher_round).circleCrop()
+                                .into(displaypic)
                         }
                     }
 
@@ -60,23 +60,9 @@ class UserProfileActivity:AppCompatActivity() {
                     emailtext.text = email
                     nametext.text = documents.data?.get("name") as CharSequence?
 
-                    val role: DocumentReference = documents.data?.get("role") as DocumentReference
-                    role.get()
-                        .addOnSuccessListener { document ->
-                            if (document != null) {
-                                val r = "I'm " + document.id
-                                roletext.text = r
-                            } else {
-                                Log.d("Jaineel", "No such document")
-                            }
-                        }
-                        .addOnFailureListener { exception ->
-                            Log.d("Jaineel", "get failed with ", exception)
-                        }
+                    val r = "I'm " + documents.data?.get("role")
+                    roletext.text = r
                 }
-            }
-            .addOnFailureListener { exception ->
-                Log.d("Jaineel", "get failed with ", exception)
             }
 
         logoutBtn.setOnClickListener{

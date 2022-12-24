@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
@@ -48,11 +47,12 @@ class NoticeBoardActivity : AppCompatActivity() {
         
         mDb.collection("User").document(mAuth.currentUser?.uid!!).get()
             .addOnSuccessListener { userDoc ->
-                val role: DocumentReference = userDoc.data?.get("role") as DocumentReference
-                role.get()
+                val role = userDoc.data?.get("role").toString()
+                mDb.collection("Role").document(role).get()
                     .addOnSuccessListener { roleDoc ->
                         if (roleDoc.data?.get("is_Staff") == true) {
                             createNoticeBtn.setOnClickListener {
+
                                 val goToCreateNoticeActivityIntent =
                                     Intent(this, CreateNoticeActivity::class.java)
                                 goToCreateNoticeActivityIntent.putExtra("orgId", orgId)
@@ -74,18 +74,12 @@ class NoticeBoardActivity : AppCompatActivity() {
             for (n in notice.children) {
                 if (n.child("is_Active").value == true) {
                     Log.d("Notice", n.child("title").value.toString())
+
                     val id = n.key
                     val title = n.child("title").value.toString()
-                    val body = n.child("body").value.toString()
-                    val createdBy = n.child("created_By").value.toString()
-                    val createdAt = n.child("created_At").value.toString()
-                    val updatedBy = n.child("updated_By").value.toString()
-                    val updatedAt = n.child("updated_At").value.toString()
-                    noticeList.add(
-                        Notice(id, title, body,
-                            createdBy, createdAt, updatedBy, updatedAt
-                        )
-                    )
+                    val note = n.child("note").value.toString()
+
+                    noticeList.add(Notice(id!!,title,note))
                 }
             }
             loading.visibility = ProgressBar.GONE
@@ -102,4 +96,11 @@ class NoticeBoardActivity : AppCompatActivity() {
         finish()
         startActivity(intent)
     }
+
+    override fun onResume() {
+        super.onResume()
+        finish()
+        startActivity(intent)
+    }
+
 }
