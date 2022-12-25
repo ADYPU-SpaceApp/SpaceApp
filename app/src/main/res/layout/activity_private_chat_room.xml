@@ -24,34 +24,33 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/profile" />
+            android:src="@drawable/profile"
+            android:contentDescription="Main Screen User Image"/>
 
-<!--        <TextView-->
-<!--            android:id="@+id/title"-->
-<!--            android:text="Space"-->
-<!--            android:textSize="30sp"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_alignParentRight="true"-->
-<!--            -->
+        <Button
+            android:id="@+id/grpBtn"
+            android:text="Group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:layout_centerHorizontal="true" />
 
         <Button
             android:id="@+id/addFriendButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add Friend"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp" />
+            android:layout_marginEnd="10dp" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/MainScreenUserImage"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/chattext" />
+            android:src="@drawable/chattext"
+            android:contentDescription="The Chat"/>
 
 
     </RelativeLayout>

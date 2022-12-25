@@ -11,6 +11,7 @@ class DevMainActivity: AppCompatActivity() {
     private lateinit var profileButton: Button
     private lateinit var createDevActivity: Button
     private lateinit var createOrgButton: Button
+    private lateinit var listOrgButton: Button
     private lateinit var createUserButton: Button
     private lateinit var listUserButton: Button
     private lateinit var logoutButton: Button
@@ -24,6 +25,7 @@ class DevMainActivity: AppCompatActivity() {
         profileButton = findViewById(R.id.profileButton)
         createDevActivity = findViewById(R.id.createDevButton)
         createOrgButton = findViewById(R.id.createOrgButton)
+        listOrgButton = findViewById(R.id.listOrgButton)
         createUserButton = findViewById(R.id.createUserButton)
         listUserButton = findViewById(R.id.listUserButton)
         logoutButton = findViewById(R.id.logoutButton)
@@ -40,12 +42,20 @@ class DevMainActivity: AppCompatActivity() {
             startActivity(Intent(this, DevCreateOrgActivity::class.java))
         }
 
+        listOrgButton.setOnClickListener {
+            val intent = Intent(this, DevListXYZActivity::class.java)
+            intent.putExtra("xyz", "Org")
+            startActivity(intent)
+        }
+
         createUserButton.setOnClickListener {
             startActivity(Intent(this, DevCreateUserActivity::class.java))
         }
 
         listUserButton.setOnClickListener {
-            startActivity(Intent(this, DevListUserActivity::class.java))
+            val intent = Intent(this, DevListXYZActivity::class.java)
+            intent.putExtra("xyz", "User")
+            startActivity(intent)
         }
 
         logoutButton.setOnClickListener {

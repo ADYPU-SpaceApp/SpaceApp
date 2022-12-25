@@ -49,7 +49,8 @@ class UserMainActivity : AppCompatActivity() {
         }
 
         openChatRoomButton.setOnClickListener {
-            val goToPrivateChatRoomActivityIntent = Intent(this, PrivateChatRoomActivity::class.java)
+            val goToPrivateChatRoomActivityIntent =
+                Intent(this, PrivateChatRoomActivity::class.java)
             goToPrivateChatRoomActivityIntent.putExtra("orgId", orgId)
             startActivity(goToPrivateChatRoomActivityIntent)
         }
@@ -76,45 +77,17 @@ class UserMainActivity : AppCompatActivity() {
                                 goToCreateUserActivityIntent.putExtra("orgId", orgId)
                                 startActivity(goToCreateUserActivityIntent)
                             }
-                        }
-                        else {
+                        } else {
                             createUserBtn.setOnClickListener {
-                                Toast.makeText(this,"Sorry ur not a staff member",Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    this,
+                                    "Sorry ur not a staff member",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
                     }
             }
 
     }
-
-//    private fun roleRestrictedPart_old() {
-//        mDb.collection("User").document(mAuth.currentUser!!.uid).get()
-//            .addOnSuccessListener { user ->
-//                val org = user.data?.get("org") as DocumentReference
-//                org.get()
-//                    .addOnSuccessListener { o ->
-//                        if (o.exists()) {
-//                            orgId = o.id
-//                        }
-//                    }
-//                val role = user.data?.get("role") as DocumentReference
-//                role.get()
-//                    .addOnSuccessListener { r ->
-//                        if (r.data?.get("is_Staff") == true) {
-//                            createUserBtn.setOnClickListener {
-//                                val goToCreateUserActivityIntent =
-//                                    Intent(this, CreateUserActivity::class.java)
-//                                goToCreateUserActivityIntent.putExtra("orgId", orgId)
-//                                startActivity(goToCreateUserActivityIntent)
-//                            }
-//                        }
-//                        else {
-//                            createUserBtn.setOnClickListener {
-//                                Toast.makeText(this,"Sorry ur not a staff member",Toast.LENGTH_SHORT).show()
-//                            }
-//                        }
-//                    }
-//            }
-//    }
-
 }

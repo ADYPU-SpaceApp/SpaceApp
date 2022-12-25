@@ -39,6 +39,15 @@ class UserAdapter(val context: Context, private val userList: ArrayList<User>, p
 
                 context.startActivity(intent)
             }
+            else if (orgId == "org") {
+                val intent = Intent(context, OrgDetailActivity::class.java)
+
+                intent.putExtra("name", currentUser.name)
+                intent.putExtra("uid", currentUser.uid)
+                intent.putExtra("displaypic", currentUser.displaypic)
+
+                context.startActivity(intent)
+            }
             else {
                 val intent = Intent(context, PrivateChatActivity::class.java)
 
@@ -49,11 +58,10 @@ class UserAdapter(val context: Context, private val userList: ArrayList<User>, p
                 intent.putExtra("orgId", orgId)
 
                 context.startActivity(intent)
+            }
 
-                if (context is AddChatActivity) {
-                    context.finish()
-                }
-
+            if (context is AddChatActivity) {
+                context.finish()
             }
         }
     }

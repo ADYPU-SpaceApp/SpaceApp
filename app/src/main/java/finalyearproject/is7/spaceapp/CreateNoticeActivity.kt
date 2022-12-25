@@ -43,15 +43,14 @@ class CreateNoticeActivity: AppCompatActivity(){
         selectedFileNametxt = findViewById(R.id.selectedFileName_txt)
         submitButton = findViewById(R.id.submitButton)
 
-        var selectedPdfIntent: Intent? = null
+        var selectedPdfIntent: Intent?
         var selectedPdfUri: Uri? = null
 
         resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 selectedPdfIntent = result.data
                 selectedPdfUri = selectedPdfIntent?.data
-                val fileName = selectedPdfUri?.lastPathSegment
-                selectedFileNametxt.text = fileName
+                selectedFileNametxt.text = selectedPdfUri?.path
             }
         }
 
@@ -78,6 +77,7 @@ class CreateNoticeActivity: AppCompatActivity(){
                 Toast.makeText(this, "Please select a file", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
             val noticeId = mDbRef.getReference("$orgId/Notice").push().key
             val noticeRef = storage.reference.child("Notices/$orgId/$noticeId")
             val uploadTask = noticeRef.putFile(selectedPdfUri!!)
