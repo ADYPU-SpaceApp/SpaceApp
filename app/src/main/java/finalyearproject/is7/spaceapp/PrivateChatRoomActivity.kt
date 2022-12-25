@@ -1,5 +1,6 @@
 package finalyearproject.is7.spaceapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -20,6 +21,7 @@ import com.google.firebase.ktx.Firebase
 class PrivateChatRoomActivity:AppCompatActivity() {
 
     private lateinit var mainScreenUserImage: ImageView
+    private lateinit var grpButton: Button
     private lateinit var addFriendBtn: Button
     private lateinit var userRecyclerView: RecyclerView
     private lateinit var userList: ArrayList<User>
@@ -32,12 +34,15 @@ class PrivateChatRoomActivity:AppCompatActivity() {
     private lateinit var orgId: String
     private var org: DocumentReference? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_private_chat_room)
 
         userList = ArrayList()
         userRecyclerView = findViewById(R.id.userRecyclerView)
+
+        grpButton = findViewById(R.id.grpBtn)
         addFriendBtn = findViewById(R.id.addFriendButton)
 
         orgId = intent.getStringExtra("orgId").toString()
@@ -56,6 +61,12 @@ class PrivateChatRoomActivity:AppCompatActivity() {
                     Glide.with(this).load(R.drawable.profile).circleCrop().into(mainScreenUserImage)
                 }
             }
+
+        grpButton.setOnClickListener {
+            val intent = Intent(this, GroupActivity::class.java)
+            intent.putExtra("orgId", orgId)
+            startActivity(intent)
+        }
 
         addFriendBtn.setOnClickListener{
             val intent = Intent(this, AddChatActivity::class.java)

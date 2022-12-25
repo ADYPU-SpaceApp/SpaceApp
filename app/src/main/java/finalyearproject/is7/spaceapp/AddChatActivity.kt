@@ -17,9 +17,7 @@ class AddChatActivity: AppCompatActivity() {
     private lateinit var userList: ArrayList<User>
     private lateinit var userAdapter: UserAdapter
 
-
     private lateinit var orgId: String
-//    private var org: DocumentReference? = null
 
     private var mAuth = FirebaseAuth.getInstance()
     private var mDb = FirebaseFirestore.getInstance()
@@ -58,10 +56,6 @@ class AddChatActivity: AppCompatActivity() {
                 }
                 userAdapter.notifyDataSetChanged()
             }
-
-
-
-
     }
 
 }

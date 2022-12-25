@@ -16,25 +16,24 @@
         android:roundIcon="@mipmap/spaceapp_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SpaceApp"
-        tools:targetApi="31">
+        tools:targetApi="33">
 
         <activity android:name=".LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ForgotPasswordActivity"
             android:exported="true" />
+
         <activity android:name=".DevMainActivity"
             android:exported="false"/>
-        <activity android:name=".UserMainActivity"
-            android:exported="false"/>
         <activity android:name=".OrgMainActivity"
+            android:exported="false"/>
+        <activity android:name=".UserMainActivity"
             android:exported="false"/>
 
         <activity android:name=".DevCreateOrgActivity"
@@ -64,20 +63,27 @@
 
         <activity android:name=".PrivateChatRoomActivity"
             android:exported="false"/>
-        <activity android:name=".NoticeBoardActivity"
+        <activity android:name=".PrivateChatActivity"
             android:exported="false"/>
 
-        <activity android:name=".PrivateChatActivity"
+        <activity android:name=".NoticeBoardActivity"
             android:exported="false"/>
         <activity android:name=".NoticeActivity"
             android:exported="false"/>
 
-        <activity android:name=".DevListUserActivity"
+        <activity android:name=".DevListXYZActivity"
             android:exported="false"/>
         <activity android:name=".AddChatActivity"
             android:exported="false"/>
+
         <activity android:name=".UserDetailActivity"
             android:exported="false"/>
+        <activity android:name=".OrgDetailActivity"
+            android:exported="false"/>
+
+        <activity android:name=".GroupActivity"
+            android:exported="false"/>
+
 
     </application>
 

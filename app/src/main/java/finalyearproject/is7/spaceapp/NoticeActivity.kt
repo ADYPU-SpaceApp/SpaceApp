@@ -77,7 +77,6 @@ class NoticeActivity : AppCompatActivity() {
             // on below line we are loading url within our
             // pdf view on below line using input stream.
             myPdfView.fromStream(result).load()
-
         }
     }
 }

@@ -91,16 +91,4 @@ class NoticeBoardActivity : AppCompatActivity() {
 
     }
 
-    override fun onRestart() {
-        super.onRestart()
-        finish()
-        startActivity(intent)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        finish()
-        startActivity(intent)
-    }
-
 }

@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="chat_service_color">#62cd5d</color>
+    <color name="community_service_color">#ffe07f</color>
+    <color name="multimedia_service_color">#ffabe1</color>
+
+    <color name="receive_msg_color">#2675ec</color>
+    <color name="send_msg_color">#acce4c</color>
+
 </resources>
