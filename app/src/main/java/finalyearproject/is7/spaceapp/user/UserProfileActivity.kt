@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp
+package finalyearproject.is7.spaceapp.user
 
 import android.content.Intent
 import android.net.Uri
@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import finalyearproject.is7.spaceapp.displaypic.DisplayPicActivity
+import finalyearproject.is7.spaceapp.LoginActivity
+import finalyearproject.is7.spaceapp.R
 
 class UserProfileActivity:AppCompatActivity() {
 
@@ -67,7 +70,7 @@ class UserProfileActivity:AppCompatActivity() {
 
         logoutBtn.setOnClickListener{
             mAuth.signOut()
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
 

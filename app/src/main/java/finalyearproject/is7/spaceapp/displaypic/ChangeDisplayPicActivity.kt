@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp
+package finalyearproject.is7.spaceapp.displaypic
 
 import android.content.ContentValues.TAG
 import android.net.Uri
@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import finalyearproject.is7.spaceapp.R
 
 class ChangeDisplayPicActivity : AppCompatActivity() {
 

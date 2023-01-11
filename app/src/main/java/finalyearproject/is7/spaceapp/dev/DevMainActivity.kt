@@ -1,10 +1,12 @@
-package finalyearproject.is7.spaceapp
+package finalyearproject.is7.spaceapp.dev
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import finalyearproject.is7.spaceapp.LoginActivity
+import finalyearproject.is7.spaceapp.R
 
 class DevMainActivity: AppCompatActivity() {
 
@@ -60,7 +62,7 @@ class DevMainActivity: AppCompatActivity() {
 
         logoutButton.setOnClickListener {
             mAuth.signOut()
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
 

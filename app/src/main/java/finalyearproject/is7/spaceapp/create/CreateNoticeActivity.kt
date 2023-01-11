@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp
+package finalyearproject.is7.spaceapp.create
 
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.content.Intent
@@ -17,6 +17,7 @@ import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import finalyearproject.is7.spaceapp.R
 
 class CreateNoticeActivity: AppCompatActivity(){
 

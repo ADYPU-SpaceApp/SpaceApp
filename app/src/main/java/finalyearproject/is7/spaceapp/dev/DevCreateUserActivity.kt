@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp
+package finalyearproject.is7.spaceapp.dev
 
 import android.os.Bundle
 import android.widget.*
@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import finalyearproject.is7.spaceapp.R
 
 class DevCreateUserActivity: AppCompatActivity() {
 

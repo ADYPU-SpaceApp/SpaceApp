@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp
+package finalyearproject.is7.spaceapp.dev
 
 import android.content.Intent
 import android.net.Uri
@@ -10,13 +10,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
+import finalyearproject.is7.spaceapp.displaypic.DisplayPicActivity
+import finalyearproject.is7.spaceapp.R
 
 class DevProfileActivity: AppCompatActivity() {
 
@@ -56,7 +56,9 @@ class DevProfileActivity: AppCompatActivity() {
 
             // TODO: Link with Google
 
-            val googleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build())
+            val googleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(
+                R.string.default_web_client_id
+            )).requestEmail().build())
             val signInIntent = googleSignInClient.signInIntent
             val task = GoogleSignIn.getSignedInAccountFromIntent(signInIntent)
             try {

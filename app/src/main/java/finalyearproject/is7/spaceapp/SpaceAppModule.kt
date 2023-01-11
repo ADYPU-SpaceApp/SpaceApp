@@ -4,6 +4,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class SpaceAppModule {
 
+    // TODO: create SpaceAppModule to eliminate the need for a repeated call to FirebaseFirestore.getInstance() and repeated lines of code
+
     val mDb = FirebaseFirestore.getInstance()
 
     fun getType(uid: String): String {

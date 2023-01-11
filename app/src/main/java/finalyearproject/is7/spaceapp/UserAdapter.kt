@@ -9,6 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import finalyearproject.is7.spaceapp.org.OrgDetailActivity
+import finalyearproject.is7.spaceapp.user.UserDetailActivity
 
 class UserAdapter(val context: Context, private val userList: ArrayList<User>, private val orgId: String):
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {

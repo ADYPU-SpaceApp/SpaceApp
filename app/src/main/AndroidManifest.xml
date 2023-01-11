@@ -19,8 +19,7 @@
         tools:targetApi="33">
 
         <activity android:name=".LoginActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -29,36 +28,38 @@
         <activity android:name=".ForgotPasswordActivity"
             android:exported="true" />
 
-        <activity android:name=".DevMainActivity"
+        <activity android:name=".dev.DevMainActivity"
             android:exported="false"/>
-        <activity android:name=".OrgMainActivity"
+        <activity android:name=".org.OrgMainActivity"
             android:exported="false"/>
-        <activity android:name=".UserMainActivity"
-            android:exported="false"/>
-
-        <activity android:name=".DevCreateOrgActivity"
-            android:exported="false"/>
-        <activity android:name=".DevCreateUserActivity"
+        <activity android:name=".user.UserMainActivity"
             android:exported="false"/>
 
-        <activity android:name=".CreateDevActivity"
+        <activity android:name=".dev.DevCreateOrgActivity"
+            android:exported="false"/>
+        <activity android:name=".dev.DevCreateUserActivity"
             android:exported="false"/>
 
-        <activity android:name=".CreateUserActivity"
-            android:exported="false"/>
-        <activity android:name=".CreateNoticeActivity"
+        <activity android:name=".dev.CreateDevActivity"
             android:exported="false"/>
 
-        <activity android:name=".DevProfileActivity"
+        <activity android:name=".create.CreateStaffUserActivity"
             android:exported="false"/>
-        <activity android:name=".UserProfileActivity"
+        <activity android:name=".create.CreateNonStaffUserActivity"
             android:exported="false"/>
-        <activity android:name=".OrgProfileActivity"
+        <activity android:name=".create.CreateNoticeActivity"
             android:exported="false"/>
 
-        <activity android:name=".ChangeDisplayPicActivity"
+        <activity android:name=".dev.DevProfileActivity"
             android:exported="false"/>
-        <activity android:name=".DisplayPicActivity"
+        <activity android:name=".user.UserProfileActivity"
+            android:exported="false"/>
+        <activity android:name=".org.OrgProfileActivity"
+            android:exported="false"/>
+
+        <activity android:name=".displaypic.ChangeDisplayPicActivity"
+            android:exported="false"/>
+        <activity android:name=".displaypic.DisplayPicActivity"
             android:exported="false"/>
 
         <activity android:name=".PrivateChatRoomActivity"
@@ -71,19 +72,18 @@
         <activity android:name=".NoticeActivity"
             android:exported="false"/>
 
-        <activity android:name=".DevListXYZActivity"
+        <activity android:name=".dev.DevListXYZActivity"
             android:exported="false"/>
         <activity android:name=".AddChatActivity"
             android:exported="false"/>
 
-        <activity android:name=".UserDetailActivity"
+        <activity android:name=".user.UserDetailActivity"
             android:exported="false"/>
-        <activity android:name=".OrgDetailActivity"
+        <activity android:name=".org.OrgDetailActivity"
             android:exported="false"/>
 
         <activity android:name=".GroupActivity"
             android:exported="false"/>
-
 
     </application>
 

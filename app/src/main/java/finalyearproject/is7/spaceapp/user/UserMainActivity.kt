@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp
+package finalyearproject.is7.spaceapp.user
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import finalyearproject.is7.spaceapp.create.CreateNonStaffUserActivity
+import finalyearproject.is7.spaceapp.NoticeBoardActivity
+import finalyearproject.is7.spaceapp.PrivateChatRoomActivity
+import finalyearproject.is7.spaceapp.R
 
 class UserMainActivity : AppCompatActivity() {
 
@@ -72,10 +76,10 @@ class UserMainActivity : AppCompatActivity() {
                     .addOnSuccessListener { r ->
                         if (r.data?.get("is_Staff") == true) {
                             createUserBtn.setOnClickListener {
-                                val goToCreateUserActivityIntent =
-                                    Intent(this, CreateUserActivity::class.java)
-                                goToCreateUserActivityIntent.putExtra("orgId", orgId)
-                                startActivity(goToCreateUserActivityIntent)
+                                val goToCreateStaffUserActivityIntent =
+                                    Intent(this, CreateNonStaffUserActivity::class.java)
+                                goToCreateStaffUserActivityIntent.putExtra("orgId", orgId)
+                                startActivity(goToCreateStaffUserActivityIntent)
                             }
                         } else {
                             createUserBtn.setOnClickListener {

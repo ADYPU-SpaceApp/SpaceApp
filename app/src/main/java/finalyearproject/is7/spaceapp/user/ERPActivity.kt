@@ -1,8 +1,9 @@
-package finalyearproject.is7.spaceapp
+package finalyearproject.is7.spaceapp.user
 
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import finalyearproject.is7.spaceapp.R
 
 class ERPActivity: AppCompatActivity() {
 

@@ -40,24 +40,57 @@
         android:layout_marginTop="10dp" />
 
     <Button
-        android:id="@+id/communityButton"
-        android:text="Create Notice"
+        android:id="@+id/createStudentButton"
+        android:text="Create Student"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/createUserButton"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/communityButton"
+        android:text="Create Notice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/createStudentButton"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/createDepartmentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/communityButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Create Department" />
+
+    <Button
+        android:id="@+id/createCourseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/createDepartmentButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Create Course" />
+
+    <Button
+        android:id="@+id/createClassButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/createCourseButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Create Class" />
 
     <Button
         android:id="@+id/logoutButton"
         android:text="Logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/communityButton"
+        android:layout_below="@id/createClassButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp" />
-
-
-
 
 </RelativeLayout>

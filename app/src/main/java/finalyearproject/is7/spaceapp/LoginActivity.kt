@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import finalyearproject.is7.spaceapp.dev.DevMainActivity
+import finalyearproject.is7.spaceapp.org.OrgMainActivity
+import finalyearproject.is7.spaceapp.user.UserMainActivity
 
 class LoginActivity: AppCompatActivity() {
 

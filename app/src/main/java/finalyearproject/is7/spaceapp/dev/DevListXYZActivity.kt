@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp
+package finalyearproject.is7.spaceapp.dev
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import finalyearproject.is7.spaceapp.R
+import finalyearproject.is7.spaceapp.User
+import finalyearproject.is7.spaceapp.UserAdapter
 
 class DevListXYZActivity: AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp
+package finalyearproject.is7.spaceapp.create
 
 import android.os.Bundle
 import android.widget.*
@@ -7,8 +7,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import finalyearproject.is7.spaceapp.R
 
-class CreateUserActivity:AppCompatActivity() {
+class CreateStaffUserActivity:AppCompatActivity() {
 
     private var mAuth = FirebaseAuth.getInstance()
     private var mAuth2 = Firebase.auth
@@ -19,6 +20,7 @@ class CreateUserActivity:AppCompatActivity() {
     private lateinit var edtEmail: EditText
     private lateinit var edtName: EditText
     private lateinit var spnRole: Spinner
+    private lateinit var spnDepartment: Spinner
     private lateinit var edtPassword: EditText
     private lateinit var edtConfirmPassword: EditText
     private lateinit var btnCreateUser: Button
@@ -26,7 +28,7 @@ class CreateUserActivity:AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_user)
+        setContentView(R.layout.activity_create_staff_user)
 
         if (mAuth.currentUser == null) {
             finish()
@@ -37,6 +39,7 @@ class CreateUserActivity:AppCompatActivity() {
         edtEmail = findViewById(R.id.edtEmail)
         edtName = findViewById(R.id.edtName)
         spnRole = findViewById(R.id.spnRole)
+        spnDepartment = findViewById(R.id.spnDepartment)
         edtPassword = findViewById(R.id.edtPassword)
         edtConfirmPassword = findViewById(R.id.edtConfirmPassword)
         btnCreateUser = findViewById(R.id.btnCreateUser)
@@ -49,17 +52,33 @@ class CreateUserActivity:AppCompatActivity() {
         val roleList = ArrayList<String>()
         mDb.collection("Role").get().addOnSuccessListener { result ->
             for (document in result) {
-                roleList.add(document.id)
+                // To add only Staff User
+                if (document.data["is_Staff"] == true) {
+                    roleList.add(document.id)
+                }
+
             }
             val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, roleList)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spnRole.adapter = adapter
         }
 
+        val departmentList = ArrayList<String>()
+        mDb.collection("Organisation").document(orgId)
+            .collection("College").get().addOnSuccessListener { result ->
+            for (document in result) {
+                departmentList.add(document.id)
+            }
+            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, departmentList)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spnDepartment.adapter = adapter
+        }
+
         btnCreateUser.setOnClickListener {
             val email = edtEmail.text.toString()
             val name = edtName.text.toString()
             val role = spnRole.selectedItem.toString()
+            val department = spnDepartment.selectedItem.toString()
             val password = edtPassword.text.toString()
             val confirmPassword = edtConfirmPassword.text.toString()
 
@@ -75,6 +94,7 @@ class CreateUserActivity:AppCompatActivity() {
                                 userMap["email"] = email
                                 userMap["org"] = orgId // mDb.collection("Organisation").document(orgId)
                                 userMap["role"] = role // mDb.collection("Role").document(role)
+                                userMap["department"] = department // mDb.collection("Organisation").document(orgId).collection("College").document(department)
                                 userMap["is_Active"] = true
                                 userMap["createdBy"] = mAuth.currentUser?.uid as String
                                 mDb.collection("User").document(user!!.uid).set(userMap)

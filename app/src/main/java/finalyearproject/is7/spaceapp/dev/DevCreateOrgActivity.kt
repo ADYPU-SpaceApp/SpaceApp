@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp
+package finalyearproject.is7.spaceapp.dev
 
 import android.content.Intent
 import android.net.Uri
@@ -16,6 +16,8 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import finalyearproject.is7.spaceapp.LoginActivity
+import finalyearproject.is7.spaceapp.R
 
 class DevCreateOrgActivity: AppCompatActivity() {
 
