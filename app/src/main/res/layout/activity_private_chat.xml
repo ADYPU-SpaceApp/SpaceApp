@@ -10,7 +10,8 @@
         android:id="@+id/ReceiverDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:id="@+id/ReceiverImage"
@@ -21,7 +22,8 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:shape="oval"/>
+            android:shape="oval"
+            android:contentDescription="TODO" />
 
         <TextView
             android:id="@+id/ReceiverName"
@@ -79,14 +81,17 @@
             android:hint="Type message"
             android:textColorHint="@color/black"
             android:textColor="@color/black"
-            android:layout_weight="90"/>
+            android:layout_weight="90"
+            android:importantForAutofill="no"
+            android:inputType="text" />
 
         <ImageView
             android:id="@+id/sentButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/send"
-            android:layout_weight="20"/>
+            android:layout_weight="20"
+            android:contentDescription="TODO" />
 
     </LinearLayout>
 

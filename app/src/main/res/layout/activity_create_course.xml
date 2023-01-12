@@ -5,7 +5,7 @@
     android:background="@color/black">
 
     <TextView
-        android:id="@+id/txtSelectDepartment"
+        android:id="@+id/txtSelectDepartmentCreateCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select Department"
@@ -17,10 +17,10 @@
         android:textSize="28sp" />
 
     <Spinner
-        android:id="@+id/spnDepartment"
+        android:id="@+id/spnDepartmentCreateCourse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtSelectDepartment"
+        android:layout_below="@+id/txtSelectDepartmentCreateCourse"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp" />
@@ -29,7 +29,7 @@
         android:id="@+id/edtCourseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spnDepartment"
+        android:layout_below="@+id/spnDepartmentCreateCourse"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -37,7 +37,8 @@
         android:hint="Course Name"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/btnCreateCourse"

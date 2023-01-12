@@ -14,7 +14,8 @@
         android:hint="Title of Notice"
         android:inputType="textPersonName"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:importantForAutofill="no" />
 
 <!--    <EditText-->
 <!--        android:id="@+id/edtNoticeBody"-->

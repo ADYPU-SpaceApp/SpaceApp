@@ -18,7 +18,7 @@ class ForgotPasswordActivity:AppCompatActivity() {
         binding = ActivityForgotPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.submitButton.setOnClickListener {
+        binding.submitForgotPasswdEmailButton.setOnClickListener {
             val email = binding.edtForgotPasswdEmail.text.toString()
             mAuth.sendPasswordResetEmail(email)
                 .addOnCompleteListener {

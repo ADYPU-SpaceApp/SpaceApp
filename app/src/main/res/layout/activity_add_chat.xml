@@ -6,7 +6,7 @@
     android:background="@color/black">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/userRecyclerView"
+        android:id="@+id/userRecyclerViewAddChat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/user_layout" />

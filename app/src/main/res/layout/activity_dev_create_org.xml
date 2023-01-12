@@ -10,7 +10,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
-        android:src="@mipmap/spaceapp_logo_round" />
+        android:src="@mipmap/spaceapp_logo_round"
+        android:contentDescription="TODO" />
 
     <EditText
         android:id="@+id/orgName"
@@ -21,7 +22,8 @@
         android:layout_marginRight="50dp"
         android:layout_marginBottom="10dp"
         android:hint="Organization Name"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/orgEmail"
@@ -32,7 +34,8 @@
         android:layout_marginRight="50dp"
         android:layout_marginBottom="10dp"
         android:hint="Email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/orgPassword"
@@ -43,7 +46,8 @@
         android:layout_marginRight="50dp"
         android:layout_marginBottom="10dp"
         android:hint="Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/orgConfirmPassword"
@@ -54,7 +58,8 @@
         android:layout_marginRight="50dp"
         android:layout_marginBottom="10dp"
         android:hint="Confirm Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/createOrgButton"

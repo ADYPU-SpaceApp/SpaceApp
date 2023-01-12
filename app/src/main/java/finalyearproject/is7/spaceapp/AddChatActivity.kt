@@ -35,8 +35,8 @@ class AddChatActivity: AppCompatActivity() {
 
         userList = ArrayList()
         userAdapter = UserAdapter(this, userList, orgId)
-        binding.userRecyclerView.layoutManager = LinearLayoutManager(this)
-        binding.userRecyclerView.adapter = userAdapter
+        binding.userRecyclerViewAddChat.layoutManager = LinearLayoutManager(this)
+        binding.userRecyclerViewAddChat.adapter = userAdapter
 
 
         mDb.collection("User").whereEqualTo("org",orgId).get()

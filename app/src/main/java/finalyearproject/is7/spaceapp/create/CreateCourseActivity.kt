@@ -29,7 +29,7 @@ class CreateCourseActivity: AppCompatActivity() {
                 val adapter =
                     ArrayAdapter(this, android.R.layout.simple_spinner_item, departmentList)
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                binding.spnDepartment.adapter = adapter
+                binding.spnDepartmentCreateCourse.adapter = adapter
             }
 
     }

@@ -11,7 +11,8 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:hint="Name"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/email"
@@ -22,7 +23,8 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:hint="Email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/password"
@@ -33,7 +35,8 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:hint="Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/createDevButton"
