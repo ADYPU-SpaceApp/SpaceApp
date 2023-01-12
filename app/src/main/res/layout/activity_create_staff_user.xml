@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/backButton"
+            android:id="@+id/backButtonCreateStudentActivity"
             android:layout_width="17.26dp"
             android:layout_height="28.51dp"
             android:layout_alignParentStart="true"
@@ -45,7 +45,7 @@
             android:contentDescription="somewhat astro" />
 
         <EditText
-            android:id="@+id/edtName"
+            android:id="@+id/edtCreateStudentName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -60,11 +60,11 @@
             android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/edtEmail"
+            android:id="@+id/edtCreateStudentEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/edtName"
+            android:layout_below="@id/edtCreateStudentName"
             android:layout_marginTop="10dp"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
@@ -81,7 +81,7 @@
             android:id="@+id/txtSelectRole"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edtEmail"
+            android:layout_below="@id/edtCreateStudentEmail"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:text="@string/select_role_text"
@@ -130,7 +130,7 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText
-            android:id="@+id/edtPassword"
+            android:id="@+id/edtCreateStudentPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/spnDepartment"
@@ -146,10 +146,10 @@
             android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/edtConfirmPassword"
+            android:id="@+id/edtCreateStudentConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/edtPassword"
+            android:layout_below="@+id/edtCreateStudentPassword"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:layout_marginStart="50dp"
@@ -162,10 +162,10 @@
             android:importantForAutofill="no" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnCreateUser"
+            android:id="@+id/btnCreateStudent"
             android:layout_width="263dp"
             android:layout_height="43dp"
-            android:layout_below="@+id/edtConfirmPassword"
+            android:layout_below="@+id/edtCreateStudentConfirmPassword"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"

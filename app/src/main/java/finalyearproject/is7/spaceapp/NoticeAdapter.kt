@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class NoticeAdapter(val context: Context, private val noticeList: ArrayList<Notice>, private val orgId: String):
+class NoticeAdapter(val context: Context, private val noticeList: ArrayList<Notice>):
     RecyclerView.Adapter<NoticeAdapter.NoticeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoticeViewHolder {

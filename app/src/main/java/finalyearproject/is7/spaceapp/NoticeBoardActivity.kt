@@ -68,7 +68,7 @@ class NoticeBoardActivity : AppCompatActivity() {
             }
         
         noticeRecyclerView.layoutManager = LinearLayoutManager(this)
-        noticeRecyclerView.adapter = NoticeAdapter(this,noticeList,orgId)
+        noticeRecyclerView.adapter = NoticeAdapter(this, noticeList)
 
         mDbRef.child("Notice").get()
             .addOnSuccessListener { notice ->
@@ -84,7 +84,7 @@ class NoticeBoardActivity : AppCompatActivity() {
                 }
             }
             loading.visibility = ProgressBar.GONE
-            noticeRecyclerView.adapter = NoticeAdapter(this,noticeList,orgId)
+            noticeRecyclerView.adapter = NoticeAdapter(this, noticeList)
             if (noticeList.isEmpty()){
                 noNotice.visibility = TextView.VISIBLE
             }

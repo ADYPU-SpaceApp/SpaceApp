@@ -24,6 +24,7 @@ class PrivateChatActivity:AppCompatActivity() {
     private lateinit var messageBox: EditText
     private lateinit var sendButton: ImageView
     private lateinit var messageAdapter: MessageAdapter
+
     private lateinit var messageList: ArrayList<Message>
     private lateinit var mDb: FirebaseFirestore
     private lateinit var mDbRef: DatabaseReference
@@ -63,6 +64,7 @@ class PrivateChatActivity:AppCompatActivity() {
         chatRecyclerView = findViewById(R.id.chatRecyclerView)
         messageBox = findViewById(R.id.messageBox)
         sendButton = findViewById(R.id.sentButton)
+
         messageList = ArrayList()
         messageAdapter = MessageAdapter(this, messageList)
         chatRecyclerView.layoutManager = LinearLayoutManager(this)

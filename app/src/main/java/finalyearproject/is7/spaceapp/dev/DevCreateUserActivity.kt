@@ -30,12 +30,12 @@ class DevCreateUserActivity: AppCompatActivity() {
 
         orgLogo = findViewById(R.id.orgLogo)
         spnOrg = findViewById(R.id.spnOrg)
-        edtEmail = findViewById(R.id.edtEmail)
-        edtName = findViewById(R.id.edtName)
+        edtEmail = findViewById(R.id.edtCreateStudentEmail)
+        edtName = findViewById(R.id.edtCreateStudentName)
         spnRole = findViewById(R.id.spnRole)
-        edtPassword = findViewById(R.id.edtPassword)
-        edtConfirmPassword = findViewById(R.id.edtConfirmPassword)
-        btnCreateUser = findViewById(R.id.btnCreateUser)
+        edtPassword = findViewById(R.id.edtCreateStudentPassword)
+        edtConfirmPassword = findViewById(R.id.edtCreateStudentConfirmPassword)
+        btnCreateUser = findViewById(R.id.btnCreateStudent)
 
         val orgList = ArrayList<String>()
         mDb.collection("Organisation").get().addOnSuccessListener { result ->

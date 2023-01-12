@@ -50,6 +50,13 @@
         <activity android:name=".create.CreateNoticeActivity"
             android:exported="false"/>
 
+        <activity android:name=".create.CreateDepartmentActivity"
+            android:exported="false"/>
+        <activity android:name=".create.CreateCourseActivity"
+            android:exported="false"/>
+        <activity android:name=".create.CreateBatchActivity"
+            android:exported="false"/>
+
         <activity android:name=".dev.DevProfileActivity"
             android:exported="false"/>
         <activity android:name=".user.UserProfileActivity"
@@ -80,9 +87,6 @@
         <activity android:name=".user.UserDetailActivity"
             android:exported="false"/>
         <activity android:name=".org.OrgDetailActivity"
-            android:exported="false"/>
-
-        <activity android:name=".GroupActivity"
             android:exported="false"/>
 
     </application>

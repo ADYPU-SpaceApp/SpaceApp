@@ -63,11 +63,11 @@ class PrivateChatRoomActivity:AppCompatActivity() {
                 }
             }
 
-        grpButton.setOnClickListener {
-            val intent = Intent(this, GroupActivity::class.java)
-            intent.putExtra("orgId", orgId)
-            startActivity(intent)
-        }
+//        grpButton.setOnClickListener {
+//            val intent = Intent(this, GroupActivity::class.java)
+//            intent.putExtra("orgId", orgId)
+//            startActivity(intent)
+//        }
 
         addFriendBtn.setOnClickListener{
             val intent = Intent(this, AddChatActivity::class.java)

@@ -6,9 +6,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -17,32 +14,26 @@ import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import finalyearproject.is7.spaceapp.R
+import finalyearproject.is7.spaceapp.databinding.ActivityCreateNoticeBinding
 
-class CreateNoticeActivity: AppCompatActivity(){
+class CreateNoticeActivity: AppCompatActivity() {
 
+    private lateinit var binding: ActivityCreateNoticeBinding
+    
     private var mAuth = FirebaseAuth.getInstance()
     private var mDbRef = FirebaseDatabase.getInstance()
     private var storage = FirebaseStorage.getInstance()
 
     private lateinit var orgId: String
-    private lateinit var edtNoticeTitle: EditText
-    private lateinit var uploadNoticeButton: Button
-    private lateinit var selectedFileNametxt: TextView
-    private lateinit var submitButton: Button
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_notice)
-
+        binding = ActivityCreateNoticeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        
         orgId = intent.getStringExtra("orgId")!!
-
-        edtNoticeTitle = findViewById(R.id.edtNoticeTitle)
-        uploadNoticeButton = findViewById(R.id.uploadNoticeButton)
-        selectedFileNametxt = findViewById(R.id.selectedFileName_txt)
-        submitButton = findViewById(R.id.submitButton)
 
         var selectedPdfIntent: Intent?
         var selectedPdfUri: Uri? = null
@@ -51,12 +42,11 @@ class CreateNoticeActivity: AppCompatActivity(){
             if (result.resultCode == RESULT_OK) {
                 selectedPdfIntent = result.data
                 selectedPdfUri = selectedPdfIntent?.data
-                selectedFileNametxt.text = selectedPdfUri?.path
+                binding.txtSelectedFileName.text = selectedPdfUri?.path
             }
         }
 
-
-        uploadNoticeButton.setOnClickListener {
+        binding.btnSelectNotice.setOnClickListener {
             if (ActivityCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, arrayOf(READ_EXTERNAL_STORAGE), 1)
             }
@@ -67,14 +57,14 @@ class CreateNoticeActivity: AppCompatActivity(){
             }
         }
 
-        submitButton.setOnClickListener {
-            val noticeTitle = edtNoticeTitle.text.toString()
+        binding.btnSubmitNotice.setOnClickListener {
+            val noticeTitle = binding.edtNoticeTitle.text.toString()
             if (noticeTitle.isEmpty()) {
-                edtNoticeTitle.error = "Please enter a title"
-                edtNoticeTitle.requestFocus()
+                binding.edtNoticeTitle.error = "Please enter a title"
+                binding.edtNoticeTitle.requestFocus()
                 return@setOnClickListener
             }
-            if (selectedFileNametxt.text == "No file selected") {
+            if (binding.txtSelectedFileName.text == "No file selected") {
                 Toast.makeText(this, "Please select a file", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -137,9 +127,9 @@ class CreateNoticeActivity: AppCompatActivity(){
 //    private var database = FirebaseDatabase.getInstance()
 //
 //    private lateinit var orgId: String
-//    private lateinit var edtNoticeTitle: EditText
+//    private lateinit var binding.edtNoticeTitle: EditText
 //    private lateinit var edtNoticeBody: EditText
-//    private lateinit var submitButton: Button
+//    private lateinit var binding.btnSubmitNotice: Button
 //
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
@@ -151,12 +141,12 @@ class CreateNoticeActivity: AppCompatActivity(){
 //
 //        orgId = intent.getStringExtra("orgId")!!
 //
-//        edtNoticeTitle = findViewById(R.id.edtNoticeTitle)
+//        binding.edtNoticeTitle = findViewById(R.id.binding.edtNoticeTitle)
 //        edtNoticeBody = findViewById(R.id.edtNoticeBody)
-//        submitButton = findViewById(R.id.submitButton)
+//        binding.btnSubmitNotice = findViewById(R.id.binding.btnSubmitNotice)
 //
-//        submitButton.setOnClickListener {
-//            val noticeTitle = edtNoticeTitle.text.toString()
+//        binding.btnSubmitNotice.setOnClickListener {
+//            val noticeTitle = binding.edtNoticeTitle.text.toString()
 //            val noticeBody = edtNoticeBody.text.toString()
 //
 //            if (noticeTitle.isNotEmpty() && noticeBody.isNotEmpty()) {

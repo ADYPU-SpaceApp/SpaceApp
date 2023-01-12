@@ -1,3 +1,5 @@
+@file:Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused")
+
 package finalyearproject.is7.spaceapp.dev
 
 import android.os.Bundle
@@ -48,7 +50,7 @@ class CreateDevActivity: AppCompatActivity() {
 
     private fun createDev(name: String, email: String, password: String) {
         mAuth2.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener { it ->
+            .addOnCompleteListener {
                 if (it.isSuccessful) {
                     val uid = mAuth2.currentUser?.uid
                     val dev = hashMapOf(

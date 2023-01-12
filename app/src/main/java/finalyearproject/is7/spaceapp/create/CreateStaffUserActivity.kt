@@ -36,15 +36,15 @@ class CreateStaffUserActivity:AppCompatActivity() {
 
         orgId = intent.getStringExtra("orgId")!!
 
-        edtEmail = findViewById(R.id.edtEmail)
-        edtName = findViewById(R.id.edtName)
+        edtEmail = findViewById(R.id.edtCreateStudentEmail)
+        edtName = findViewById(R.id.edtCreateStudentName)
         spnRole = findViewById(R.id.spnRole)
         spnDepartment = findViewById(R.id.spnDepartment)
-        edtPassword = findViewById(R.id.edtPassword)
-        edtConfirmPassword = findViewById(R.id.edtConfirmPassword)
-        btnCreateUser = findViewById(R.id.btnCreateUser)
+        edtPassword = findViewById(R.id.edtCreateStudentPassword)
+        edtConfirmPassword = findViewById(R.id.edtCreateStudentConfirmPassword)
+        btnCreateUser = findViewById(R.id.btnCreateStudent)
 
-        backBtn = findViewById(R.id.backButton)
+        backBtn = findViewById(R.id.backButtonCreateStudentActivity)
         backBtn.setOnClickListener {
             finish()
         }

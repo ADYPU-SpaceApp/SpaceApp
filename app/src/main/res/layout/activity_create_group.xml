@@ -11,24 +11,14 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:hint="Group Name"
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/edtGroupDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edtGroupName"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:hint="Group Description"
-        android:inputType="text" />
+        android:inputType="text"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/btnCreateGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edtGroupDescription"
+        android:layout_below="@+id/edtGroupName"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"

@@ -1,73 +1,40 @@
 package finalyearproject.is7.spaceapp.create
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import finalyearproject.is7.spaceapp.R
+import finalyearproject.is7.spaceapp.databinding.ActivityCreateNonStaffUserBinding
 
 class CreateNonStaffUserActivity: AppCompatActivity() {
 
+    private lateinit var binding: ActivityCreateNonStaffUserBinding
+    
     private var mAuth = FirebaseAuth.getInstance()
     private var mAuth2 = Firebase.auth
     private var mDb = FirebaseFirestore.getInstance()
 
     private lateinit var orgId: String
 
-    private lateinit var edtEmail: EditText
-    private lateinit var edtName: EditText
-//    private lateinit var spnRole: Spinner
-    private lateinit var spnDepartment: Spinner
-    private lateinit var spnCourse: Spinner
-    private lateinit var spnClass: Spinner
-    private lateinit var edtPassword: EditText
-    private lateinit var edtConfirmPassword: EditText
-    private lateinit var btnCreateUser: Button
-    private lateinit var backBtn: Button
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_non_staff_user)
+        binding = ActivityCreateNonStaffUserBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         if (mAuth.currentUser == null) {
             finish()
         }
-
         orgId = intent.getStringExtra("orgId")!!
 
-        edtEmail = findViewById(R.id.edtEmail)
-        edtName = findViewById(R.id.edtName)
-//        spnRole = findViewById(R.id.spnRole)
-        spnDepartment = findViewById(R.id.spnDepartment)
-        spnCourse = findViewById(R.id.spnCourse)
-        spnClass = findViewById(R.id.spnClass)
-        edtPassword = findViewById(R.id.edtPassword)
-        edtConfirmPassword = findViewById(R.id.edtConfirmPassword)
-        btnCreateUser = findViewById(R.id.btnCreateUser)
-
-        backBtn = findViewById(R.id.backButton)
-        backBtn.setOnClickListener {
+        binding.backButtonCreateStudentActivity.setOnClickListener {
             finish()
         }
-
-//        val roleList = ArrayList<String>()
-//        mDb.collection("Role").get().addOnSuccessListener { result ->
-//            for (document in result) {
-//                // To add only Staff User
-//                if (document.data["is_Staff"] == true) {
-//                    roleList.add(document.id)
-//                }
-//
-//            }
-//            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, roleList)
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//            spnRole.adapter = adapter
-//        }
 
         val departmentList = ArrayList<String>()
         mDb.collection("Organisation").document(orgId)
@@ -75,26 +42,34 @@ class CreateNonStaffUserActivity: AppCompatActivity() {
                 for (document in result) {
                     departmentList.add(document.id)
                 }
-                val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, departmentList)
+                val adapter =
+                    ArrayAdapter(this, android.R.layout.simple_spinner_item, departmentList)
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                spnDepartment.adapter = adapter
-                Log.d("Department", departmentList.toString())
+                binding.spnDepartment.adapter = adapter
             }
 
         // When department is selected
-        spnDepartment.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        binding.spnDepartment.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 val courseList = ArrayList<String>()
                 mDb.collection("Organisation").document(orgId)
-                    .collection("College").document(spnDepartment.selectedItem.toString())
+                    .collection("College").document(binding.spnDepartment.selectedItem.toString())
                     .collection("Course").get().addOnSuccessListener { result ->
                         for (document in result) {
                             courseList.add(document.id)
                         }
-                        val adapter = ArrayAdapter(this@CreateNonStaffUserActivity, android.R.layout.simple_spinner_item, courseList)
+                        val adapter = ArrayAdapter(
+                            this@CreateNonStaffUserActivity,
+                            android.R.layout.simple_spinner_item,
+                            courseList
+                        )
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                        spnCourse.adapter = adapter
-                        Log.d("Course", courseList.toString())
+                        binding.spnCourse.adapter = adapter
                     }
             }
 
@@ -103,20 +78,29 @@ class CreateNonStaffUserActivity: AppCompatActivity() {
             }
         }
 
-        spnCourse.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        // When course is selected
+        binding.spnCourse.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 val classList = ArrayList<String>()
                 mDb.collection("Organisation").document(orgId)
-                    .collection("College").document(spnDepartment.selectedItem.toString())
-                    .collection("Course").document(spnCourse.selectedItem.toString())
-                    .collection("Class").get().addOnSuccessListener { result ->
+                    .collection("College").document(binding.spnDepartment.selectedItem.toString())
+                    .collection("Course").document(binding.spnCourse.selectedItem.toString())
+                    .collection("Batch").get().addOnSuccessListener { result ->
                         for (document in result) {
                             classList.add(document.data["intake"].toString())
                         }
-                        val adapter = ArrayAdapter(this@CreateNonStaffUserActivity, android.R.layout.simple_spinner_item, classList)
+                        val adapter = ArrayAdapter(
+                            this@CreateNonStaffUserActivity,
+                            android.R.layout.simple_spinner_item,
+                            classList
+                        )
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                        spnClass.adapter = adapter
-                        Log.d("Class", classList.toString())
+                        binding.spnBatch.adapter = adapter
                     }
             }
 
@@ -125,27 +109,27 @@ class CreateNonStaffUserActivity: AppCompatActivity() {
             }
         }
 
-        btnCreateUser.setOnClickListener {
-            val email = edtEmail.text.toString()
-            val name = edtName.text.toString()
+        binding.btnCreateStudent.setOnClickListener {
+            val email = binding.edtCreateStudentEmail.text.toString()
+            val name = binding.edtCreateStudentName.text.toString()
             val role = "Student" // spnRole.selectedItem.toString()
-            val department = spnDepartment.selectedItem.toString()
-            val course = spnCourse.selectedItem.toString()
-            val classIntake = spnClass.selectedItem.toString()
+            val department = binding.spnDepartment.selectedItem.toString()
+            val course = binding.spnCourse.selectedItem.toString()
+            val classIntake = binding.spnBatch.selectedItem.toString()
             // Get classId from mDb
 
-            val password = edtPassword.text.toString()
-            val confirmPassword = edtConfirmPassword.text.toString()
+            val password = binding.edtCreateStudentPassword.text.toString()
+            val confirmPassword = binding.edtCreateStudentConfirmPassword.text.toString()
 
             mDb.collection("Organisation").document(orgId)
-                .collection("College").document(spnDepartment.selectedItem.toString())
-                .collection("Course").document(spnCourse.selectedItem.toString())
-                .collection("Class").whereEqualTo("intake", classIntake).get()
-                .addOnSuccessListener { classes ->
+                .collection("College").document(binding.spnDepartment.selectedItem.toString())
+                .collection("Course").document(binding.spnCourse.selectedItem.toString())
+                .collection("Batch").whereEqualTo("intake", classIntake).get()
+                .addOnSuccessListener { Batch ->
                     if (email.isNotEmpty() && name.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()) {
                         if (password == confirmPassword) {
-                            for (c in classes) {
-                                val classId = c.id
+                            for (b in Batch) {
+                                val batchId = b.id
                                 mAuth2.createUserWithEmailAndPassword(email, password)
                                     .addOnCompleteListener { task ->
                                         if (task.isSuccessful) {
@@ -158,7 +142,7 @@ class CreateNonStaffUserActivity: AppCompatActivity() {
                                             userMap["role"] = role // mDb.collection("Role").document(role)
                                             userMap["department"] = department // mDb.collection("Organisation").document(orgId).collection("College").document(department)
                                             userMap["course"] = course // mDb.collection("Organisation").document(orgId).collection("College").document(department).collection("Course").document(course)
-                                            userMap["class"] = classId // mDb.collection("Organisation").document(orgId).collection("College").document(department).collection("Course").document(course).collection("Class").document(classId)
+                                            userMap["Batch"] = batchId // mDb.collection("Organisation").document(orgId).collection("College").document(department).collection("Course").document(course).collection("Class").document(classId)
                                             userMap["is_Active"] = true
                                             userMap["createdBy"] = mAuth.currentUser?.uid as String
                                             mDb.collection("User").document(user!!.uid).set(userMap)
@@ -168,24 +152,17 @@ class CreateNonStaffUserActivity: AppCompatActivity() {
                                                 }
                                         }
                                     }
-                                    .addOnFailureListener { Toast.makeText(this, "Failed to create user", Toast.LENGTH_SHORT).show() }
+                                    .addOnFailureListener {
+                                        Toast.makeText(this, "Failed to create user", Toast.LENGTH_SHORT).show()
+                                    }
                                 mAuth2.signOut()
                             }
-                            }
+                        } 
                         else {
-                            Toast.makeText(
-                                this,
-                                "Password and confirm password do not match",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
+                            Toast.makeText(this, "Password and confirm password do not match", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
-
-
-
-
+        }
     }
-
 }

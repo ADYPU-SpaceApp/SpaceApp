@@ -1,29 +1,25 @@
 package finalyearproject.is7.spaceapp
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import finalyearproject.is7.spaceapp.databinding.ActivityForgotPasswordBinding
 
 class ForgotPasswordActivity:AppCompatActivity() {
 
-    private lateinit var edtEmail: EditText
-    private lateinit var submitBtn: Button
+    private lateinit var binding: ActivityForgotPasswordBinding
 
     private var mAuth = Firebase.auth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_forgot_password)
+        binding = ActivityForgotPasswordBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        edtEmail = findViewById(R.id.edtEmail)
-        submitBtn = findViewById(R.id.submitButton)
-
-        submitBtn.setOnClickListener {
-            val email = edtEmail.text.toString()
+        binding.submitButton.setOnClickListener {
+            val email = binding.edtForgotPasswdEmail.text.toString()
             mAuth.sendPasswordResetEmail(email)
                 .addOnCompleteListener {
                     if (it.isSuccessful) {

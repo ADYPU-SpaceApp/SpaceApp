@@ -32,34 +32,36 @@ class UserAdapter(val context: Context, private val userList: ArrayList<User>, p
         holder.textName.text = currentUser.name
 
         holder.itemView.setOnClickListener {
-            if (orgId == "") {
-                val intent = Intent(context, UserDetailActivity::class.java)
+            when (orgId) {
+                "" -> {
+                    val intent = Intent(context, UserDetailActivity::class.java)
 
-                intent.putExtra("name", currentUser.name)
-                intent.putExtra("uid", currentUser.uid)
-                intent.putExtra("displaypic", currentUser.displaypic)
+                    intent.putExtra("name", currentUser.name)
+                    intent.putExtra("uid", currentUser.uid)
+                    intent.putExtra("displaypic", currentUser.displaypic)
 
-                context.startActivity(intent)
-            }
-            else if (orgId == "org") {
-                val intent = Intent(context, OrgDetailActivity::class.java)
+                    context.startActivity(intent)
+                }
+                "org" -> {
+                    val intent = Intent(context, OrgDetailActivity::class.java)
 
-                intent.putExtra("name", currentUser.name)
-                intent.putExtra("uid", currentUser.uid)
-                intent.putExtra("displaypic", currentUser.displaypic)
+                    intent.putExtra("name", currentUser.name)
+                    intent.putExtra("uid", currentUser.uid)
+                    intent.putExtra("displaypic", currentUser.displaypic)
 
-                context.startActivity(intent)
-            }
-            else {
-                val intent = Intent(context, PrivateChatActivity::class.java)
+                    context.startActivity(intent)
+                }
+                else -> {
+                    val intent = Intent(context, PrivateChatActivity::class.java)
 
-                intent.putExtra("name", currentUser.name)
-                intent.putExtra("uid", currentUser.uid)
-                intent.putExtra("displaypic", currentUser.displaypic)
+                    intent.putExtra("name", currentUser.name)
+                    intent.putExtra("uid", currentUser.uid)
+                    intent.putExtra("displaypic", currentUser.displaypic)
 
-                intent.putExtra("orgId", orgId)
+                    intent.putExtra("orgId", orgId)
 
-                context.startActivity(intent)
+                    context.startActivity(intent)
+                }
             }
 
             if (context is AddChatActivity) {
