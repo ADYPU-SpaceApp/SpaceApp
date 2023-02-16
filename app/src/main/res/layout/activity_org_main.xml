@@ -1,97 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/orgLogo"
-        android:src="@mipmap/spaceapp_logo_round"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
-        android:contentDescription="TODO" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/orgName"
-        android:text="Welcome, orgName !"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/orgLogo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp" />
+        <ImageView
+            android:id="@+id/orgLogo"
+            android:src="@mipmap/spaceapp_logo_round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:contentDescription="TODO" />
 
-    <Button
-        android:id="@+id/profileButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/orgName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="Profile" />
+        <TextView
+            android:id="@+id/orgName"
+            android:text="Welcome, orgName !"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/orgLogo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp" />
 
-    <Button
-        android:id="@+id/createUserButton"
-        android:text="Create User"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/profileButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        <Button
+            android:id="@+id/profileButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/orgName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Profile" />
 
-    <Button
-        android:id="@+id/createStudentButton"
-        android:text="Create Student"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/createUserButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        <Button
+            android:id="@+id/createUserButton"
+            android:text="Create User"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profileButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp" />
 
-    <Button
-        android:id="@+id/communityButton"
-        android:text="Create Notice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/createStudentButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+        <Button
+            android:id="@+id/createStudentButton"
+            android:text="Create Student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/createUserButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp" />
 
-    <Button
-        android:id="@+id/createDepartmentButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/communityButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="Create Department" />
+        <Button
+            android:id="@+id/communityButton"
+            android:text="Create Notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/createStudentButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
 
-    <Button
-        android:id="@+id/createCourseButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/createDepartmentButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="Create Course" />
+        <Button
+            android:id="@+id/createDepartmentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/communityButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Create Department" />
 
-    <Button
-        android:id="@+id/createClassButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/createCourseButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="Create Class" />
+        <Button
+            android:id="@+id/createCourseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/createDepartmentButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Create Course" />
 
-    <Button
-        android:id="@+id/logoutButton"
-        android:text="Logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/createClassButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        <Button
+            android:id="@+id/createClassButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/createCourseButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Create Class" />
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/createCommunityButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/createClassButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Create Community" />
+
+        <Button
+            android:id="@+id/logoutButton"
+            android:text="Logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/createCommunityButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp" />
+
+    </RelativeLayout>
+</ScrollView>

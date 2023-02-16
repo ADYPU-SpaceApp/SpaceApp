@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp
+package finalyearproject.is7.spaceapp.notice
 
 import android.content.Context
 import android.content.Intent
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import finalyearproject.is7.spaceapp.R
 
 class NoticeAdapter(val context: Context, private val noticeList: ArrayList<Notice>):
     RecyclerView.Adapter<NoticeAdapter.NoticeViewHolder>() {
@@ -22,7 +23,7 @@ class NoticeAdapter(val context: Context, private val noticeList: ArrayList<Noti
         holder.textName.text = currentNotice.title
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(context,NoticeActivity::class.java)
+            val intent = Intent(context, NoticeActivity::class.java)
             intent.putExtra("note",currentNotice.note)
             context.startActivity(intent)
         }
@@ -33,6 +34,6 @@ class NoticeAdapter(val context: Context, private val noticeList: ArrayList<Noti
     }
 
     class NoticeViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val textName: TextView = itemView.findViewById(R.id.txt_name)
+        val textName: TextView = itemView.findViewById(R.id.txt_object_name)
     }
 }

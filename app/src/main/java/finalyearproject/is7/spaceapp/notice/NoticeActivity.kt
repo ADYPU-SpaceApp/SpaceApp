@@ -1,12 +1,13 @@
 @file:Suppress("DEPRECATION")
 
-package finalyearproject.is7.spaceapp
+package finalyearproject.is7.spaceapp.notice
 
 import android.annotation.SuppressLint
 import android.os.AsyncTask
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.github.barteksc.pdfviewer.PDFView
+import finalyearproject.is7.spaceapp.R
 import java.io.BufferedInputStream
 import java.io.InputStream
 import java.net.HttpURLConnection

@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp
+package finalyearproject.is7.spaceapp.chatting
 
 
 import android.content.Context
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import finalyearproject.is7.spaceapp.R
 
 class MessageAdapter(val context: Context, private val messageList: ArrayList<Message>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

@@ -64,6 +64,12 @@ class OrgMainActivity:AppCompatActivity() {
             startActivity(goToCreateBatchActivity)
         }
 
+        binding.createCommunityButton.setOnClickListener {
+            val goToCreateCommunityActivity = Intent(this, CreateCommunityActivity::class.java)
+            goToCreateCommunityActivity.putExtra("orgId", mAuth.currentUser!!.uid)
+            startActivity(goToCreateCommunityActivity)
+        }
+
         binding.logoutButton.setOnClickListener {
             mAuth.signOut()
             startActivity(Intent(this, LoginActivity::class.java))

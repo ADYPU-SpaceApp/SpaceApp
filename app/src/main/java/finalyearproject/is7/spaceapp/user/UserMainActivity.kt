@@ -9,9 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import finalyearproject.is7.spaceapp.create.CreateNonStaffUserActivity
-import finalyearproject.is7.spaceapp.NoticeBoardActivity
-import finalyearproject.is7.spaceapp.PrivateChatRoomActivity
+import finalyearproject.is7.spaceapp.notice.NoticeBoardActivity
+import finalyearproject.is7.spaceapp.chatting.privatechat.PrivateChatRoomActivity
 import finalyearproject.is7.spaceapp.R
+import finalyearproject.is7.spaceapp.community.CommunityActivity
 
 class UserMainActivity : AppCompatActivity() {
 
@@ -43,7 +44,10 @@ class UserMainActivity : AppCompatActivity() {
         }
 
         communityBtn.setOnClickListener {
-            Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show()
+            val goToCommunityActivityIntent = Intent(this, CommunityActivity::class.java)
+            goToCommunityActivityIntent.putExtra("orgId", orgId)
+            startActivity(goToCommunityActivityIntent)
         }
 
         viewNoticeButton.setOnClickListener {

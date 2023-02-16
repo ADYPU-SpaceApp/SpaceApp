@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp
+package finalyearproject.is7.spaceapp.chatting.privatechat
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -9,6 +9,8 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import finalyearproject.is7.spaceapp.User
+import finalyearproject.is7.spaceapp.UserAdapter
 import finalyearproject.is7.spaceapp.databinding.ActivityAddChatBinding
 
 class AddChatActivity: AppCompatActivity() {

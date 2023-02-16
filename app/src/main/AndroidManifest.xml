@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="finalyearproject.is7.spaceapp">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -69,24 +68,27 @@
         <activity android:name=".displaypic.DisplayPicActivity"
             android:exported="false"/>
 
-        <activity android:name=".PrivateChatRoomActivity"
+        <activity android:name=".chatting.privatechat.PrivateChatRoomActivity"
             android:exported="false"/>
-        <activity android:name=".PrivateChatActivity"
+        <activity android:name=".chatting.privatechat.PrivateChatActivity"
             android:exported="false"/>
 
-        <activity android:name=".NoticeBoardActivity"
+        <activity android:name=".notice.NoticeBoardActivity"
             android:exported="false"/>
-        <activity android:name=".NoticeActivity"
+        <activity android:name=".notice.NoticeActivity"
             android:exported="false"/>
 
         <activity android:name=".dev.DevListXYZActivity"
             android:exported="false"/>
-        <activity android:name=".AddChatActivity"
+        <activity android:name=".chatting.privatechat.AddChatActivity"
             android:exported="false"/>
 
         <activity android:name=".user.UserDetailActivity"
             android:exported="false"/>
         <activity android:name=".org.OrgDetailActivity"
+            android:exported="false"/>
+
+        <activity android:name=".community.CommunityActivity"
             android:exported="false"/>
 
     </application>

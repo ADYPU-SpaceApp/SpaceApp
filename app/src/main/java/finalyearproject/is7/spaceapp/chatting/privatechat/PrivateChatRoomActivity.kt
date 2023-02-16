@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp
+package finalyearproject.is7.spaceapp.chatting.privatechat
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -17,6 +17,9 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import finalyearproject.is7.spaceapp.R
+import finalyearproject.is7.spaceapp.User
+import finalyearproject.is7.spaceapp.UserAdapter
 import finalyearproject.is7.spaceapp.user.UserProfileActivity
 
 class PrivateChatRoomActivity:AppCompatActivity() {

@@ -4,16 +4,16 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:layout_marginTop="5dp"
-        android:id="@+id/txt_name"
+        android:id="@+id/txt_object_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="JP"
-        android:textColor="@color/white"
-        android:textAlignment="center"
-        android:background="@drawable/object_layout_bg"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="15dp"
+        android:background="@drawable/object_layout_bg"
+        android:text="JP"
+        android:textAlignment="center"
+        android:textColor="#039BE5"
         android:textSize="30sp"
         android:textStyle="bold" />
 
