@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import finalyearproject.is7.spaceapp.R
 
-class NoticeAdapter(val context: Context, private val noticeList: ArrayList<Notice>):
+class NoticeAdapter(private val context: Context, private val noticeList: ArrayList<Notice>):
     RecyclerView.Adapter<NoticeAdapter.NoticeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoticeViewHolder {

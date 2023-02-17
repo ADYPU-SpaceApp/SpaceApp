@@ -30,8 +30,8 @@
         android:textSize="100sp"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toBottomOf="@+id/btnBackCommunity" />
+        app:layout_constraintEnd_toEndOf="parent" />
+<!--        app:layout_constraintStart_toBottomOf="@id/btnBackCommunity" />-->
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -41,7 +41,7 @@
         tools:listitem="@layout/community_post_layout"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toBottomOf="@+id/btnBackCommunity" />
+        app:layout_constraintEnd_toEndOf="parent" />
+<!--        app:layout_constraintStart_toBottomOf="@id/btnBackCommunity" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

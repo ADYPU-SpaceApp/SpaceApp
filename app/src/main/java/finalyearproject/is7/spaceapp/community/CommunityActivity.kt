@@ -1,6 +1,7 @@
 package finalyearproject.is7.spaceapp.community
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,7 +40,9 @@ class CommunityActivity: AppCompatActivity() {
 
                 val communityAdmin = documents.get("communityAdmin").toString()
 
-                if (communityAdmin != "") {
+                Log.d("CommunityAdmin", communityAdmin)
+
+                if (communityAdmin != "" && communityAdmin != "null") {
                     binding.btnAddPost.visibility = android.view.View.VISIBLE
                     binding.btnAddPost.setOnClickListener {
 //                        val createCommunityPostIntent = Intent(this, CreateCommunityPostActivity::class.java)
