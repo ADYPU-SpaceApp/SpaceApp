@@ -35,10 +35,12 @@ class LauncherActivity: AppCompatActivity() {
     }
 
     private fun loginAndGotoActivity() {
+        // if mDb not accessible
         mDb.collection("Dev").document(mAuth.currentUser!!.uid).get()
             .addOnSuccessListener { user ->
                 if (user.exists()) {
                     startActivity(Intent(this, DevMainActivity::class.java))
+                    finish()
                 }
             }
         mDb.collection("Organisation").document(mAuth.currentUser!!.uid).get()
@@ -46,6 +48,7 @@ class LauncherActivity: AppCompatActivity() {
                 if (org.exists()) {
                     if (org["is_Active"] == true) {
                         startActivity(Intent(this, OrgMainActivity::class.java))
+                        finish()
                     }
                     else {
                         Toast.makeText(this, "Your Organisation is not active", Toast.LENGTH_SHORT).show()
@@ -62,6 +65,7 @@ class LauncherActivity: AppCompatActivity() {
                                 if (org.exists()) {
                                     if (org["is_Active"] == true) {
                                         startActivity(Intent(this, UserMainActivity::class.java))
+                                        finish()
                                     }
                                     else {
                                         Toast.makeText(this, "Your Organisation is not active", Toast.LENGTH_SHORT).show()
@@ -76,7 +80,7 @@ class LauncherActivity: AppCompatActivity() {
                     }
                 }
             }
-        finish()
+
     }
 
 
