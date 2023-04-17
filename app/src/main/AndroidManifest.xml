@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,81 +14,70 @@
         android:roundIcon="@mipmap/spaceapp_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SpaceApp"
-        tools:targetApi="33">
+        tools:targetApi="33"
+        android:networkSecurityConfig="@xml/network_security_config" >
 
-        <activity android:name=".LoginActivity"
+        <activity android:name=".LauncherActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ForgotPasswordActivity"
-            android:exported="true" />
 
-        <activity android:name=".dev.DevMainActivity"
-            android:exported="false"/>
-        <activity android:name=".org.OrgMainActivity"
-            android:exported="false"/>
-        <activity android:name=".user.UserMainActivity"
-            android:exported="false"/>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ForgotPasswordActivity" />
+        <activity android:name=".ChangePasswordActivity" />
 
-        <activity android:name=".dev.DevCreateOrgActivity"
-            android:exported="false"/>
-        <activity android:name=".dev.DevCreateUserActivity"
-            android:exported="false"/>
+        <activity android:name=".dev.DevMainActivity" />
+        <activity android:name=".org.OrgMainActivity" />
+        <activity android:name=".user.UserMainActivity" />
 
-        <activity android:name=".dev.CreateDevActivity"
-            android:exported="false"/>
+        <activity android:name=".dev.DevCreateOrgActivity" />
+        <activity android:name=".dev.DevCreateUserActivity" />
 
-        <activity android:name=".create.CreateStaffUserActivity"
-            android:exported="false"/>
-        <activity android:name=".create.CreateNonStaffUserActivity"
-            android:exported="false"/>
-        <activity android:name=".create.CreateNoticeActivity"
-            android:exported="false"/>
+        <activity android:name=".dev.CreateDevActivity" />
 
-        <activity android:name=".create.CreateDepartmentActivity"
-            android:exported="false"/>
-        <activity android:name=".create.CreateCourseActivity"
-            android:exported="false"/>
-        <activity android:name=".create.CreateBatchActivity"
-            android:exported="false"/>
+        <activity android:name=".create.CreateStaffUserActivity" />
+        <activity android:name=".create.CreateNonStaffUserActivity" />
+        <activity android:name=".docscenter.notice.CreateNoticePdfActivity" />
+        <activity android:name=".docscenter.notice.CreateNoticeEnterDataActivity" />
 
-        <activity android:name=".dev.DevProfileActivity"
-            android:exported="false"/>
-        <activity android:name=".user.UserProfileActivity"
-            android:exported="false"/>
-        <activity android:name=".org.OrgProfileActivity"
-            android:exported="false"/>
+        <activity android:name=".create.CreateDepartmentActivity" />
+        <activity android:name=".create.CreateCourseActivity" />
+        <activity android:name=".create.CreateBatchActivity" />
+        <activity android:name=".community.CreateCommunityActivity" />
 
-        <activity android:name=".displaypic.ChangeDisplayPicActivity"
-            android:exported="false"/>
-        <activity android:name=".displaypic.DisplayPicActivity"
-            android:exported="false"/>
+        <activity android:name=".dev.DevProfileActivity" />
+        <activity android:name=".user.UserProfileActivity" />
+        <activity android:name=".org.OrgProfileActivity" />
 
-        <activity android:name=".chatting.privatechat.PrivateChatRoomActivity"
-            android:exported="false"/>
-        <activity android:name=".chatting.privatechat.PrivateChatActivity"
-            android:exported="false"/>
+        <activity android:name=".displaypic.ChangeDisplayPicActivity" />
+        <activity android:name=".displaypic.DisplayPicActivity" />
 
-        <activity android:name=".notice.NoticeBoardActivity"
-            android:exported="false"/>
-        <activity android:name=".notice.NoticeActivity"
-            android:exported="false"/>
+        <activity android:name=".chatting.privatechat.PrivateChatRoomActivity" />
+        <activity android:name=".chatting.privatechat.PrivateChatActivity" />
 
-        <activity android:name=".dev.DevListXYZActivity"
-            android:exported="false"/>
-        <activity android:name=".chatting.privatechat.AddChatActivity"
-            android:exported="false"/>
+        <activity android:name=".docscenter.notice.NoticeBoardActivity" />
+        <activity android:name=".docscenter.notice.NoticeActivity" />
 
-        <activity android:name=".user.UserDetailActivity"
-            android:exported="false"/>
-        <activity android:name=".org.OrgDetailActivity"
-            android:exported="false"/>
+        <activity android:name=".dev.DevListXYZActivity" />
+        <activity android:name=".chatting.privatechat.AddChatActivity" />
 
-        <activity android:name=".community.CommunityActivity"
-            android:exported="false"/>
+        <activity android:name=".user.UserDetailActivity" />
+        <activity android:name=".org.OrgDetailActivity" />
+
+        <activity android:name=".community.CommunityActivity" />
+
+        <activity android:name=".user.OtherUserProfileActivity" />
+
+        <activity android:name=".community.jitsimeet.JoinMeetActivity" />
+        <activity android:name=".community.jitsimeet.InitiateMeetActivity" />
+        <activity android:name=".community.jitsimeet.MeetActivity" />
+
+        <activity android:name=".docscenter.DocumentCenterActivity" />
+        <activity android:name=".user.ERPActivity" />
+        <activity android:name=".user.UserSettingsActivity" />
 
     </application>
 

@@ -76,10 +76,15 @@ class CreateBatchActivity: AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            val batchId = mDb.collection("Organisation").document(orgId)
+                .collection("College").document(department)
+                .collection("Course").document(course)
+                .collection("Batch").document().id
+
             mDb.collection("Organisation").document(orgId)
                 .collection("College").document(department)
                 .collection("Course").document(course)
-                .collection("Batch").document(batchName).set(mapOf(
+                .collection("Batch").document(batchId).set(mapOf(
                     "batchName" to batchName
                 )).addOnSuccessListener {
                     finish()

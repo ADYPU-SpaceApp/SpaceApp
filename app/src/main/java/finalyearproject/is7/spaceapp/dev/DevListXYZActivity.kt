@@ -23,7 +23,7 @@ class DevListXYZActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_chat)
 
-        userRecyclerView = findViewById(R.id.userRecyclerView)
+        userRecyclerView = findViewById(R.id.userRecyclerViewAddChat)
 
         val xyz = intent.getStringExtra("xyz")
 
@@ -92,6 +92,11 @@ class DevListXYZActivity: AppCompatActivity() {
                     userList.add(u)
                 }
                 userAdapter.notifyDataSetChanged()
+
+//                if (userList.isEmpty()) {
+
+//                }
+
             }
     }
 }

@@ -1,6 +1,7 @@
 package finalyearproject.is7.spaceapp.community
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +29,7 @@ class CommunityPostAdapter(private val context: Context, private val postList: A
 
         mDb.collection("Organisation").document(orgId)
             .collection("Community").document(community!!).get().addOnSuccessListener {
-                val communityName = it.getString("name")
+                val communityName = it.getString("communityName")
                 val communityDp = it.getString("displaypic")
 
                 holder.communityName.text = communityName

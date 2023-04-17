@@ -2,6 +2,8 @@ package finalyearproject.is7.spaceapp.community
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,9 +33,16 @@ class CommunityActivity: AppCompatActivity() {
         val orgId = intent.getStringExtra("orgId")
         mDbRef = Firebase.database.getReference(orgId!!)
 
+        binding.loading.visibility = ProgressBar.VISIBLE
+        binding.noPostTextCommunity.visibility = TextView.INVISIBLE
+
         binding.btnBackCommunity.setOnClickListener {
             finish()
         }
+
+//        binding.btnVedioConference.setOnClickListener {
+//            Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show()
+//        }
 
         mDb.collection("User").document(mAuth.currentUser!!.uid).get()
             .addOnSuccessListener { documents ->
@@ -60,15 +69,29 @@ class CommunityActivity: AppCompatActivity() {
                 mDbRef.child("Community").child("posts").get()
                     .addOnSuccessListener {
                         for (document in it.children) {
-                            val post = document.getValue(CommunityPost::class.java)
-                            if (post != null) {
-                                if (post.is_Active) {
-                                    communityPostList.add(post)
-                                }
+                            if (document.child("is_Active").value == true) {
+
+                                val id = document.key
+                                val communityId = document.child("communityId").value.toString()
+                                val post = document.child("post").value.toString()
+                                val caption = document.child("caption").value.toString()
+                                val createdBy = document.child("createdBy").value.toString()
+                                val createdAt = document.child("createdAt").value.toString()
+                                val isActive = document.child("is_Active").value
+
+                                communityPostList.add(CommunityPost(id, communityId, post, caption, createdBy, createdAt, isActive as Boolean))
                             }
                         }
+
+                        binding.loading.visibility = ProgressBar.GONE
+
                         binding.communityPostRecyclerView.adapter = CommunityPostAdapter(this,communityPostList, orgId)
                         binding.communityPostRecyclerView.layoutManager = LinearLayoutManager(this)
+
+                        if (communityPostList.isEmpty()){
+                            binding.noPostTextCommunity.visibility = TextView.VISIBLE
+                        }
+
                     }
 
 

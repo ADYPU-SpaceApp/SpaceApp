@@ -1,13 +1,14 @@
 package finalyearproject.is7.spaceapp.create
 
 import android.os.Bundle
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import finalyearproject.is7.spaceapp.R
+import finalyearproject.is7.spaceapp.databinding.ActivityCreateStaffUserBinding
 
 class CreateStaffUserActivity:AppCompatActivity() {
 
@@ -17,18 +18,12 @@ class CreateStaffUserActivity:AppCompatActivity() {
 
     private lateinit var orgId: String
 
-    private lateinit var edtEmail: EditText
-    private lateinit var edtName: EditText
-    private lateinit var spnRole: Spinner
-    private lateinit var spnDepartment: Spinner
-    private lateinit var edtPassword: EditText
-    private lateinit var edtConfirmPassword: EditText
-    private lateinit var btnCreateUser: Button
-    private lateinit var backBtn: Button
+    private lateinit var binding: ActivityCreateStaffUserBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_staff_user)
+        binding = ActivityCreateStaffUserBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         if (mAuth.currentUser == null) {
             finish()
@@ -36,16 +31,7 @@ class CreateStaffUserActivity:AppCompatActivity() {
 
         orgId = intent.getStringExtra("orgId")!!
 
-        edtEmail = findViewById(R.id.edtCreateStudentEmail)
-        edtName = findViewById(R.id.edtCreateStudentName)
-        spnRole = findViewById(R.id.spnRole)
-        spnDepartment = findViewById(R.id.spnDepartment)
-        edtPassword = findViewById(R.id.edtCreateStudentPassword)
-        edtConfirmPassword = findViewById(R.id.edtCreateStudentConfirmPassword)
-        btnCreateUser = findViewById(R.id.btnCreateStudent)
-
-        backBtn = findViewById(R.id.backButtonCreateStudentActivity)
-        backBtn.setOnClickListener {
+        binding.backButtonCreateStudentActivity.setOnClickListener {
             finish()
         }
 
@@ -60,7 +46,7 @@ class CreateStaffUserActivity:AppCompatActivity() {
             }
             val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, roleList)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spnRole.adapter = adapter
+            binding.spnRole.adapter = adapter
         }
 
         val departmentList = ArrayList<String>()
@@ -71,16 +57,16 @@ class CreateStaffUserActivity:AppCompatActivity() {
             }
             val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, departmentList)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spnDepartment.adapter = adapter
+            binding.spnDepartment.adapter = adapter
         }
 
-        btnCreateUser.setOnClickListener {
-            val email = edtEmail.text.toString()
-            val name = edtName.text.toString()
-            val role = spnRole.selectedItem.toString()
-            val department = spnDepartment.selectedItem.toString()
-            val password = edtPassword.text.toString()
-            val confirmPassword = edtConfirmPassword.text.toString()
+        binding.btnCreateStudent.setOnClickListener {
+            val email = binding.edtCreateStudentEmail.text.toString()
+            val name = binding.edtCreateStudentName.text.toString()
+            val role = binding.spnRole.selectedItem.toString()
+            val department = binding.spnDepartment.selectedItem.toString()
+            val password = binding.edtCreateStudentPassword.text.toString()
+            val confirmPassword = binding.edtCreateStudentConfirmPassword.text.toString()
 
             if (email.isNotEmpty() && name.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()) {
                 if (password == confirmPassword) {

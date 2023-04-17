@@ -1,39 +1,35 @@
 package finalyearproject.is7.spaceapp.user
 
 import android.os.Bundle
-import android.widget.Button
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import finalyearproject.is7.spaceapp.R
+import finalyearproject.is7.spaceapp.databinding.ActivityErpBinding
 
 class ERPActivity: AppCompatActivity() {
 
-    private lateinit var viewMarksBtn: Button
-    private lateinit var viewAttendanceBtn: Button
-    private lateinit var viewTimeTableBtn: Button
+    private lateinit var binding: ActivityErpBinding
 
+    private lateinit var webView: WebView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_erp)
+        binding = ActivityErpBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        viewMarksBtn = findViewById(R.id.viewMarksBtn)
-        viewAttendanceBtn = findViewById(R.id.viewAttendanceBtn)
-        viewTimeTableBtn = findViewById(R.id.viewTimeTableBtn)
+        webView = findViewById(R.id.erpWebView)
+        webView.settings.javaScriptEnabled = true
 
-//        viewMarksBtn.setOnClickListener {
-//            val intent = Intent(this, ViewMarksActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        viewAttendanceBtn.setOnClickListener {
-//            val intent = Intent(this, ViewAttendanceActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        viewTimeTableBtn.setOnClickListener {
-//            val intent = Intent(this, ViewTimeTableActivity::class.java)
-//            startActivity(intent)
-//        }
+        webView.webViewClient = object : WebViewClient() {
+            @Deprecated("Deprecated in Java")
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                if (url != null) {
+                    view?.loadUrl(url)
+                }
+                return true
+            }
+        }
+        webView.loadUrl("https://adypu-erp.com/login.php")
 
     }
-
 }

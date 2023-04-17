@@ -3,30 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/viewMarksBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="View Marks" />
+    <WebView
+        android:id="@+id/erpWebView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    />
 
-    <Button
-        android:id="@+id/viewAttendanceBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/viewMarksBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="View Attendance" />
+<!--    <Button-->
+<!--        android:id="@+id/viewMarksBtn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:text="View Marks" />-->
 
-    <Button
-        android:id="@+id/viewTimeTableBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/viewAttendanceBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="View Time Table" />
+<!--    <Button-->
+<!--        android:id="@+id/viewAttendanceBtn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/viewMarksBtn"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:text="View Attendance" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/viewTimeTableBtn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/viewAttendanceBtn"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:text="View Time Table" />-->
 
 </RelativeLayout>

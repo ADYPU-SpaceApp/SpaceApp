@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package finalyearproject.is7.spaceapp.notice
+package finalyearproject.is7.spaceapp.docscenter.notice
 
 import android.annotation.SuppressLint
 import android.os.AsyncTask

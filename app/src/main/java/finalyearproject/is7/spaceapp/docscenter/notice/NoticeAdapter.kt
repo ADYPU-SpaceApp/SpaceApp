@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp.notice
+package finalyearproject.is7.spaceapp.docscenter.notice
 
 import android.content.Context
 import android.content.Intent

@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp.notice
+package finalyearproject.is7.spaceapp.docscenter.notice
 
 class Notice(
 //    var id: String?,

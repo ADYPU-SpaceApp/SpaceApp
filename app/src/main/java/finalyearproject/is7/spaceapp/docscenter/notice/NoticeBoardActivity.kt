@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp.notice
+package finalyearproject.is7.spaceapp.docscenter.notice
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,7 +15,6 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import finalyearproject.is7.spaceapp.R
-import finalyearproject.is7.spaceapp.create.CreateNoticeActivity
 
 class NoticeBoardActivity : AppCompatActivity() {
 
@@ -55,10 +54,10 @@ class NoticeBoardActivity : AppCompatActivity() {
                         if (roleDoc.data?.get("is_Staff") == true) {
                             createNoticeBtn.setOnClickListener {
 
-                                val goToCreateNoticeActivityIntent =
-                                    Intent(this, CreateNoticeActivity::class.java)
-                                goToCreateNoticeActivityIntent.putExtra("orgId", orgId)
-                                startActivity(goToCreateNoticeActivityIntent)
+                                val goToCreateNoticePdfActivityIntent =
+                                    Intent(this, CreateNoticePdfActivity::class.java)
+                                goToCreateNoticePdfActivityIntent.putExtra("orgId", orgId)
+                                startActivity(goToCreateNoticePdfActivityIntent)
                             }
                         }
                         else {

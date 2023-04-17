@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp.create
+package finalyearproject.is7.spaceapp.docscenter.notice
 
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.content.Intent
@@ -14,11 +14,11 @@ import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import finalyearproject.is7.spaceapp.databinding.ActivityCreateNoticeBinding
+import finalyearproject.is7.spaceapp.databinding.ActivityCreateNoticePdfBinding
 
-class CreateNoticeActivity: AppCompatActivity() {
+class CreateNoticePdfActivity: AppCompatActivity() {
 
-    private lateinit var binding: ActivityCreateNoticeBinding
+    private lateinit var binding: ActivityCreateNoticePdfBinding
     
     private var mAuth = FirebaseAuth.getInstance()
     private var mDbRef = FirebaseDatabase.getInstance()
@@ -30,7 +30,7 @@ class CreateNoticeActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCreateNoticeBinding.inflate(layoutInflater)
+        binding = ActivityCreateNoticePdfBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
         orgId = intent.getStringExtra("orgId")!!
@@ -74,7 +74,7 @@ class CreateNoticeActivity: AppCompatActivity() {
             val uploadTask = noticeRef.putFile(selectedPdfUri!!)
 
             uploadTask.addOnSuccessListener {
-                Log.d("CreateNoticeActivity", "File uploaded successfully")
+                Log.d("CreateNoticePdfActivity", "File uploaded successfully")
                 noticeRef.downloadUrl
                     .addOnSuccessListener { uri ->
                     mDbRef.getReference("$orgId/Notice/$noticeId").setValue(
@@ -121,53 +121,4 @@ class CreateNoticeActivity: AppCompatActivity() {
 }
 
 
-//class CreateNoticeActivity:AppCompatActivity() {
-//
-//    private var mAuth = FirebaseAuth.getInstance()
-//    private var database = FirebaseDatabase.getInstance()
-//
-//    private lateinit var orgId: String
-//    private lateinit var binding.edtNoticeTitle: EditText
-//    private lateinit var edtNoticeBody: EditText
-//    private lateinit var binding.btnSubmitNotice: Button
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_create_notice)
-//
-//        if (mAuth.currentUser == null) {
-//            finish()
-//        }
-//
-//        orgId = intent.getStringExtra("orgId")!!
-//
-//        binding.edtNoticeTitle = findViewById(R.id.binding.edtNoticeTitle)
-//        edtNoticeBody = findViewById(R.id.edtNoticeBody)
-//        binding.btnSubmitNotice = findViewById(R.id.binding.btnSubmitNotice)
-//
-//        binding.btnSubmitNotice.setOnClickListener {
-//            val noticeTitle = binding.edtNoticeTitle.text.toString()
-//            val noticeBody = edtNoticeBody.text.toString()
-//
-//            if (noticeTitle.isNotEmpty() && noticeBody.isNotEmpty()) {
-//                database.getReference(orgId).child("Notice")
-//                    .push().setValue(
-//                    hashMapOf(
-//                        "title" to noticeTitle,
-//                        "body" to noticeBody,
-//                        "is_Active" to true,
-//                        "created_By" to mAuth.currentUser?.uid,
-//                        "created_At" to System.currentTimeMillis(),
-//                        "updated_By" to mAuth.currentUser?.uid,
-//                        "updated_At" to System.currentTimeMillis()
-//                    )
-//                ).addOnSuccessListener {
-//                    Toast.makeText(this, "Notice Created", Toast.LENGTH_SHORT).show()
-//                    finish()
-//                }
-//            }
-//        }
-//
-//    }
-//
-//}
+

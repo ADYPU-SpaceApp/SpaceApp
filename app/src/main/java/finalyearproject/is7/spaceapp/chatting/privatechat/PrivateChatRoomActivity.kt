@@ -46,7 +46,7 @@ class PrivateChatRoomActivity:AppCompatActivity() {
         userList = ArrayList()
         userRecyclerView = findViewById(R.id.userRecyclerView)
 
-        grpButton = findViewById(R.id.grpBtn)
+//        grpButton = findViewById(R.id.grpBtn)
         addFriendBtn = findViewById(R.id.addFriendButton)
 
         orgId = intent.getStringExtra("orgId").toString()

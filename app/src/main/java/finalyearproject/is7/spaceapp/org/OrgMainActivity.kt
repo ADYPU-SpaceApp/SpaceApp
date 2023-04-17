@@ -7,8 +7,10 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import finalyearproject.is7.spaceapp.LoginActivity
+import finalyearproject.is7.spaceapp.community.CreateCommunityActivity
 import finalyearproject.is7.spaceapp.create.*
 import finalyearproject.is7.spaceapp.databinding.ActivityOrgMainBinding
+import finalyearproject.is7.spaceapp.docscenter.notice.CreateNoticePdfActivity
 
 class OrgMainActivity:AppCompatActivity() {
 
@@ -41,9 +43,9 @@ class OrgMainActivity:AppCompatActivity() {
         }
 
         binding.communityButton.setOnClickListener {
-            val goToCreateNoticeActivity = Intent(this, CreateNoticeActivity::class.java)
-            goToCreateNoticeActivity.putExtra("orgId", mAuth.currentUser!!.uid)
-            startActivity(goToCreateNoticeActivity)
+            val goToCreateNoticePdfActivity = Intent(this, CreateNoticePdfActivity::class.java)
+            goToCreateNoticePdfActivity.putExtra("orgId", mAuth.currentUser!!.uid)
+            startActivity(goToCreateNoticePdfActivity)
         }
 
         binding.createDepartmentButton.setOnClickListener {
@@ -90,7 +92,7 @@ class OrgMainActivity:AppCompatActivity() {
                     if (org.data?.get("displaypic") != "") {
                         Glide.with(this).load(org.data?.get("displaypic")).circleCrop().into(binding.orgLogo)
                     }
-                    val organisationName = "Welcome " + org.data?.get("binding.orgName")
+                    val organisationName = "Welcome " + org.data?.get("orgName")
                     binding.orgName.text = organisationName
                 }
             }

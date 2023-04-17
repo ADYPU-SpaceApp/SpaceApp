@@ -18,11 +18,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+<!--    Name-->
     <TextView
         android:id="@+id/ProfileNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Name"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         tools:layout_editor_absoluteX="178dp"
@@ -30,8 +32,9 @@
         android:layout_marginTop="20dp"
         android:layout_below="@id/ProfileDisplayPic"/>
 
+<!--    Community-->
     <TextView
-        android:id="@+id/ProfileEmailText"
+        android:id="@+id/ProfileCommunityText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -42,7 +45,7 @@
         android:layout_marginTop="20dp"
         android:layout_below="@id/ProfileNameText"/>
 
-
+    <!--    I'm sentence-->
     <TextView
         android:id="@+id/ProfileRoleText"
         android:layout_width="wrap_content"
@@ -51,7 +54,7 @@
         android:text="I'm a TextView"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:layout_below="@id/ProfileEmailText"
+        android:layout_below="@id/ProfileCommunityText"
         android:layout_marginTop="100dp" />
 
     <ImageView
@@ -62,6 +65,17 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/ProfileRoleText"
         android:layout_marginTop="10dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/changePasswordButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Change Password"
+        android:layout_above="@id/logoutButton"
+        android:textColor="@color/black"
+        android:background="@drawable/btn_bg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/logoutButton"

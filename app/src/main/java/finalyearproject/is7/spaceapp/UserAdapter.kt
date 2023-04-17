@@ -12,9 +12,10 @@ import com.bumptech.glide.Glide
 import finalyearproject.is7.spaceapp.chatting.privatechat.AddChatActivity
 import finalyearproject.is7.spaceapp.chatting.privatechat.PrivateChatActivity
 import finalyearproject.is7.spaceapp.org.OrgDetailActivity
+import finalyearproject.is7.spaceapp.user.OtherUserProfileActivity
 import finalyearproject.is7.spaceapp.user.UserDetailActivity
 
-class UserAdapter(val context: Context, private val userList: ArrayList<User>, private val orgId: String):
+class UserAdapter(private val context: Context, private val userList: ArrayList<User>, private val orgId: String):
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -32,6 +33,14 @@ class UserAdapter(val context: Context, private val userList: ArrayList<User>, p
         }
 
         holder.textName.text = currentUser.name
+
+        holder.displayPic.setOnClickListener {
+            val intent = Intent(context, OtherUserProfileActivity::class.java)
+
+            intent.putExtra("otherUserUID", currentUser.uid)
+
+            context.startActivity(intent)
+        }
 
         holder.itemView.setOnClickListener {
             when (orgId) {

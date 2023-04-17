@@ -1,42 +1,30 @@
-@file:Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused")
-
 package finalyearproject.is7.spaceapp.dev
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import finalyearproject.is7.spaceapp.R
+import finalyearproject.is7.spaceapp.databinding.ActivityCreateDevBinding
 
 class CreateDevActivity: AppCompatActivity() {
 
-    private lateinit var devName: EditText
-    private lateinit var devEmail: EditText
-    private lateinit var devPassword: EditText
+    private lateinit var binding: ActivityCreateDevBinding
 
-    private lateinit var createDevButton: Button
-
-    private val mAuth = FirebaseAuth.getInstance()
+    private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private val mDb = FirebaseFirestore.getInstance()
     private val mAuth2 = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_dev)
+        binding = ActivityCreateDevBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        devName = findViewById(R.id.name)
-        devEmail = findViewById(R.id.email)
-        devPassword = findViewById(R.id.password)
-        createDevButton = findViewById(R.id.createDevButton)
+        binding.createDevButton.setOnClickListener {
 
-        createDevButton.setOnClickListener {
-
-            val name = devName.text.toString()
-            val email = devEmail.text.toString()
-            val password = devPassword.text.toString()
+            val name = binding.name.text.toString()
+            val email = binding.email.text.toString()
+            val password = binding.password.text.toString()
 
             if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 return@setOnClickListener

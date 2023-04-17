@@ -6,6 +6,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/UserBackButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/profile_back_btn"
+        android:contentDescription="@string/back_button"
+        tools:ignore="RedundantDescriptionCheck" />
+
     <ImageView
         android:id="@+id/UserDisplayPic"
         android:layout_width="150dp"
@@ -13,16 +22,19 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="128dp"
         android:layout_marginTop="72dp"
-        android:contentDescription="Logo Description"
+        android:contentDescription="@string/logo_description"
         android:src="@mipmap/ic_launcher_round"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
 
     <TextView
         android:id="@+id/UserNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
+        android:background="@drawable/profile_filds"
+        android:gravity="center"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         tools:layout_editor_absoluteX="178dp"
@@ -35,6 +47,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email"
+        android:background="@drawable/profile_filds"
+        android:gravity="center"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         tools:layout_editor_absoluteX="178dp"
@@ -47,6 +61,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Role"
+        android:background="@drawable/profile_filds"
+        android:gravity="center"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         tools:layout_editor_absoluteX="178dp"
@@ -59,6 +75,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Organization"
+        android:background="@drawable/profile_filds"
+        android:gravity="center"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         tools:layout_editor_absoluteX="178dp"

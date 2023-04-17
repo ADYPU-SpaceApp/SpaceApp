@@ -1,6 +1,7 @@
 package finalyearproject.is7.spaceapp.create
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -92,7 +93,7 @@ class CreateNonStaffUserActivity: AppCompatActivity() {
                     .collection("Course").document(binding.spnCourse.selectedItem.toString())
                     .collection("Batch").get().addOnSuccessListener { result ->
                         for (document in result) {
-                            classList.add(document.data["intake"].toString())
+                            classList.add(document.data["batchName"].toString())
                         }
                         val adapter = ArrayAdapter(
                             this@CreateNonStaffUserActivity,
@@ -110,6 +111,7 @@ class CreateNonStaffUserActivity: AppCompatActivity() {
         }
 
         binding.btnCreateStudent.setOnClickListener {
+            Log.d("CreateNonStaffUser", "Create Student Button Clicked")
             val email = binding.edtCreateStudentEmail.text.toString()
             val name = binding.edtCreateStudentName.text.toString()
             val role = "Student" // spnRole.selectedItem.toString()
@@ -124,7 +126,7 @@ class CreateNonStaffUserActivity: AppCompatActivity() {
             mDb.collection("Organisation").document(orgId)
                 .collection("College").document(binding.spnDepartment.selectedItem.toString())
                 .collection("Course").document(binding.spnCourse.selectedItem.toString())
-                .collection("Batch").whereEqualTo("intake", classIntake).get()
+                .collection("Batch").whereEqualTo("batchName", classIntake).get()
                 .addOnSuccessListener { Batch ->
                     if (email.isNotEmpty() && name.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()) {
                         if (password == confirmPassword) {
