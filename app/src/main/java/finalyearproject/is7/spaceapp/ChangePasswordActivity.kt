@@ -1,6 +1,7 @@
 package finalyearproject.is7.spaceapp
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import finalyearproject.is7.spaceapp.databinding.ActivityChangePasswordBinding
@@ -22,6 +23,7 @@ class ChangePasswordActivity: AppCompatActivity() {
 
             if (newPassword == confirmPassword) {
                 mAuth.currentUser?.updatePassword(newPassword)
+                Toast.makeText(this, "Password Changed", Toast.LENGTH_SHORT).show()
                 finish()
             } else {
                 binding.edtNewPassword.error = "Passwords do not match"

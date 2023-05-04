@@ -1,4 +1,4 @@
-package finalyearproject.is7.spaceapp.community.jitsimeet
+package finalyearproject.is7.spaceapp.community.vedioconference
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

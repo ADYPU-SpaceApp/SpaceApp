@@ -57,8 +57,8 @@
         <activity android:name=".displaypic.ChangeDisplayPicActivity" />
         <activity android:name=".displaypic.DisplayPicActivity" />
 
-        <activity android:name=".chatting.privatechat.PrivateChatRoomActivity" />
         <activity android:name=".chatting.privatechat.PrivateChatActivity" />
+        <activity android:name=".chatting.privatechat.PrivateChatRoomActivity" />
 
         <activity android:name=".docscenter.notice.NoticeBoardActivity" />
         <activity android:name=".docscenter.notice.NoticeActivity" />
@@ -73,13 +73,17 @@
 
         <activity android:name=".user.OtherUserProfileActivity" />
 
-        <activity android:name=".community.jitsimeet.JoinMeetActivity" />
-        <activity android:name=".community.jitsimeet.InitiateMeetActivity" />
-        <activity android:name=".community.jitsimeet.MeetActivity" />
+        <activity android:name=".community.vedioconference.JoinMeetActivity" />
+        <activity android:name=".community.vedioconference.InitiateMeetActivity" />
+        <activity android:name=".community.vedioconference.MeetActivity" />
 
         <activity android:name=".docscenter.DocumentCenterActivity" />
         <activity android:name=".user.ERPActivity" />
         <activity android:name=".user.UserSettingsActivity" />
+
+        <activity android:name=".chatting.groupchat.CreateGroupChatActivity" />
+        <activity android:name=".chatting.groupchat.GroupChatActivity" />
+        <activity android:name=".chatting.groupchat.GroupChatRoomActivity" />
 
     </application>
 

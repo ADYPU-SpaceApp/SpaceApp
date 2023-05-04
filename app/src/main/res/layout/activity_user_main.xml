@@ -1,81 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/space_bg">
+    android:background="#181b27">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/settingsButton"
-        android:contentDescription="settingsButton"
+    <ImageView
+        android:id="@+id/imgUserDp"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:contentDescription="userDp"
+        android:src="@drawable/avatar"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp" />
+
+    <TextView
+        android:id="@+id/txtUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="97dp"
-        android:layout_marginBottom="56dp"
-        android:background="@drawable/space_title"
-        app:layout_constraintBottom_toTopOf="@+id/profileButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_toEndOf="@id/imgUserDp"
+        android:text="Hello World!"
+        android:textColor="#fff"
+        android:textSize="20sp" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/profileButton"
-        android:contentDescription="profileButton"
+    <ImageView
+        android:id="@+id/btnNotification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/settingsButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="91dp"
-        android:background="@drawable/astro"
-        app:layout_constraintBottom_toTopOf="@+id/openChatRoomButton"
-        app:layout_constraintEnd_toStartOf="@+id/communityButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settingsButton" />
+        android:contentDescription="notification"
+        android:src="@drawable/notification"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/communityButton"
-        android:layout_width="42.54dp"
-        android:layout_height="42.54dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="107dp"
-        android:background="@drawable/multimedia_space"
-        android:contentDescription="communityButton"
-        app:layout_constraintBottom_toTopOf="@+id/viewNoticeButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/profileButton"
-        app:layout_constraintTop_toBottomOf="@+id/settingsButton"
-        tools:ignore="TouchTargetSizeCheck" />
+    <TextView
+        android:id="@+id/txtGreeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to"
+        android:layout_below="@id/imgUserDp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="40dp"
+        android:textColor="#fff"
+        android:textSize="30sp" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/viewNoticeButton"
-        android:layout_width="42.54dp"
-        android:layout_height="42.54dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="329dp"
-        android:background="@drawable/community_space"
-        android:contentDescription="viewNoticeButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/openChatRoomButton"
-        app:layout_constraintTop_toBottomOf="@+id/communityButton"
-        tools:ignore="TouchTargetSizeCheck" />
+    <TextView
+        android:id="@+id/txtGreetingOrgName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgUserDp"
+        android:layout_toEndOf="@id/txtGreeting"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="40dp"
+        android:text="Space"
+        android:textColor="#fff"
+        android:textSize="30sp" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/openChatRoomButton"
-        android:layout_width="42.54dp"
-        android:layout_height="42.54dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="229dp"
-        android:layout_marginBottom="306dp"
-        android:background="@drawable/chat_n_service_space"
-        android:contentDescription="openChatRoomButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/viewNoticeButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileButton"
-        tools:ignore="TouchTargetSizeCheck" />
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtGreeting"
+        android:foregroundGravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/btnChatModule"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:contentDescription="card"
+                android:src="@drawable/card"/>
+
+            <ImageView
+                android:id="@+id/btnDocsCenterModule"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:contentDescription="card2"
+                android:src="@drawable/card2"/>
+
+            <ImageView
+                android:id="@+id/btnCommunityModule"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:contentDescription="card3"
+                android:src="@drawable/card3"/>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+</RelativeLayout>
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="@drawable/space_bg">-->
+
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/settingsButton"-->
+<!--        android:contentDescription="settingsButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="97dp"-->
+<!--        android:layout_marginBottom="56dp"-->
+<!--        android:background="@drawable/space_title"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/profileButton"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/profileButton"-->
+<!--        android:contentDescription="profileButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/settingsButton"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginStart="91dp"-->
+<!--        android:background="@drawable/astro"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/openChatRoomButton"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/communityButton"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/settingsButton" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/communityButton"-->
+<!--        android:layout_width="42.54dp"-->
+<!--        android:layout_height="42.54dp"-->
+<!--        android:layout_marginEnd="48dp"-->
+<!--        android:layout_marginBottom="107dp"-->
+<!--        android:background="@drawable/multimedia_space"-->
+<!--        android:contentDescription="communityButton"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/viewNoticeButton"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/profileButton"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/settingsButton"-->
+<!--        tools:ignore="TouchTargetSizeCheck" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/viewNoticeButton"-->
+<!--        android:layout_width="42.54dp"-->
+<!--        android:layout_height="42.54dp"-->
+<!--        android:layout_marginEnd="48dp"-->
+<!--        android:layout_marginBottom="329dp"-->
+<!--        android:background="@drawable/community_space"-->
+<!--        android:contentDescription="viewNoticeButton"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/openChatRoomButton"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/communityButton"-->
+<!--        tools:ignore="TouchTargetSizeCheck" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/openChatRoomButton"-->
+<!--        android:layout_width="42.54dp"-->
+<!--        android:layout_height="42.54dp"-->
+<!--        android:layout_marginStart="48dp"-->
+<!--        android:layout_marginEnd="229dp"-->
+<!--        android:layout_marginBottom="306dp"-->
+<!--        android:background="@drawable/chat_n_service_space"-->
+<!--        android:contentDescription="openChatRoomButton"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/viewNoticeButton"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/profileButton"-->
+<!--        tools:ignore="TouchTargetSizeCheck" />-->
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

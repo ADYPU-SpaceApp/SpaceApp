@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import finalyearproject.is7.spaceapp.chatting.privatechat.AddChatActivity
-import finalyearproject.is7.spaceapp.chatting.privatechat.PrivateChatActivity
+import finalyearproject.is7.spaceapp.chatting.privatechat.PrivateChatRoomActivity
 import finalyearproject.is7.spaceapp.org.OrgDetailActivity
 import finalyearproject.is7.spaceapp.user.OtherUserProfileActivity
 import finalyearproject.is7.spaceapp.user.UserDetailActivity
@@ -63,7 +63,7 @@ class UserAdapter(private val context: Context, private val userList: ArrayList<
                     context.startActivity(intent)
                 }
                 else -> {
-                    val intent = Intent(context, PrivateChatActivity::class.java)
+                    val intent = Intent(context, PrivateChatRoomActivity::class.java)
 
                     intent.putExtra("name", currentUser.name)
                     intent.putExtra("uid", currentUser.uid)

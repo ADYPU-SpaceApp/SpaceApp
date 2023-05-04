@@ -36,48 +36,53 @@ class UserProfileActivity:AppCompatActivity() {
                         val imageUri = Uri.parse(documents.data?.get("displaypic").toString())
                         Log.d("CheckMe", "Image URI: $imageUri")
                         if (imageUri != null) {
-                            Glide.with(this).load(imageUri).circleCrop().into(binding.ProfileDisplayPic)
+                            Glide.with(this).load(imageUri).circleCrop().into(binding.imgProfileDisplayPic)
                         } else {
                             Glide.with(this).load(R.mipmap.ic_launcher_round).circleCrop()
-                                .into(binding.ProfileDisplayPic)
+                                .into(binding.imgProfileDisplayPic)
                         }
                     }
 
-                    binding.ProfileDisplayPic.setOnClickListener {
+                    binding.imgProfileDisplayPic.setOnClickListener {
                         val displaypicintent = Intent(this, DisplayPicActivity::class.java)
                         displaypicintent.putExtra("is", "User")
                         startActivity(displaypicintent)
                     }
 
-                    binding.ProfileNameText.text = documents.data?.get("name") as CharSequence?
+                    binding.txtUserProfileName.text = documents.data?.get("name") as CharSequence?
 
                     if (documents.data?.get("communityAdmin") != null) {
                         val r = "I'm admin of " + documents.data?.get("communityAdmin")
-                        binding.ProfileCommunityText.text = r
+                        binding.txtUserProfileCommunity.text = r
                     } else {
-                        binding.ProfileCommunityText.text = mAuth.currentUser!!.email
+                        binding.txtUserProfileCommunity.text = mAuth.currentUser!!.email
                     }
                     
 //                  if course exist in database, then get the course name
                     if (documents.data?.get("course") != null) {
                         // Student
                         val r = "I'm " + documents.data?.get("role") + " at " + documents.data?.get("department") + " for " + documents.data?.get("course")
-                        binding.ProfileRoleText.text = r
+                        binding.txtUserProfileRole.text = r
                     } else {
                         // Staff
                         val r = "I'm " + documents.data?.get("role") + " in " + documents.data?.get("department")
-                        binding.ProfileRoleText.text = r
+                        binding.txtUserProfileRole.text = r
                     }
                 }
             }
 
-        binding.changePasswordButton.setOnClickListener {
+
+        binding.btnUserProfileChangePassword.setOnClickListener {
             startActivity(Intent(this, ChangePasswordActivity::class.java))
         }
 
-        binding.logoutButton.setOnClickListener{
+        binding.btnUserProfileLogout.setOnClickListener{
             mAuth.signOut()
             startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+
+        binding.btnUserProfileBackUser.setOnClickListener {
             finish()
         }
     }
@@ -93,9 +98,9 @@ class UserProfileActivity:AppCompatActivity() {
                         val imageUri = Uri.parse(documents.data?.get("displaypic").toString())
                         Log.d("CheckMe", "Image URI: $imageUri")
                         if (imageUri != null) {
-                            Glide.with(this).load(imageUri).circleCrop().into(binding.ProfileDisplayPic)
+                            Glide.with(this).load(imageUri).circleCrop().into(binding.imgProfileDisplayPic)
                         } else {
-                            Glide.with(this).load(R.mipmap.ic_launcher_round).circleCrop().into(binding.ProfileDisplayPic)
+                            Glide.with(this).load(R.mipmap.ic_launcher_round).circleCrop().into(binding.imgProfileDisplayPic)
                         }
                     }
                 }

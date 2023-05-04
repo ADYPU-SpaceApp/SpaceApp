@@ -1,6 +1,5 @@
-package finalyearproject.is7.spaceapp.community.jitsimeet
+package finalyearproject.is7.spaceapp.community.vedioconference
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import finalyearproject.is7.spaceapp.databinding.ActivityJoinMeetBinding

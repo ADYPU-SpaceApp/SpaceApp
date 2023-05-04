@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/MainScreenUserImage"
+            android:id="@+id/MainScreenUserImageGrpChat"
             android:layout_width="71dp"
             android:layout_height="71dp"
             android:layout_marginLeft="10dp"
@@ -28,18 +28,10 @@
             android:contentDescription="Main Screen User Image"/>
 
         <Button
-            android:id="@+id/grpBtn"
-            android:text="Group"
+            android:id="@+id/btnCreateGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            android:layout_centerHorizontal="true" />
-
-        <Button
-            android:id="@+id/addFriendButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Friend"
+            android:text="Create Group"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp" />
@@ -47,7 +39,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/MainScreenUserImage"
+            android:layout_below="@+id/MainScreenUserImageGrpChat"
             android:layout_marginBottom="10dp"
             android:src="@drawable/chattext"
             android:contentDescription="The Chat"/>
@@ -56,7 +48,7 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/userRecyclerView"
+        android:id="@+id/GroupRecyclerView"
         android:layout_width="406dp"
         android:layout_height="732dp"
         android:layout_marginTop="10dp"

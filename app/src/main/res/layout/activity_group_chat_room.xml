@@ -7,14 +7,14 @@
     tools:context=".chatting.privatechat.PrivateChatActivity">
 
     <LinearLayout
-        android:id="@+id/ReceiverDetail"
+        android:id="@+id/GroupDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
-            android:id="@+id/ReceiverImage"
+            android:id="@+id/GroupImage"
             android:layout_width="71.45dp"
             android:layout_height="71.45dp"
             android:src="@mipmap/ic_launcher"
@@ -26,7 +26,7 @@
             android:contentDescription="TODO" />
 
         <TextView
-            android:id="@+id/ReceiverName"
+            android:id="@+id/GroupName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
@@ -41,24 +41,11 @@
 
     </LinearLayout>
 
-<!--    <TextView-->
-<!--        android:layout_marginTop="5dp"-->
-<!--        android:id="@+id/txt_name"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="JP"-->
-<!--        android:textAlignment="center"-->
-<!--        android:background="@drawable/object_layout_bg"-->
-<!--        android:layout_marginStart="15dp"-->
-<!--        android:layout_marginEnd="15dp"-->
-<!--        android:textSize="30sp"-->
-<!--        android:textStyle="bold"/>-->
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chatRecyclerView"
+        android:id="@+id/GroupChatRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ReceiverDetail"
+        android:layout_below="@id/GroupDetail"
         android:layout_above="@id/linearLayout"
         android:layout_marginTop="20dp"/>
 

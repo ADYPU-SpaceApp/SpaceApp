@@ -10,4 +10,6 @@
     <color name="receive_msg_color">#2675ec</color>
     <color name="send_msg_color">#acce4c</color>
 
+    <color name="app_background_color">#181b27</color>
+
 </resources>

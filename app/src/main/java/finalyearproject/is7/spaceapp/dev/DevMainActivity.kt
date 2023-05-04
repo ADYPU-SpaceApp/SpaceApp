@@ -30,7 +30,7 @@ class DevMainActivity: AppCompatActivity() {
         listOrgButton = findViewById(R.id.listOrgButton)
         createUserButton = findViewById(R.id.createUserButton)
         listUserButton = findViewById(R.id.listUserButton)
-        logoutButton = findViewById(R.id.logoutButton)
+        logoutButton = findViewById(R.id.btnUserProfileLogout)
 
         profileButton.setOnClickListener {
             startActivity(Intent(this, DevProfileActivity::class.java))

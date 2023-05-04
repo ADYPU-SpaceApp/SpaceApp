@@ -4,81 +4,87 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/black">
+    android:background="@color/app_background_color">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnUserProfileBackUser"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/profile_back_btn"
+        android:contentDescription="@string/back_button"
+        tools:ignore="RedundantDescriptionCheck" />
 
     <ImageView
-        android:id="@+id/ProfileDisplayPic"
+        android:id="@+id/imgProfileDisplayPic"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="128dp"
         android:layout_marginTop="72dp"
-        android:contentDescription="Logo Description"
+        android:contentDescription="@string/logo_description"
         android:src="@mipmap/ic_launcher_round"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
 
-
-<!--    Name-->
     <TextView
-        android:id="@+id/ProfileNameText"
+        android:id="@+id/txtUserProfileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
+        android:background="@drawable/profile_filds"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        tools:layout_editor_absoluteX="178dp"
+        tools:layout_editor_absoluteY="268dp"
+        android:layout_marginTop="70dp"
+        android:layout_below="@id/imgProfileDisplayPic"/>
+
+    <TextView
+        android:id="@+id/txtUserProfileCommunity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:background="@drawable/profile_filds"
+        android:gravity="center"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         tools:layout_editor_absoluteX="178dp"
         tools:layout_editor_absoluteY="268dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/ProfileDisplayPic"/>
+        android:layout_below="@id/txtUserProfileName"/>
 
-<!--    Community-->
     <TextView
-        android:id="@+id/ProfileCommunityText"
+        android:id="@+id/txtUserProfileRole"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Role"
+        android:background="@drawable/profile_filds"
+        android:gravity="center"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         tools:layout_editor_absoluteX="178dp"
         tools:layout_editor_absoluteY="268dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/ProfileNameText"/>
-
-    <!--    I'm sentence-->
-    <TextView
-        android:id="@+id/ProfileRoleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="I'm a TextView"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:layout_below="@id/ProfileCommunityText"
-        android:layout_marginTop="100dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/line"
-        android:contentDescription="The Line"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/ProfileRoleText"
-        android:layout_marginTop="10dp" />
+        android:layout_below="@id/txtUserProfileCommunity"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/changePasswordButton"
-        android:layout_width="100dp"
+        android:id="@+id/btnUserProfileChangePassword"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Change Password"
-        android:layout_above="@id/logoutButton"
+        android:layout_above="@id/btnUserProfileLogout"
         android:textColor="@color/black"
         android:background="@drawable/btn_bg"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"/>
+        android:layout_marginBottom="20dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/logoutButton"
+        android:id="@+id/btnUserProfileLogout"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Logout"
@@ -86,7 +92,7 @@
         android:background="@drawable/btn_bg"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"/>
+        android:layout_marginBottom="200dp"/>
 
 
 
