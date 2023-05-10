@@ -1,6 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/app_background_color">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnUserProfileBackUser"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/profile_back_btn"
+        android:contentDescription="@string/back_button"
+        tools:ignore="RedundantDescriptionCheck" />
+
+    <ImageView
+        android:id="@+id/imgOtherUserProfileDisplayPic"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="72dp"
+        android:contentDescription="@string/logo_description"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/txtOtherUserProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:background="@drawable/profile_filds"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        tools:layout_editor_absoluteX="178dp"
+        tools:layout_editor_absoluteY="268dp"
+        android:layout_marginTop="70dp"
+        android:layout_below="@id/imgOtherUserProfileDisplayPic"/>
+
+    <TextView
+        android:id="@+id/txtOtherUserProfileCommunity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:background="@drawable/profile_filds"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        tools:layout_editor_absoluteX="178dp"
+        tools:layout_editor_absoluteY="268dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/txtOtherUserProfileName"/>
+
+    <TextView
+        android:id="@+id/txtOtherUserProfileRole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Role"
+        android:background="@drawable/profile_filds"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        tools:layout_editor_absoluteX="178dp"
+        tools:layout_editor_absoluteY="268dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/txtOtherUserProfileCommunity"/>
+
+
+
+</RelativeLayout>

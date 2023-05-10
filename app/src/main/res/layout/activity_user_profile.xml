@@ -77,11 +77,11 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Change Password"
-        android:layout_above="@id/btnUserProfileLogout"
+        android:layout_below="@id/txtUserProfileRole"
+        android:layout_marginTop="100dp"
         android:textColor="@color/black"
         android:background="@drawable/btn_bg"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"/>
+        android:layout_centerHorizontal="true" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnUserProfileLogout"
@@ -91,8 +91,8 @@
         android:textColor="@color/black"
         android:background="@drawable/btn_bg"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="200dp"/>
+        android:layout_below="@id/btnUserProfileChangePassword"
+        android:layout_marginTop="20dp"/>
 
 
 

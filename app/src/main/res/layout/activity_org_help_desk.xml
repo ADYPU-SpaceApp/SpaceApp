@@ -5,39 +5,38 @@
     android:background="@color/app_background_color">
 
     <TextView
-        android:id="@+id/txtHeadLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Docs Center"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp" />
-
-    <Button
-        android:id="@+id/btnNoticeBoard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Notice Board"
-        android:layout_below="@id/txtHeadLine"
-        android:layout_marginTop="50dp"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:id="@+id/btnErp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ERP"
-        android:layout_below="@id/btnNoticeBoard"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:id="@+id/btnOrgHelpDesk"
+        android:id="@+id/txtOrgHelpDesk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Org Help Desk"
-        android:layout_below="@id/btnErp"
-        android:layout_centerHorizontal="true"/>
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="100dp" />
 
+    <Button
+        android:id="@+id/btnRequestOrgHelpDesk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Request"
+        android:layout_below="@id/txtOrgHelpDesk"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnReportOrgHelpDesk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Report"
+        android:layout_below="@id/btnRequestOrgHelpDesk"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnAssistanceOrgHelpDesk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Assistance"
+        android:layout_below="@id/btnReportOrgHelpDesk"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

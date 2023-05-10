@@ -62,4 +62,6 @@
     <string name="change_password_txt">Change Password</string>
     <string name="new_password_hint">Enter New Password</string>
     <string name="confirm_new_password_hint">Re-Enter your New Password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

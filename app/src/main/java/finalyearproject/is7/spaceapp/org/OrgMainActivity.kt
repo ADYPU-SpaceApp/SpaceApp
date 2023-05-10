@@ -72,7 +72,7 @@ class OrgMainActivity:AppCompatActivity() {
             startActivity(goToCreateCommunityActivity)
         }
 
-        binding.logoutButton.setOnClickListener {
+        binding.btnUserProfileLogout.setOnClickListener {
             mAuth.signOut()
             startActivity(Intent(this, LoginActivity::class.java))
             finish()

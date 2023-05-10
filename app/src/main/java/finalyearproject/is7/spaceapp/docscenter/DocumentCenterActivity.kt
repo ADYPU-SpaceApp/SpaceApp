@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import finalyearproject.is7.spaceapp.databinding.ActivityDocumentCenterBinding
 import finalyearproject.is7.spaceapp.docscenter.notice.NoticeBoardActivity
+import finalyearproject.is7.spaceapp.docscenter.orghelpdesk.OrgHelpDeskActivity
 import finalyearproject.is7.spaceapp.user.ERPActivity
 
 class DocumentCenterActivity: AppCompatActivity() {
@@ -26,6 +27,13 @@ class DocumentCenterActivity: AppCompatActivity() {
 
         binding.btnErp.setOnClickListener{
             val intent = Intent(this, ERPActivity::class.java)
+            intent.putExtra("orgId", orgId)
+            startActivity(intent)
+        }
+
+        binding.btnOrgHelpDesk.setOnClickListener{
+            val intent = Intent(this, OrgHelpDeskActivity::class.java)
+            intent.putExtra("orgId", orgId)
             startActivity(intent)
         }
 

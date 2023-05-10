@@ -21,9 +21,9 @@ class CreateNoticeEnterDataActivity: AppCompatActivity() {
         binding = ActivityCreateNoticeEnterDataBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (mAuth.currentUser == null) {
-            finish()
-        }
+//        if (mAuth.currentUser == null) {
+//            finish()
+//        }
 
         orgId = intent.getStringExtra("orgId")!!
 

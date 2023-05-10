@@ -8,6 +8,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.github.barteksc.pdfviewer.PDFView
 import finalyearproject.is7.spaceapp.R
+import finalyearproject.is7.spaceapp.databinding.ActivityCreateNoticeEnterDataBinding
+import finalyearproject.is7.spaceapp.databinding.ActivityNoticeBinding
 import java.io.BufferedInputStream
 import java.io.InputStream
 import java.net.HttpURLConnection
@@ -16,16 +18,17 @@ import javax.net.ssl.HttpsURLConnection
 
 class NoticeActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityNoticeBinding
+
     private lateinit var pdfView: PDFView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_notice)
+        binding = ActivityNoticeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val note = intent.getStringExtra("note")!!
-
-        pdfView = findViewById(R.id.pdfView)
-        RetrievePDFFromURL(pdfView).execute(note)
+        RetrievePDFFromURL(binding.pdfView).execute(note)
     }
 
     override fun onStop() {

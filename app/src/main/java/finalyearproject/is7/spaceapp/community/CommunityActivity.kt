@@ -1,5 +1,6 @@
 package finalyearproject.is7.spaceapp.community
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ProgressBar
@@ -36,9 +37,9 @@ class CommunityActivity: AppCompatActivity() {
         binding.loading.visibility = ProgressBar.VISIBLE
         binding.noPostTextCommunity.visibility = TextView.INVISIBLE
 
-        binding.btnBackCommunity.setOnClickListener {
-            finish()
-        }
+//        binding.btnBackCommunity.setOnClickListener {
+//            finish()
+//        }
 
 //        binding.btnVedioConference.setOnClickListener {
 //            Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show()
@@ -54,11 +55,11 @@ class CommunityActivity: AppCompatActivity() {
                 if (communityAdmin != "" && communityAdmin != "null") {
                     binding.btnAddPost.visibility = android.view.View.VISIBLE
                     binding.btnAddPost.setOnClickListener {
-//                        val createCommunityPostIntent = Intent(this, CreateCommunityPostActivity::class.java)
-//                        createCommunityPostIntent.putExtra("orgId", orgId)
-//                        createCommunityPostIntent.putExtra("community", communityAdmin)
-//                        startActivity(createCommunityPostIntent)
-                        Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show()
+                        val createCommunityPostIntent = Intent(this, CreateCommunityPostActivity::class.java)
+                        createCommunityPostIntent.putExtra("orgId", orgId)
+                        createCommunityPostIntent.putExtra("community", communityAdmin)
+                        startActivity(createCommunityPostIntent)
+//                        Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show()
                     }
                 }
                 else {

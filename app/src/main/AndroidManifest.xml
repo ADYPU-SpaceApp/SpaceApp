@@ -70,6 +70,7 @@
         <activity android:name=".org.OrgDetailActivity" />
 
         <activity android:name=".community.CommunityActivity" />
+        <activity android:name=".community.CreateCommunityPostActivity" />
 
         <activity android:name=".user.OtherUserProfileActivity" />
 
@@ -84,6 +85,12 @@
         <activity android:name=".chatting.groupchat.CreateGroupChatActivity" />
         <activity android:name=".chatting.groupchat.GroupChatActivity" />
         <activity android:name=".chatting.groupchat.GroupChatRoomActivity" />
+
+        <activity android:name=".helpdesk.devhelpdesk.DevHelpDeskActivity" />
+        <activity android:name=".helpdesk.devhelpdesk.CreateTicketActivity" />
+        <activity android:name=".helpdesk.devhelpdesk.ViewTicketActivity" />
+
+        <activity android:name=".docscenter.orghelpdesk.OrgHelpDeskActivity" />
 
     </application>
 

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/black">
+    android:background="@color/app_background_color">
 
 <!--    <TextView-->
 <!--        android:id="@+id/NoDataTextViewAddChat"-->
@@ -14,10 +14,25 @@
 <!--        android:textColor="@color/white"-->
 <!--        android:textSize="100sp" />-->
 
+    <TextView
+        android:id="@+id/headlineAddChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Chat"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/userRecyclerViewAddChat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/headlineAddChat"
         tools:listitem="@layout/user_layout" />
 
 </RelativeLayout>

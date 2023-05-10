@@ -5,11 +5,8 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -20,15 +17,13 @@ import com.google.firebase.ktx.Firebase
 import finalyearproject.is7.spaceapp.R
 import finalyearproject.is7.spaceapp.User
 import finalyearproject.is7.spaceapp.UserAdapter
-import finalyearproject.is7.spaceapp.chatting.groupchat.GroupChatActivity
+import finalyearproject.is7.spaceapp.databinding.ActivityPrivateChatBinding
 import finalyearproject.is7.spaceapp.user.UserProfileActivity
 
 class PrivateChatActivity:AppCompatActivity() {
 
-    private lateinit var mainScreenUserImage: ImageView
-    private lateinit var grpButton: Button
-    private lateinit var addFriendBtn: Button
-    private lateinit var userRecyclerView: RecyclerView
+    private lateinit var binding: ActivityPrivateChatBinding
+
     private lateinit var userList: ArrayList<User>
     private lateinit var userAdapter: UserAdapter
 
@@ -42,51 +37,49 @@ class PrivateChatActivity:AppCompatActivity() {
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_private_chat)
-
+        binding = ActivityPrivateChatBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        
         userList = ArrayList()
-        userRecyclerView = findViewById(R.id.userRecyclerView)
-
-        grpButton = findViewById(R.id.grpBtn)
-        addFriendBtn = findViewById(R.id.addFriendButton)
 
         orgId = intent.getStringExtra("orgId").toString()
         org = mDb.collection("Organisation").document(orgId)
         mDbRef = Firebase.database.getReference(orgId)
 
-        mainScreenUserImage = findViewById(R.id.MainScreenUserImage)
-
         mDb.collection("User").document(mAuth.currentUser?.uid!!).get()
             .addOnSuccessListener {
+                val name = it["name"] as String
+                val greetingSentence = "Welcome back, $name 🤙"
+                binding.txtGreetingsPrivateChat.text = greetingSentence
                 val imageUri = Uri.parse(it.data?.get("displaypic").toString())
 //                Log.d("CheckMe", "Image URI: $imageUri")
                 if (imageUri != Uri.EMPTY) {
-                    Glide.with(this).load(imageUri).circleCrop().into(mainScreenUserImage)
+                    Glide.with(this).load(imageUri).circleCrop().into(binding.MainScreenUserImage)
                 } else {
-                    Glide.with(this).load(R.drawable.profile).circleCrop().into(mainScreenUserImage)
+                    Glide.with(this).load(R.drawable.profile).circleCrop().into(binding.MainScreenUserImage)
                 }
             }
 
-        grpButton.setOnClickListener {
-            val intent = Intent(this, GroupChatActivity::class.java)
-            intent.putExtra("orgId", orgId)
-            startActivity(intent)
-        }
+//        binding.grpBtn.setOnClickListener {
+//            val intent = Intent(this, GroupChatActivity::class.java)
+//            intent.putExtra("orgId", orgId)
+//            startActivity(intent)
+//        }
 
-        addFriendBtn.setOnClickListener{
+        binding.addFriendButton.setOnClickListener{
             val intent = Intent(this, AddChatActivity::class.java)
             intent.putExtra("orgId", orgId)
             startActivity(intent)
         }
 
-        mainScreenUserImage.setOnClickListener {
+        binding.MainScreenUserImage.setOnClickListener {
             startActivity(Intent(this, UserProfileActivity::class.java))
         }
 
 //        Log.d("CheckMe", "Org: $orgId")
         userAdapter = UserAdapter(this,userList, orgId)
 
-        userRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.userRecyclerView.layoutManager = LinearLayoutManager(this)
 
         mDb.collection("User").whereEqualTo("org",orgId).get()
             .addOnSuccessListener { users ->
@@ -112,7 +105,7 @@ class PrivateChatActivity:AppCompatActivity() {
 
                     }
                 }
-                userRecyclerView.adapter = userAdapter
+                binding.userRecyclerView.adapter = userAdapter
 
 
             }
@@ -120,7 +113,7 @@ class PrivateChatActivity:AppCompatActivity() {
                 Log.d("Jaineel",e.toString())
             }
 
-        userRecyclerView.adapter = UserAdapter(this, userList, orgId)
+        binding.userRecyclerView.adapter = UserAdapter(this, userList, orgId)
 
     }
 

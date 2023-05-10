@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="@color/app_background_color">
 
     <TextView
         android:id="@+id/txtHeadLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to SpaceApp!"
+        android:text="User Settings"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:layout_centerHorizontal="true"
@@ -22,5 +22,41 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/txtHeadLine"
         android:layout_marginTop="50dp"/>
+
+    <Button
+        android:id="@+id/btnDevHelpDesk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dev Help Desk"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btnAdminConsole"
+        android:layout_marginTop="10dp"/>
+
+<!--    <Button-->
+<!--        android:id="@+id/btnOrgHelpDesk"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Org Help Desk"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_below="@id/btnDevHelpDesk"-->
+<!--        android:layout_marginTop="10dp"/>-->
+
+    <Button
+        android:id="@+id/btnChangePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Password"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btnDevHelpDesk"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btnChangePassword"
+        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>

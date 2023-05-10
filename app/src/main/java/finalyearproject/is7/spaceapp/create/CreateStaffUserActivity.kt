@@ -25,9 +25,9 @@ class CreateStaffUserActivity:AppCompatActivity() {
         binding = ActivityCreateStaffUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (mAuth.currentUser == null) {
-            finish()
-        }
+//        if (mAuth.currentUser == null) {
+//            finish()
+//        }
 
         orgId = intent.getStringExtra("orgId")!!
 

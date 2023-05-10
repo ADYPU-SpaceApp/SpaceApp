@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background_color">
+
+    <EditText
+        android:id="@+id/edtCreateTicketDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ticket Description"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:inputType="textMultiLine"
+        android:padding="40dp"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true" />
+    
+<!--   Attachment (to-be added) -->
+
+    <Button
+        android:id="@+id/btnCreateTicket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Ticket"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/edtCreateTicketDescription"
+        android:layout_marginTop="20dp" />
+
+</RelativeLayout>

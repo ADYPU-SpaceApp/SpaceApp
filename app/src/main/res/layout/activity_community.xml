@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:background="@color/app_background_color">
 
-    <Button
-        android:id="@+id/btnBackCommunity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <Button-->
+<!--        android:id="@+id/btnBackCommunity"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Back"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
 <!--    <Button-->
 <!--        android:id="@+id/btnVedioConference"-->
@@ -23,11 +23,11 @@
 <!--        app:layout_constraintStart_toEndOf="@id/btnBackCommunity"-->
 <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnAddPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Post"
+        android:background="@drawable/plus_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

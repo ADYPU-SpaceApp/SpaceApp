@@ -32,6 +32,9 @@ class UserMainActivity : AppCompatActivity() {
             .addOnSuccessListener { it ->
                 Log.d("UserMainActivity", "User Document: ${it.data}")
 
+//                val gson = Gson()
+//                val json = gson.toJson(it.data)
+
                 orgId = it["org"] as String
 //                val role = it["role"] as String
 
@@ -62,6 +65,7 @@ class UserMainActivity : AppCompatActivity() {
 
         binding.btnNotification.setOnClickListener {
             val goToUserSettingsActivityIntent = Intent(this, UserSettingsActivity::class.java)
+            goToUserSettingsActivityIntent.putExtra("orgId", orgId)
             startActivity(goToUserSettingsActivityIntent)
         }
 

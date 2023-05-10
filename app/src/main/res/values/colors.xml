@@ -11,5 +11,6 @@
     <color name="send_msg_color">#acce4c</color>
 
     <color name="app_background_color">#181b27</color>
+    <color name="spaceapp_logo_background">#000000</color>
 
 </resources>
