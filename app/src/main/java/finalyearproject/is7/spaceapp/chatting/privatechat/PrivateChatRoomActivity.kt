@@ -1,6 +1,7 @@
 package finalyearproject.is7.spaceapp.chatting.privatechat
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
@@ -18,6 +19,7 @@ import com.google.firebase.ktx.Firebase
 import finalyearproject.is7.spaceapp.R
 import finalyearproject.is7.spaceapp.chatting.Message
 import finalyearproject.is7.spaceapp.chatting.MessageAdapter
+import finalyearproject.is7.spaceapp.user.OtherUserProfileActivity
 
 class PrivateChatRoomActivity:AppCompatActivity() {
 
@@ -61,6 +63,11 @@ class PrivateChatRoomActivity:AppCompatActivity() {
             Glide.with(this).load(R.drawable.profile).circleCrop().into(userPic)
         }
 
+        userPic.setOnClickListener {
+            val intent = Intent(this, OtherUserProfileActivity::class.java)
+            intent.putExtra("otherUserUID", receiverUid)
+            startActivity(intent)
+        }
 
         userName.text = name
 

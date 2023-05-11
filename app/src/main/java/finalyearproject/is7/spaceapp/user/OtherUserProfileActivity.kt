@@ -21,6 +21,10 @@ class OtherUserProfileActivity: AppCompatActivity() {
 
         val uid = intent.getStringExtra("otherUserUID")!!
 
+        binding.btnUserProfileBackUser.setOnClickListener {
+            finish()
+        }
+
         val u = db.collection("User").document(uid)
         u.get()
             .addOnSuccessListener { documents ->
